@@ -1,0 +1,85 @@
+$widthInput: 430px;
+$heightInput: 52px;
+.auth {
+  background-image: url('../../../Assets/images/bgAuth.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+  position: relative;
+
+  &-logo {
+    position: absolute;
+    right: 64px;
+    top: 29px;
+  }
+  &-form {
+    position: absolute;
+    top: 259px;
+    right: 215px;
+
+    &_title {
+      font-weight: 800;
+      font-size: 48px;
+      line-height: 60px;
+      text-align: center;
+
+      margin-bottom: 80px;
+    }
+    &_label {
+      font-weight: 600;
+      line-height: 23px;
+      display: block;
+      margin-bottom: 8px;
+    }
+    &_input {
+      line-height: 23px;
+      width: $widthInput;
+      height: $heightInput;
+      padding: 8px 16px 8px 36px;
+
+      background-color: $gray-5;
+      font-size: 16px;
+      color: $black-7;
+
+      border-radius: 8px;
+      border-color: transparent;
+
+      &:hover,
+      &:focus {
+        border-color: $gray-5;
+        background-color: $white;
+      }
+    }
+    &_forgot {
+      font-size: 16px;
+      color: $orange-4;
+      text-align: right;
+      margin-bottom: 30px;
+    }
+    &_btn {
+      cursor: pointer;
+      border-color: transparent;
+      border-radius: 8px;
+      color: $white;
+      font-weight: 800;
+      line-height: 23px;
+      width: $widthInput;
+      height: $heightInput;
+      background-image: $orange-gradient;
+    }
+    &_item {
+      position: relative;
+      margin-bottom: 24px;
+    }
+    &_item.last {
+      margin-bottom: 14px;
+    }
+    &_inputIcon {
+      position: absolute;
+      right: 0px;
+      left: 14px;
+      transform: translate(0%, 66%);
+    }
+  }
+}

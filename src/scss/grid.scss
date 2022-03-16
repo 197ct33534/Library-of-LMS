@@ -1,0 +1,11 @@
+.grid {
+  width: 100%;
+  display: block;
+  padding: 0;
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 0;
+  margin-right: 0;
+}
