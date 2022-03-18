@@ -45,8 +45,7 @@ $heightInput: 52px;
       border-radius: 8px;
       border-color: transparent;
 
-      &:hover,
-      &:focus {
+      &.active {
         border-color: $gray-5;
         background-color: $white;
       }
@@ -66,7 +65,11 @@ $heightInput: 52px;
       line-height: 23px;
       width: $widthInput;
       height: $heightInput;
-      background-image: $orange-gradient;
+      background-image: $gray;
+      transition: all 0.5s ease;
+      &.active {
+        background-image: $orange-gradient;
+      }
     }
     &_item {
       position: relative;

@@ -4,10 +4,10 @@ import { InputChangeEventHandler } from './types';
 import iconUser from '../../Assets/images/iconUser.png';
 import iconSec from '../../Assets/images/iconSec.png';
 
-const Login = () => {
+const RestPass = () => {
   const [dataLogin, setDataLogin] = useState({
     nameAccount: '',
-    passAccount: '',
+    verifiAccount: '',
   });
   const handleInput: InputChangeEventHandler = (evt) => {
     const value = evt.target.value;
@@ -18,7 +18,7 @@ const Login = () => {
   };
   return (
     <div className="auth-form">
-      <h1 className="auth-form_title">Đăng nhập</h1>
+      <h1 className="auth-form_title">Cấp lại mật khẩu</h1>
       <div className="auth-form_item">
         <label htmlFor="" className="auth-form_label">
           Tên đăng nhập
@@ -34,23 +34,29 @@ const Login = () => {
       </div>
       <div className="auth-form_item last">
         <label htmlFor="" className="auth-form_label">
-          Mật khẩu
+          Mã xác thực
         </label>
         <input
           type="password"
-          className={`auth-form_input ${dataLogin.passAccount && 'active'}`}
-          value={dataLogin.passAccount}
-          name="passAccount"
+          className={`auth-form_input ${dataLogin.verifiAccount && 'active'}`}
+          value={dataLogin.verifiAccount}
+          name="verifiAccount"
           onChange={handleInput}
         />
         <img src={iconSec} alt="" className="auth-form_inputIcon" />
       </div>
-      <Link to="/auth/restpass" className="auth-form_forgot">
-        Quên mật khẩu?
+      <Link to="/auth" className="auth-form_forgot">
+        &lt; Quay lại trang chủ
       </Link>
-      <button className="auth-form_btn active">Đăng nhập</button>
+      <button
+        className={`auth-form_btn ${
+          dataLogin.verifiAccount && dataLogin.nameAccount && 'active'
+        }`}
+      >
+        Cấp lại mật khẩu
+      </button>
     </div>
   );
 };
 
-export default Login;
+export default RestPass;

@@ -1,0 +1,4 @@
+// slidebar
+$width-slidebar: 397px;
+$width-slidebarLeft: 112px;
+$width-slidebarRight: calc(#{$width-slidebar} - #{$width-slidebarLeft});

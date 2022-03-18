@@ -1,0 +1,103 @@
+$linear-color: linear-gradient(359.43deg, #ff5400 2.1%, #f17f21 98.52%);
+.Slidebar {
+  width: $width-slidebar;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+
+  &-left {
+    width: $width-slidebarLeft;
+    height: 100%;
+    background-image: $linear-color;
+    box-shadow: 4px 4px 15px rgba(122, 176, 225, 0.25);
+    text-align: center;
+    &_list {
+      @include flex(space-between, center);
+      flex-direction: column;
+    }
+    &_item {
+      border-radius: 16px;
+      padding: 14px 26px;
+      display: inline-block;
+    }
+
+    &_item.active,
+    &_item:hover {
+      background-color: #fab888;
+    }
+  }
+  &-logo {
+    padding: 58px 0px 81px 0px;
+    cursor: pointer;
+  }
+
+  &-right {
+    display: none;
+    z-index: 10;
+    background-color: $white;
+    position: absolute;
+    left: $width-slidebarLeft;
+    top: 0;
+    width: $width-slidebarRight;
+    height: 100%;
+    padding: 190px 0 0 0px;
+    box-shadow: 4px 4px 10px rgba(133, 178, 220, 0.25);
+    &_list {
+      padding-left: 34px;
+      > li {
+        padding: 16px 0px;
+        > a {
+          @include flex(center, start);
+        }
+      }
+    }
+    &_item {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    &_item::after {
+      content: '';
+      display: none;
+      width: 8px;
+      height: 56px;
+      background: $orange-4;
+      border-radius: 11px;
+      position: absolute;
+      right: 0;
+      top: 0;
+      transform: translate(50%, -50%);
+      transition: all 0.25s ease;
+    }
+    &_item.acitve,
+    &_item:hover > i,
+    &_item:hover > span {
+      color: $orange-4;
+    }
+    &_item:hover::after {
+      display: block;
+    }
+    &_content {
+      line-height: 21px;
+      margin-left: 12px;
+    }
+    &_icon {
+      font-size: 20px;
+    }
+    &_itemChil {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 16px;
+      line-height: 130%;
+      padding: 14px 0px 14px 32px;
+      cursor: pointer;
+    }
+    &_itemChil:hover {
+      background-color: #f0f3f6;
+      color: $black-7;
+      font-weight: bold;
+    }
+  }
+}
