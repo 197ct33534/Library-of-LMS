@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Dropdown from '../../components/Dropdown';
 import MultipleRows from '../../components/MultipleRowsSlick';
+import Statistical from './Statistical';
 
 const Course = () => {
   const [Year, setYear] = useState('2022-2023');
@@ -33,6 +34,8 @@ const Course = () => {
         ))}
       </div>
       <MultipleRows />
+
+      <Statistical />
     </>
   );
 };
