@@ -1,0 +1,35 @@
+.course {
+  @include flex(center, space-between);
+  width: 100%;
+  margin-bottom: 60px;
+  &-schoolYear {
+    @include flex(center, flex-start);
+    span {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 16px;
+      margin-right: 8px;
+    }
+  }
+  &-card {
+    width: 230px;
+    height: 120px;
+    background-image: linear-gradient(270deg, #ff5400 0%, #f17f21 80.56%);
+    opacity: 0.9;
+    border-radius: 8px;
+    @include flex(center, center);
+    flex-direction: column;
+
+    &_number {
+      font-size: 48px;
+      line-height: 56px;
+      color: $white;
+    }
+    &_content {
+      line-height: 21px;
+      color: $white;
+    }
+  }
+  &-card.blue {
+    background-image: linear-gradient(98.91deg, #56ccf2 1.13%, #2f80ed 100%);
+  }
+}

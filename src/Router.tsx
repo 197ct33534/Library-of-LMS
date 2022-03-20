@@ -3,6 +3,7 @@ import { useRoutes } from 'react-router-dom';
 import Login from './Pages/Auth/Login';
 import RestPass from './Pages/Auth/RestPass';
 import TemplateAuth from './Pages/Auth/TemplateAuth';
+import Course from './Pages/Home/Course';
 import Template from './Pages/Template';
 
 const Router = () => {
@@ -30,7 +31,11 @@ const Router = () => {
     },
     {
       path: '/dashboard',
-      element: <Template></Template>,
+      element: (
+        <Template title="Trang chủ">
+          <Course></Course>
+        </Template>
+      ),
     },
   ]);
   return routers;

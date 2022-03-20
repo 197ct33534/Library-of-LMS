@@ -1,0 +1,28 @@
+.user {
+  @include flex(center, flex-end);
+  width: 100%;
+  padding: 18px 0;
+}
+.leaderShip {
+  @include flex(center, space-between);
+  width: 182px;
+  height: 40px;
+
+  &-name {
+    font-family: 'Source Sans Pro';
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+  }
+  &-logout {
+    font-family: 'Source Sans Pro';
+    color: $orange-4;
+    line-height: 130%;
+    text-decoration: underline;
+  }
+  &-dividingLine {
+    height: 36px;
+    width: 1px;
+    background-color: $orange-6;
+  }
+}

@@ -4,11 +4,11 @@ import Router from './Router';
 function App() {
   return (
     <BrowserRouter>
-      <div className="grid">
-        <div className="row">
-          <Router />
-        </div>
-      </div>
+      {/* <div className="grid">
+        <div className="row"> */}
+      <Router />
+      {/* </div>
+      </div> */}
     </BrowserRouter>
   );
 }
