@@ -3,27 +3,6 @@ import Slider from 'react-slick';
 import play from '../Assets/images/play_Circle.png';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-// function SampleNextArrow(props) {
-//   const { className, style, onClick } = props;
-//   return (
-//     <div
-//       className={className}
-//       style={{ ...style, display: 'block', background: 'red' }}
-//       onClick={onClick}
-//     />
-//   );
-// }
-
-// function SamplePrevArrow(props) {
-//   const { className, style, onClick } = props;
-//   return (
-//     <div
-//       className={className}
-//       style={{ ...style, display: 'block', background: 'green' }}
-//       onClick={onClick}
-//     />
-//   );
-// }
 
 const MultipleRows = () => {
   const datas = [
@@ -63,39 +42,25 @@ const MultipleRows = () => {
       teachName: 'Trung Nghĩa',
     },
     {
-      idFile: 'WEB23',
+      idFile: 'THZ102',
       categoryName: 'Web Design',
-      fileName: 'Phát triển Website',
-      link_video: 'https://www.youtube.com/watch?v=Wy9q22isx3U',
+      fileName: 'Làm quen với Tin học',
+      link_video: 'https://www.youtube.com/watch?v=Z20edymyQdc',
       teachName: 'Hoa Hoa',
     },
     {
-      idFile: 'KNM13',
-      categoryName: 'Kỹ năng mềm',
-      fileName: 'Kỹ năng mềm',
-      link_video: 'https://www.youtube.com/watch?v=xGzpzbU-_BY',
-      teachName: 'Hoàng An',
+      idFile: 'jsM13',
+      categoryName: 'JavaScript ',
+      fileName: 'JavaScript Programming',
+      link_video: 'https://www.youtube.com/watch?v=jS4aFq5-91M',
+      teachName: 'freeCode',
     },
     {
-      idFile: 'MBA13',
-      categoryName: 'Mobile App Design',
-      fileName: 'Phát triển Mobile App',
-      link_video: 'https://www.youtube.com/watch?v=8124kv-632k',
-      teachName: 'Peter',
-    },
-    {
-      idFile: 'DLK4',
-      categoryName: 'Toán Đại Số',
-      fileName: 'Phương trình bậc 3',
-      link_video: 'https://www.youtube.com/watch?v=xV7S8BhIeBo',
-      teachName: 'Peter',
-    },
-    {
-      idFile: 'SLGG22',
-      categoryName: 'Sinh học',
-      fileName: 'Gene trội Gene lặn',
-      link_video: 'https://www.youtube.com/watch?v=FXpIoQ_rT_c',
-      teachName: 'Trung Nghĩa',
+      idFile: 'PYA13',
+      categoryName: 'Python ',
+      fileName: 'TensorFlow Course',
+      link_video: 'https://www.youtube.com/watch?v=qFJeN9V1ZsI',
+      teachName: 'Keras',
     },
   ];
   const settings = {
@@ -131,7 +96,7 @@ const MultipleRows = () => {
 
       <Slider {...settings} ref={slider}>
         {datas.map((item, idx) => (
-          <div key={`${item.idFile}-idx`}>
+          <div key={`${item.idFile}-${idx}`}>
             <div className="multipleRows-item">
               <span className="multipleRows-item_img">
                 <img
@@ -157,8 +122,6 @@ const MultipleRows = () => {
           </div>
         ))}
       </Slider>
-      {/* <button onClick={() => slider?.current?.slickPrev()}>Prev</button> */}
-      {/* <button onClick={() => slider?.current?.slickNext()}>Next</button> */}
     </div>
   );
 };

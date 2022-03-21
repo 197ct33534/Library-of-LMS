@@ -30,12 +30,28 @@ const Router = () => {
       ],
     },
     {
+      path: '/',
+      element: (
+        <Template title="Trang chủ">
+          <Course></Course>
+        </Template>
+      ),
+    },
+    {
       path: '/dashboard',
       element: (
         <Template title="Trang chủ">
           <Course></Course>
         </Template>
       ),
+    },
+    {
+      path: '/book',
+      element: <Template title="book">book</Template>,
+    },
+    {
+      path: '/setting',
+      element: <Template title="setting">setting</Template>,
     },
   ]);
   return routers;

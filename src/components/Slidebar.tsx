@@ -82,7 +82,7 @@ const Slidebar = () => {
           {slidebar.map((item) => (
             <li key={`slidebar-${item.path}`}>
               <NavLink
-                to={item.path}
+                to={`/${item.path}`}
                 className={({ isActive }) =>
                   isActive ? 'active Slidebar-left_item' : 'Slidebar-left_item'
                 }
@@ -98,7 +98,7 @@ const Slidebar = () => {
           {slidebar.map((item) => (
             <li key={`slidebar-right-${item.path}`}>
               <NavLink
-                to={item.path}
+                to={`/${item.path}`}
                 className={({ isActive }) =>
                   isActive
                     ? 'active Slidebar-right_item'

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Dropdown from '../../components/Dropdown';
 import MultipleRows from '../../components/MultipleRowsSlick';
+import MultipleItems from './MultipleItems';
+
 import Statistical from './Statistical';
 
 const Course = () => {
@@ -34,8 +36,15 @@ const Course = () => {
         ))}
       </div>
       <MultipleRows />
-
-      <Statistical />
+      <div className="course-footer">
+        <Statistical />
+        <div className="MultipleItems">
+          <MultipleItems />
+          <div className="MultipleItems-note">
+            Hiển thị 10 tệp tài liệu đã xem gần đây nhất
+          </div>
+        </div>
+      </div>
     </>
   );
 };

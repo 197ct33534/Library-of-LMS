@@ -2,6 +2,10 @@
   @include flex(center, space-between);
   width: 100%;
   margin-bottom: 60px;
+  &-footer {
+    display: flex;
+    width: 100%;
+  }
   &-schoolYear {
     @include flex(center, flex-start);
     span {
