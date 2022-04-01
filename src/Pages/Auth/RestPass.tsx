@@ -3,21 +3,27 @@ import { Link } from 'react-router-dom';
 import { InputChangeEventHandler } from './types';
 import iconUser from '../../Assets/images/iconUser.png';
 import iconSec from '../../Assets/images/iconSec.png';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 
+const validateSchemaAuth = Yup.object().shape({
+  nameAccount: Yup.string().required('required'),
+  verifiAccount: Yup.string().required('required'),
+});
 const RestPass = () => {
-  const [dataLogin, setDataLogin] = useState({
-    nameAccount: '',
-    verifiAccount: '',
+  const formik = useFormik({
+    initialValues: {
+      nameAccount: '',
+      verifiAccount: '',
+    },
+    validationSchema: validateSchemaAuth,
+
+    onSubmit: (values) => {
+      console.log(values);
+    },
   });
-  const handleInput: InputChangeEventHandler = (evt) => {
-    const value = evt.target.value;
-    setDataLogin({
-      ...dataLogin,
-      [evt.target.name]: value,
-    });
-  };
   return (
-    <div className="auth-form">
+    <form className="auth-form" onSubmit={formik.handleSubmit}>
       <h1 className="auth-form_title">Cấp lại mật khẩu</h1>
       <div className="auth-form_item">
         <label htmlFor="" className="auth-form_label">
@@ -25,10 +31,10 @@ const RestPass = () => {
         </label>
         <input
           type="text"
-          className={`auth-form_input ${dataLogin.nameAccount && 'active'}`}
-          value={dataLogin.nameAccount}
+          className={`auth-form_input ${formik.values.nameAccount && 'active'}`}
+          value={formik.values.nameAccount}
           name="nameAccount"
-          onChange={handleInput}
+          onChange={formik.handleChange}
         />
         <img src={iconUser} alt="" className="auth-form_inputIcon" />
       </div>
@@ -38,10 +44,12 @@ const RestPass = () => {
         </label>
         <input
           type="password"
-          className={`auth-form_input ${dataLogin.verifiAccount && 'active'}`}
-          value={dataLogin.verifiAccount}
+          className={`auth-form_input ${
+            formik.values.verifiAccount && 'active'
+          }`}
+          value={formik.values.verifiAccount}
           name="verifiAccount"
-          onChange={handleInput}
+          onChange={formik.handleChange}
         />
         <img src={iconSec} alt="" className="auth-form_inputIcon" />
       </div>
@@ -50,12 +58,13 @@ const RestPass = () => {
       </Link>
       <button
         className={`auth-form_btn ${
-          dataLogin.verifiAccount && dataLogin.nameAccount && 'active'
+          formik.values.nameAccount && formik.values.verifiAccount && 'active'
         }`}
+        type="submit"
       >
         Cấp lại mật khẩu
       </button>
-    </div>
+    </form>
   );
 };
 

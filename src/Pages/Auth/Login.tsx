@@ -1,23 +1,27 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { InputChangeEventHandler } from './types';
+
 import iconUser from '../../Assets/images/iconUser.png';
 import iconSec from '../../Assets/images/iconSec.png';
-
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+const validateSchemaAuth = Yup.object().shape({
+  nameAccount: Yup.string().required('required'),
+  passAccount: Yup.string().required('required'),
+});
 const Login = () => {
-  const [dataLogin, setDataLogin] = useState({
-    nameAccount: '',
-    passAccount: '',
+  const formik = useFormik({
+    initialValues: {
+      nameAccount: '',
+      passAccount: '',
+    },
+    validationSchema: validateSchemaAuth,
+    onSubmit: (values) => {
+      console.log(values);
+    },
   });
-  const handleInput: InputChangeEventHandler = (evt) => {
-    const value = evt.target.value;
-    setDataLogin({
-      ...dataLogin,
-      [evt.target.name]: value,
-    });
-  };
   return (
-    <div className="auth-form">
+    <form className="auth-form" onSubmit={formik.handleSubmit}>
       <h1 className="auth-form_title">Đăng nhập</h1>
       <div className="auth-form_item">
         <label htmlFor="" className="auth-form_label">
@@ -25,10 +29,13 @@ const Login = () => {
         </label>
         <input
           type="text"
-          className={`auth-form_input ${dataLogin.nameAccount && 'active'}`}
-          value={dataLogin.nameAccount}
+          // ${dataLogin.nameAccount && 'active'}
+          className={`auth-form_input ${
+            formik.values.nameAccount ? 'active' : ''
+          }`}
+          value={formik.values.nameAccount}
           name="nameAccount"
-          onChange={handleInput}
+          onChange={formik.handleChange}
         />
         <img src={iconUser} alt="" className="auth-form_inputIcon" />
       </div>
@@ -38,18 +45,23 @@ const Login = () => {
         </label>
         <input
           type="password"
-          className={`auth-form_input ${dataLogin.passAccount && 'active'}`}
-          value={dataLogin.passAccount}
+          // {dataLogin.passAccount && 'active'}
+          className={`auth-form_input ${
+            formik.values.passAccount ? 'active' : ''
+          }`}
+          value={formik.values.passAccount}
           name="passAccount"
-          onChange={handleInput}
+          onChange={formik.handleChange}
         />
         <img src={iconSec} alt="" className="auth-form_inputIcon" />
       </div>
       <Link to="/auth/restpass" className="auth-form_forgot">
         Quên mật khẩu?
       </Link>
-      <button className="auth-form_btn active">Đăng nhập</button>
-    </div>
+      <button className="auth-form_btn active" type="submit">
+        Đăng nhập
+      </button>
+    </form>
   );
 };
 
