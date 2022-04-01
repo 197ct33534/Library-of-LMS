@@ -1,15 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import iconUser from '../../Assets/images/iconUser.png';
 import iconSec from '../../Assets/images/iconSec.png';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { useDispatch, useSelector } from 'react-redux';
+import { authFetchData, authLogin } from './authSlice';
+import Account from '../../firebase/Account';
+import { authSelector } from './authSelector';
+import { useNavigate } from 'react-router-dom';
 const validateSchemaAuth = Yup.object().shape({
   nameAccount: Yup.string().required('required'),
   passAccount: Yup.string().required('required'),
 });
 const Login = () => {
+  const dispatch = useDispatch();
+  const listData = useSelector(authSelector);
+  const navigation = useNavigate();
   const formik = useFormik({
     initialValues: {
       nameAccount: '',
@@ -17,9 +25,29 @@ const Login = () => {
     },
     validationSchema: validateSchemaAuth,
     onSubmit: (values) => {
-      console.log(values);
+      const result = listData.listAuth.find(
+        (item) =>
+          item.nameAccount === values.nameAccount &&
+          item.passAccount === values.passAccount
+      );
+
+      if (result) dispatch(authLogin(result.id));
+      navigation('/');
     },
   });
+  useEffect(() => {
+    const getAuths = async () => {
+      const datas = await Account.getAllAccount();
+      const dataArray = datas.docs.map((data) => {
+        const result = data.data();
+        result.id = data.id;
+        return result;
+      });
+
+      dispatch(authFetchData(dataArray));
+    };
+    getAuths();
+  }, []);
   return (
     <form className="auth-form" onSubmit={formik.handleSubmit}>
       <h1 className="auth-form_title">Đăng nhập</h1>
@@ -29,7 +57,6 @@ const Login = () => {
         </label>
         <input
           type="text"
-          // ${dataLogin.nameAccount && 'active'}
           className={`auth-form_input ${
             formik.values.nameAccount ? 'active' : ''
           }`}
@@ -45,7 +72,6 @@ const Login = () => {
         </label>
         <input
           type="password"
-          // {dataLogin.passAccount && 'active'}
           className={`auth-form_input ${
             formik.values.passAccount ? 'active' : ''
           }`}
