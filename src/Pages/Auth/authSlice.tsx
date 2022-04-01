@@ -1,8 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-interface account {
-  nameAccount: string;
-  passAuth: string;
-}
 
 const authSlice = createSlice({
   name: 'auth',
@@ -17,9 +13,12 @@ const authSlice = createSlice({
     authFetchData: (state, action) => {
       state.listAuth = action.payload;
     },
+    authLogout: (state) => {
+      state.idlogin = '';
+    },
   },
 });
 
 const { actions, reducer: authReducer } = authSlice;
-export const { authLogin, authFetchData } = actions;
+export const { authLogin, authFetchData, authLogout } = actions;
 export default authReducer;

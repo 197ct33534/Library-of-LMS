@@ -32,7 +32,7 @@ const Login = () => {
       );
 
       if (result) dispatch(authLogin(result.id));
-      navigation('/');
+      navigation('/info');
     },
   });
   useEffect(() => {
@@ -47,7 +47,7 @@ const Login = () => {
       dispatch(authFetchData(dataArray));
     };
     getAuths();
-  }, []);
+  }, [dispatch]);
   return (
     <form className="auth-form" onSubmit={formik.handleSubmit}>
       <h1 className="auth-form_title">Đăng nhập</h1>
