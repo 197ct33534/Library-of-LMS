@@ -53,6 +53,8 @@ const Slidebar = () => {
       icon: 'bx bx-reset',
     },
   ];
+  console.log('slidebar didmount');
+
   useEffect(() => {
     let SlidebarRight: HTMLElement | null =
       document.querySelector('.Slidebar-right');
@@ -71,6 +73,21 @@ const Slidebar = () => {
         if (SlidebarRight) SlidebarRight.style.display = 'none';
       });
     }
+    return () => {
+      arrayItem.forEach((item, index) => {
+        item.removeEventListener('mouseover', () => {
+          if (SlidebarRight) SlidebarRight.style.display = 'block';
+        });
+      });
+      if (SlidebarRight) {
+        SlidebarRight.removeEventListener('mouseover', () => {
+          if (SlidebarRight) SlidebarRight.style.display = 'block';
+        });
+        SlidebarRight.removeEventListener('mouseout', () => {
+          if (SlidebarRight) SlidebarRight.style.display = 'none';
+        });
+      }
+    };
   }, []);
   return (
     <div className="Slidebar">

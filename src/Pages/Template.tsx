@@ -1,12 +1,10 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
 import Slidebar from '../components/Slidebar';
 import User from '../components/User';
-interface propsTemplate {
-  title: string;
-  children: React.ReactNode;
-}
-const Template = (props: propsTemplate) => {
-  const { title, children } = props;
+const Template = () => {
+  console.log('template didmouted');
+
   return (
     <>
       <Slidebar />
@@ -14,10 +12,7 @@ const Template = (props: propsTemplate) => {
         <div className="row">
           <User />
         </div>
-        <div className="row">
-          <h1 className="title">{title}</h1>
-        </div>
-        <div className="row">{children}</div>
+        <Outlet />
       </div>
     </>
   );

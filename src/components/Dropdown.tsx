@@ -28,7 +28,9 @@ const Dropdown = (props: IProps) => {
                 setSelected(option);
                 setIsActive(false);
               }}
-              className={`dropdown-item ${option === selected && 'active'} `}
+              className={`dropdown-item ${
+                option === selected ? 'active' : ''
+              } `}
             >
               {option}
             </div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import Slider from 'react-slick';
 import word from '../../Assets/images/word.png';
 import ex from '../../Assets/images/ex.png';
@@ -51,6 +51,7 @@ const MultipleItems = () => {
   const next = () => {
     if (slider.current) slider.current.slickNext();
   };
+  console.log('MultipleItems didmount');
 
   return (
     <div className="multipleRows">
@@ -89,4 +90,4 @@ const MultipleItems = () => {
   );
 };
 
-export default MultipleItems;
+export default memo(MultipleItems);

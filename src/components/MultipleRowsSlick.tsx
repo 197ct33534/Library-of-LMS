@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { memo } from 'react';
 import Slider from 'react-slick';
 import play from '../Assets/images/play_Circle.png';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 const MultipleRows = () => {
+  console.log('MultipleRows didmount');
+
   const datas = [
     {
       idFile: 'WEB23',
@@ -125,4 +127,4 @@ const MultipleRows = () => {
     </div>
   );
 };
-export default MultipleRows;
+export default memo(MultipleRows);
