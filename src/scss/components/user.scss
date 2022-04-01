@@ -7,7 +7,9 @@
   @include flex(center, space-between);
   width: 182px;
   height: 40px;
-
+  > a {
+    @include flex(center, space-between);
+  }
   &-name {
     font-family: 'Source Sans Pro';
     font-weight: 700;

@@ -8,6 +8,7 @@ import Slidebar from './components/Slidebar';
 import Template from './Pages/Template';
 import Course from './Pages/Home/Course';
 import Tittle from './Common/Tittle';
+import InfoUser from './Pages/Auth/InfoUser';
 function App() {
   return (
     <BrowserRouter>
@@ -23,6 +24,14 @@ function App() {
             element={
               <Tittle title="Trang chủ">
                 <Course />
+              </Tittle>
+            }
+          ></Route>
+          <Route
+            path="/info"
+            element={
+              <Tittle title="Thông tin người dùng">
+                <InfoUser />
               </Tittle>
             }
           ></Route>
