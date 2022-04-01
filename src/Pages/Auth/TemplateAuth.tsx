@@ -1,13 +1,14 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
 import Logo from '../../Assets/images/LogoEducation.png';
 
-type Props = { children: React.ReactNode };
+const TemplateAuth: React.FC = () => {
+  console.log('TemplateAuth didmount');
 
-const TemplateAuth: React.FC<Props> = ({ children }) => {
   return (
     <div className="auth">
       <img src={Logo} alt="" className="auth-logo" />
-      {children}
+      <Outlet />
     </div>
   );
 };
