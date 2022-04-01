@@ -1,16 +1,23 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { InputChangeEventHandler } from './types';
 import iconUser from '../../Assets/images/iconUser.png';
 import iconSec from '../../Assets/images/iconSec.png';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { useDispatch, useSelector } from 'react-redux';
+import { authSelector } from './authSelector';
+import { authLogin } from './authSlice';
 
 const validateSchemaAuth = Yup.object().shape({
   nameAccount: Yup.string().required('required'),
   verifiAccount: Yup.string().required('required'),
 });
 const RestPass = () => {
+  const listData = useSelector(authSelector);
+  const navigation = useNavigate();
+  const dispatch = useDispatch();
+
   const formik = useFormik({
     initialValues: {
       nameAccount: '',
@@ -19,7 +26,11 @@ const RestPass = () => {
     validationSchema: validateSchemaAuth,
 
     onSubmit: (values) => {
-      console.log(values);
+      const result = listData.listAuth.find(
+        (item) => item.nameAccount === values.nameAccount
+      );
+      if (result) dispatch(authLogin(result.id));
+      navigation('/');
     },
   });
   return (
