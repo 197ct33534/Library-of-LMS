@@ -5,12 +5,14 @@ import camera from '../../Assets/images/camera.png';
 import FormInfo from './FormInfo';
 import { useDispatch, useSelector } from 'react-redux';
 import { authSelector } from './authSelector';
-import { setInfoAuth } from './authSlice';
+import { setInfoAuth, setSettingAuth } from './authSlice';
 import FormChangePass from './FormChangePass';
 
 const InfoUser = () => {
   const listData = useSelector(authSelector);
   const state = listData.infoAuth;
+  const setting = listData.settingAuth;
+
   const dispatch = useDispatch();
   useEffect(() => {
     return () => {
@@ -35,13 +37,12 @@ const InfoUser = () => {
           </div>
         </div>
         {state && (
-          <Button
-            buttonStyle="buttonStyle"
-            buttonSize="btn--medium"
-            type="button"
+          <button
+            className="btn btn--primary--solid btn--medium"
+            onClick={() => dispatch(setSettingAuth(true))}
           >
             Chỉnh sửa
-          </Button>
+          </button>
         )}
       </div>
       <div className="info-card">
@@ -52,7 +53,7 @@ const InfoUser = () => {
               <img src={Avatar} alt="" />
               <img src={camera} alt="" />
             </div>
-            <FormInfo />
+            <FormInfo setting={setting} />
           </div>
         ) : (
           <FormChangePass />

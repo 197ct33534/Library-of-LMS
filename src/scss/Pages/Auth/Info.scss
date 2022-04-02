@@ -90,6 +90,9 @@
           resize: none;
           padding: 24px 0px;
         }
+        input.active {
+          background-color: $white;
+        }
       }
       .form-info-control {
         @include flex(center, center);

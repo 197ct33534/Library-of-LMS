@@ -1,15 +1,14 @@
-import { ErrorMessage, Field, Form, Formik } from 'formik';
-import React, { useEffect } from 'react';
+import { Field, Form, Formik } from 'formik';
+import React from 'react';
 import * as Yup from 'yup';
 import union from '../../Assets/images/Union.png';
 import eye from '../../Assets/images/eye.png';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { authSelector } from './authSelector';
 import { useNavigate } from 'react-router-dom';
 import Account from '../../firebase/Account';
 
 const FormChangePass = () => {
-  const dispatch = useDispatch();
   const listData = useSelector(authSelector);
   const navigation = useNavigate();
 
@@ -44,14 +43,12 @@ const FormChangePass = () => {
           ),
         })}
         onSubmit={(values) => {
-          let pass = '';
-
           const result = listData.listAuth.find(
             (item) =>
-              item.id === token && item.passAccount === values.currentPass
+              item.id === token.id && item.passAccount === values.currentPass
           );
           if (result) {
-            Account.updateAccount(token, { nameAccount: values.newPass });
+            Account.updateAccount(token.id, { nameAccount: values.newPass });
             alert('cập nhật mật khẩu thành công');
             navigation('/auth');
           } else {

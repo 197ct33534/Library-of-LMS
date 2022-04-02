@@ -31,7 +31,7 @@ const Login = () => {
           item.passAccount === values.passAccount
       );
 
-      if (result) dispatch(authLogin(result.id));
+      if (result) dispatch(authLogin(result));
       navigation('/info');
     },
   });

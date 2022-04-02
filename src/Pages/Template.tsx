@@ -9,7 +9,7 @@ const Template = () => {
   const listData = useSelector(authSelector);
   const navigation = useNavigate();
   useEffect(() => {
-    if (!listData.idlogin) {
+    if (!listData.idlogin.id) {
       console.log('chua co id');
 
       navigation('/auth');
