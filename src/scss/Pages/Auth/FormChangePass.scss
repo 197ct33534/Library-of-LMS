@@ -1,0 +1,31 @@
+.form-info {
+  &-changePass {
+    padding: 32px 52px;
+    > div {
+      gap: 0 12px;
+    }
+  }
+  &-warp {
+    grid-column: 1/5;
+
+    .form-info-item {
+      @include flex(center, space-between);
+      position: relative;
+      input[type='password'] {
+        background-color: $gray-5;
+      }
+      img {
+        position: absolute;
+        top: 8px;
+        right: 4px;
+        cursor: pointer;
+      }
+    }
+  }
+  &-note {
+    @include flex(flex-start, space-between);
+  }
+}
+.mess-error {
+  color: red;
+}

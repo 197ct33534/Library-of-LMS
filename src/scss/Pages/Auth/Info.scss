@@ -10,11 +10,12 @@
     height: 48px;
     background-color: $gray-5;
     border-radius: 32px;
-
+    cursor: pointer;
+    z-index: 100;
     &_button {
       opacity: 0.5;
       color: $orange-7;
-      transition: all 0.5 ease-in-out;
+      transition: all 0.5 linear;
       &.active {
         background-color: $orange-7;
         border-radius: 24px;
@@ -30,8 +31,9 @@
     border-radius: 16px;
     > div {
       border-radius: 0px 0px 16px 16px;
-      padding: 32px 64px 0px 64px;
+      padding: 32px 52px 0px 52px;
       margin-bottom: 76px;
+      gap: 0 24px;
     }
     h2 {
       background-color: $orange-5;

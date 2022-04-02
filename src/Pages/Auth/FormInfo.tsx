@@ -1,6 +1,6 @@
 import { Formik, Form, Field } from 'formik';
 import React from 'react';
-
+import * as Yup from 'yup';
 const FormInfo = () => {
   return (
     <>

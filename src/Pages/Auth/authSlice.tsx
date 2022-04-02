@@ -5,6 +5,7 @@ const authSlice = createSlice({
   initialState: {
     listAuth: [{ nameAccount: '', passAccount: '', id: '' }],
     idlogin: '',
+    infoAuth: true,
   },
   reducers: {
     authLogin: (state, action) => {
@@ -16,9 +17,12 @@ const authSlice = createSlice({
     authLogout: (state) => {
       state.idlogin = '';
     },
+    setInfoAuth: (state, action) => {
+      state.infoAuth = action.payload;
+    },
   },
 });
 
 const { actions, reducer: authReducer } = authSlice;
-export const { authLogin, authFetchData, authLogout } = actions;
+export const { authLogin, authFetchData, authLogout, setInfoAuth } = actions;
 export default authReducer;
