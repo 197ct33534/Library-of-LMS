@@ -5,7 +5,7 @@ import camera from '../../Assets/images/camera.png';
 import FormInfo from './FormInfo';
 import { useDispatch, useSelector } from 'react-redux';
 import { authSelector } from './authSelector';
-import { setInfoAuth, setSettingAuth } from './authSlice';
+import { setInfoAuth, setModel, setSettingAuth } from './authSlice';
 import FormChangePass from './FormChangePass';
 
 const InfoUser = () => {
@@ -49,7 +49,10 @@ const InfoUser = () => {
         <h2>{state ? 'Thông tin chung' : 'Thay đổi mật khẩu'}</h2>
         {state ? (
           <div className="grid-col-3">
-            <div className="info-card-avatar">
+            <div
+              className="info-card-avatar"
+              onClick={() => dispatch(setModel(true))}
+            >
               <img src={Avatar} alt="" />
               <img src={camera} alt="" />
             </div>

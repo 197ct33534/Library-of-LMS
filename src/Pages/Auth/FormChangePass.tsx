@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import { authSelector } from './authSelector';
 import { useNavigate } from 'react-router-dom';
 import Account from '../../firebase/Account';
+import Button from '../../Common/Button';
 
 const FormChangePass = () => {
   const listData = useSelector(authSelector);
@@ -106,15 +107,20 @@ const FormChangePass = () => {
               </div>
             </div>
             <div className="form-info-control">
-              <button type="reset" className="btn btn--gray--solid btn--medium">
+              <Button
+                type="reset"
+                buttonStyle="btn--gray--solid"
+                buttonSize="btn--medium"
+              >
                 Hủy
-              </button>
-              <button
+              </Button>
+              <Button
                 type="submit"
-                className="btn btn--primary--solid btn--medium"
+                buttonStyle=" btn--primary--solid"
+                buttonSize=" btn--medium"
               >
                 Lưu
-              </button>
+              </Button>
             </div>
           </Form>
         )}

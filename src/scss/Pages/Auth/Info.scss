@@ -45,7 +45,7 @@
     &-avatar {
       position: relative;
       cursor: pointer;
-
+      z-index: 100;
       > img:first-child {
         width: 232px;
         height: 232px;

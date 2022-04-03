@@ -27,6 +27,7 @@ const authSlice = createSlice({
     },
     infoAuth: true,
     settingAuth: false,
+    model: false,
   },
   reducers: {
     authLogin: (state, action) => {
@@ -53,6 +54,9 @@ const authSlice = createSlice({
     setSettingAuth: (state, action) => {
       state.settingAuth = action.payload;
     },
+    setModel: (state, action) => {
+      state.model = action.payload;
+    },
   },
 });
 
@@ -63,5 +67,6 @@ export const {
   authLogout,
   setInfoAuth,
   setSettingAuth,
+  setModel,
 } = actions;
 export default authReducer;

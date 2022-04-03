@@ -1,12 +1,15 @@
 import React from 'react';
-interface PropButton {
-  children?: React.ReactNode;
+interface PropButton
+  extends React.DetailedHTMLProps<
+      React.ButtonHTMLAttributes<HTMLButtonElement>,
+      HTMLButtonElement
+    >,
+    React.AriaAttributes {
   type: 'button' | 'submit' | 'reset' | undefined;
-  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void | undefined;
-
   buttonStyle: string;
   buttonSize: string;
 }
+// export interface ButtonProps
 const STYLES = [
   'btn--primary--solid',
   'btn--gray--solid',
