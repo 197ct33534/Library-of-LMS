@@ -1,0 +1,45 @@
+.book {
+  background-color: $white;
+  box-shadow: 4px 4px 25px 4px rgba(154, 202, 245, 0.25);
+  border-radius: 16px;
+  padding: 25px 52px;
+  &-control {
+    @include flex(flex-end, space-between);
+
+    &-left {
+      @include flex(center, flex-start);
+
+      &_item {
+        margin-right: 32px;
+        .dropdown {
+          width: 175px;
+        }
+      }
+    }
+    &-right {
+      &_search {
+        width: 420px;
+        height: 40px;
+        background-color: $overlay;
+        border-radius: 16px;
+        @include flex(center, flex-start);
+        input {
+          font-family: 'Source Sans Pro';
+          font-style: italic;
+          font-size: 14px;
+          line-height: 18px;
+          color: #bdbdbd;
+          background-color: transparent;
+          outline: none;
+          border: none;
+        }
+        .bx-search {
+          //   color: $gray-2;
+          color: #bdbdbd;
+          padding: 0px 10px;
+          font-size: 18px;
+        }
+      }
+    }
+  }
+}

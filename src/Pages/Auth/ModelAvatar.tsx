@@ -10,15 +10,19 @@ const ModelAvatar = () => {
   const [rangeVal, setRange] = useState(0);
   const [success, setSuccess] = useState(false);
   const avatar = document.getElementById('avatarInfo');
+  const zoomImg = document.getElementById('zoomImg');
+
   const handlezoomIn = () => {
-    return rangeVal >= 9 ? rangeVal : setRange(rangeVal + 1);
+    return rangeVal >= 10 ? rangeVal : setRange(rangeVal + 1);
   };
   const handlezoomOut = () => {
     return rangeVal === 0 ? rangeVal : setRange(rangeVal - 1);
   };
   useEffect(() => {
-    if (avatar) {
-      avatar.style.transform = `scale(1.${rangeVal})`;
+    if (avatar && zoomImg) {
+      avatar.style.transform =
+        rangeVal === 10 ? `scale(2)` : `scale(1.${rangeVal})`;
+      zoomImg.style.backgroundSize = rangeVal * 10 + '% 100%';
       // console.log(rangeVal);
     }
   }, [avatar, rangeVal]);
@@ -82,7 +86,7 @@ const ModelAvatar = () => {
               id="zoomImg"
               name="zoomImg"
               min="0"
-              max="9"
+              max="10"
               step="1"
               value={rangeVal}
               onInput={(e) => {

@@ -49,7 +49,7 @@ const FormChangePass = () => {
               item.id === token.id && item.passAccount === values.currentPass
           );
           if (result) {
-            Account.updateAccount(token.id, { nameAccount: values.newPass });
+            Account.updateAccount(token.id, { passAccount: values.newPass });
             alert('cập nhật mật khẩu thành công');
             navigation('/auth');
           } else {

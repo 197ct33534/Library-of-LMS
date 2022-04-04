@@ -62,29 +62,29 @@ const Slidebar = () => {
     const arrayItem = document.querySelectorAll('.Slidebar-left_item');
     arrayItem.forEach((item, index) => {
       item.addEventListener('mouseover', () => {
-        if (SlidebarRight) SlidebarRight.style.display = 'block';
+        if (SlidebarRight) SlidebarRight.style.visibility = 'unset';
       });
     });
     if (SlidebarRight) {
       SlidebarRight.addEventListener('mouseover', () => {
-        if (SlidebarRight) SlidebarRight.style.display = 'block';
+        if (SlidebarRight) SlidebarRight.style.visibility = 'unset';
       });
       SlidebarRight.addEventListener('mouseout', () => {
-        if (SlidebarRight) SlidebarRight.style.display = 'none';
+        if (SlidebarRight) SlidebarRight.style.visibility = 'hidden';
       });
     }
     return () => {
       arrayItem.forEach((item, index) => {
         item.removeEventListener('mouseover', () => {
-          if (SlidebarRight) SlidebarRight.style.display = 'block';
+          if (SlidebarRight) SlidebarRight.style.visibility = 'unset';
         });
       });
       if (SlidebarRight) {
         SlidebarRight.removeEventListener('mouseover', () => {
-          if (SlidebarRight) SlidebarRight.style.display = 'block';
+          if (SlidebarRight) SlidebarRight.style.visibility = 'unset';
         });
         SlidebarRight.removeEventListener('mouseout', () => {
-          if (SlidebarRight) SlidebarRight.style.display = 'none';
+          if (SlidebarRight) SlidebarRight.style.visibility = 'hidden';
         });
       }
     };

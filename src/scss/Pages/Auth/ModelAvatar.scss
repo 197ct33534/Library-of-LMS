@@ -59,11 +59,29 @@
       font-size: 18px;
     }
     input[type='range'] {
+      -webkit-appearance: none;
       width: 364px;
       height: 4px;
       background: $gray;
+      background-image: linear-gradient(#ff5400, #ff4500);
+      background-size: 0% 100%;
+      background-repeat: no-repeat;
       border-radius: 8px;
       margin: 0px 12px;
+    }
+    #zoomImg::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      cursor: ew-resize;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #ff5400;
+    }
+    input[type='range']::-webkit-slider-runnable-track {
+      -webkit-appearance: none;
+      box-shadow: none;
+      border: none;
+      background: transparent;
     }
   }
   &-upload {
@@ -72,7 +90,7 @@
 
     text-align: center;
     label {
-      background: $orange-2;
+      background: #ffd8b8;
       border: 1px solid $orange-4;
       border-radius: 4px;
 
@@ -82,6 +100,7 @@
       font-size: 16px;
       padding: 6px 27px;
     }
+
     input[type='file'] {
       visibility: hidden;
     }

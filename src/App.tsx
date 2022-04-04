@@ -9,6 +9,8 @@ import Template from './Pages/Template';
 import Course from './Pages/Home/Course';
 import Tittle from './Common/Tittle';
 import InfoUser from './Pages/Auth/InfoUser';
+
+import Book from './Pages/Book/Book';
 function App() {
   return (
     <BrowserRouter>
@@ -35,6 +37,7 @@ function App() {
               </Tittle>
             }
           ></Route>
+          <Route path="book" element={<Book></Book>}></Route>
         </Route>
       </Routes>
     </BrowserRouter>

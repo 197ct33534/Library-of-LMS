@@ -5,7 +5,7 @@ $linear-color: linear-gradient(359.43deg, #ff5400 2.1%, #f17f21 98.52%);
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 100;
+  z-index: 2;
   &-left {
     width: $width-slidebarLeft;
     height: 100%;
@@ -33,10 +33,10 @@ $linear-color: linear-gradient(359.43deg, #ff5400 2.1%, #f17f21 98.52%);
   }
 
   &-right {
-    display: none;
+    visibility: hidden;
 
     background-color: $white;
-    position: absolute;
+    position: fixed;
     left: $width-slidebarLeft;
     top: 0;
     bottom: 0;
