@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { bookSelector } from './bookSelector';
 import { useFormik } from 'formik';
 import { setQuestion } from './bookSlice';
+import parse from 'html-react-parser';
 const Answer = () => {
   const dispatch = useDispatch();
   const [subjects, setSubjects] = useState('Tất cả môn học');
@@ -23,6 +24,32 @@ const Answer = () => {
       console.log(values);
     },
   });
+  let temp = '';
+  for (let i = 0; i <= 10; i++) {
+    temp += `<div className="QA-comments_item">
+    <img src=${avatar} alt="" />
+    <div className="QA-comments_item__Info">
+      <h1>
+        <span>Lor</span>
+        <strong>Bài 5</strong>
+      </h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      </p>
+      <div>
+        <p>
+          <i className="bx bxs-heart"></i>
+          <span>10</span>
+        </p>
+        <p>
+          <i className="bx bx-comment"></i>
+          <span>10</span>
+        </p>
+      </div>
+    </div>
+    <span className="QA-comments_item__date">6 ngày trước</span>
+  </div>`;
+  }
   return (
     <>
       {isQuestion ? (
@@ -108,169 +135,7 @@ const Answer = () => {
             </div>
           </div>
           <div className="QA-comments" id="QA-comments">
-            <div className="grid-col-2">
-              <div className="QA-comments_item">
-                <img src={avatar} alt="" />
-                <div className="QA-comments_item__Info">
-                  <h1>
-                    <span>Lor</span>
-                    <strong>Bài 5</strong>
-                  </h1>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  </p>
-                  <div>
-                    <p>
-                      <i className="bx bxs-heart"></i>
-                      <span>10</span>
-                    </p>
-                    <p>
-                      <i className="bx bx-comment"></i>
-                      <span>10</span>
-                    </p>
-                  </div>
-                </div>
-                <span className="QA-comments_item__date">6 ngày trước</span>
-              </div>
-              <div className="QA-comments_item">
-                <img src={avatar} alt="" />
-                <div className="QA-comments_item__Info">
-                  <h1>
-                    <span>Lor</span>
-                    <strong>Bài 5</strong>
-                  </h1>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  </p>
-                  <div>
-                    <p>
-                      <i className="bx bxs-heart"></i>
-                      <span>10</span>
-                    </p>
-                    <p>
-                      <i className="bx bx-comment"></i>
-                      <span>10</span>
-                    </p>
-                  </div>
-                </div>
-                <span className="QA-comments_item__date">6 ngày trước</span>
-              </div>
-              <div className="QA-comments_item">
-                <img src={avatar} alt="" />
-                <div className="QA-comments_item__Info">
-                  <h1>
-                    <span>Lor</span>
-                    <strong>Bài 5</strong>
-                  </h1>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  </p>
-                  <div>
-                    <p>
-                      <i className="bx bxs-heart"></i>
-                      <span>10</span>
-                    </p>
-                    <p>
-                      <i className="bx bx-comment"></i>
-                      <span>10</span>
-                    </p>
-                  </div>
-                </div>
-                <span className="QA-comments_item__date">6 ngày trước</span>
-              </div>
-              <div className="QA-comments_item">
-                <img src={avatar} alt="" />
-                <div className="QA-comments_item__Info">
-                  <h1>
-                    <span>Lor</span>
-                    <strong>Bài 5</strong>
-                  </h1>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  </p>
-                  <div>
-                    <p>
-                      <i className="bx bxs-heart"></i>
-                      <span>10</span>
-                    </p>
-                    <p>
-                      <i className="bx bx-comment"></i>
-                      <span>10</span>
-                    </p>
-                  </div>
-                </div>
-                <span className="QA-comments_item__date">6 ngày trước</span>
-              </div>
-              <div className="QA-comments_item">
-                <img src={avatar} alt="" />
-                <div className="QA-comments_item__Info">
-                  <h1>
-                    <span>Lor</span>
-                    <strong>Bài 5</strong>
-                  </h1>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  </p>
-                  <div>
-                    <p>
-                      <i className="bx bxs-heart"></i>
-                      <span>10</span>
-                    </p>
-                    <p>
-                      <i className="bx bx-comment"></i>
-                      <span>10</span>
-                    </p>
-                  </div>
-                </div>
-                <span className="QA-comments_item__date">6 ngày trước</span>
-              </div>
-              <div className="QA-comments_item">
-                <img src={avatar} alt="" />
-                <div className="QA-comments_item__Info">
-                  <h1>
-                    <span>Lor</span>
-                    <strong>Bài 5</strong>
-                  </h1>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  </p>
-                  <div>
-                    <p>
-                      <i className="bx bxs-heart"></i>
-                      <span>10</span>
-                    </p>
-                    <p>
-                      <i className="bx bx-comment"></i>
-                      <span>10</span>
-                    </p>
-                  </div>
-                </div>
-                <span className="QA-comments_item__date">6 ngày trước</span>
-              </div>
-              <div className="QA-comments_item">
-                <img src={avatar} alt="" />
-                <div className="QA-comments_item__Info">
-                  <h1>
-                    <span>Lor</span>
-                    <strong>Bài 5</strong>
-                  </h1>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  </p>
-                  <div>
-                    <p>
-                      <i className="bx bxs-heart"></i>
-                      <span>10</span>
-                    </p>
-                    <p>
-                      <i className="bx bx-comment"></i>
-                      <span>10</span>
-                    </p>
-                  </div>
-                </div>
-                <span className="QA-comments_item__date">6 ngày trước</span>
-              </div>
-            </div>
+            <div className="grid-col-2">{parse(temp)}</div>
           </div>
         </>
       )}
