@@ -4,7 +4,7 @@ const Video = () => {
   return (
     <>
       <iframe
-        style={{ width: '100%', height: '100%' }}
+        style={{ width: '100%', height: '511px' }}
         src="https://www.youtube.com/embed/3Ir2hyHwHMI"
         title="YouTube video player"
         frameborder="0"
