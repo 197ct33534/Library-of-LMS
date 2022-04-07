@@ -5,14 +5,15 @@ interface PropButton
       HTMLButtonElement
     >,
     React.AriaAttributes {
-  type: 'button' | 'submit' | 'reset' | undefined;
   buttonStyle: string;
   buttonSize: string;
+  style?: any;
 }
 // export interface ButtonProps
 const STYLES = [
   'btn--primary--solid',
   'btn--gray--solid',
+  'btn--lightPrimary--solid',
 
   'btn--warning--solid',
   'btn--danger--solid',
@@ -22,9 +23,9 @@ const STYLES = [
   'btn--danger--outline',
   'btn--success--outline',
 ];
-const SIZES = ['btn--medium', 'btn--large', 'btn--XL'];
+const SIZES = ['btn--medium', 'btn--large', 'btn--small'];
 const Button = (props: PropButton) => {
-  const { children, buttonStyle, onClick, buttonSize } = props;
+  const { children, buttonStyle, onClick, buttonSize, style } = props;
   const checkButtonStyle = STYLES.includes(buttonStyle)
     ? buttonStyle
     : STYLES[0];
@@ -34,6 +35,7 @@ const Button = (props: PropButton) => {
     <button
       onClick={onClick}
       className={`btn ${checkButtonStyle} ${checkButtonSize}`}
+      style={style}
     >
       {children}
     </button>

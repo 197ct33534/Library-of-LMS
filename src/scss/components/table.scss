@@ -1,0 +1,61 @@
+table tr:hover {
+  background-color: #f0f3f6;
+}
+
+table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #f0f3f6;
+  color: white;
+}
+tr:nth-child(even) {
+  background-color: #f0f3f6 !important;
+}
+
+thead tr th {
+  background-color: $orange-4 !important;
+  color: white !important;
+}
+table {
+  z-index: 101 !important;
+  border-radius: 8px !important;
+  overflow: hidden;
+  .status {
+    font-family: 'Source Sans Pro';
+    font-style: italic;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #7c7c7c;
+  }
+  .light {
+    color: $green;
+  }
+}
+
+.ant-pagination-item-link,
+.ant-pagination-item {
+  background-color: transparent !important;
+  border-radius: 50% !important;
+  color: #373839 !important;
+  border: none !important;
+}
+
+.ant-pagination-item:hover,
+.ant-pagination-item-active {
+  background-color: $orange-4 !important;
+
+  a {
+    color: $white !important;
+  }
+}
+.ant-table-column-sorters {
+  .ant-table-column-sorter,
+  .ant-table-column-title {
+    color: $white !important;
+  }
+}
+td.ant-table-column-sort {
+  background-color: transparent !important;
+}

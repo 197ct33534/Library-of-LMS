@@ -1,13 +1,107 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Dropdown from '../../components/Dropdown';
 import TitleHeader from '../../components/TitleHeader';
+import { bookSelector } from './bookSelector';
+import { bookFetchData } from './bookSlice';
+import TableBook from './Table';
+import BookFire from '../../firebase/Book';
+import { Link } from 'react-router-dom';
 
 const Book = () => {
   const [Year, setYear] = useState('2022-2023');
   const [subjects, setSubjects] = useState('Tất cả môn học');
   const [teacher, setTeacher] = useState('Tất cả giảng viên');
   const [status, setStatus] = useState('Tất cả tình trạng');
+  const dispatch = useDispatch();
+  const data = useSelector(bookSelector);
+  const listBook = data.listBook;
+  const columns = [
+    {
+      title: 'Mã môn học',
+      dataIndex: 'subjectID',
+      key: 'subjectID',
+      sorter: (a: any, b: any) => a.subjectID.length - b.subjectID.length,
+    },
+    {
+      title: 'Tên môn học',
+      dataIndex: 'subjectTitle',
+      key: 'subjectTitle',
+      sorter: (a: any, b: any) => a.subjectTitle.length - b.subjectTitle.length,
+      render: (text: string, record: any) => (
+        <Link to="detailSubject" key={`Link_${record.subjectID}`}>
+          {record.subjectTitle}
+        </Link>
+      ),
+    },
+    {
+      title: 'Giảng viên',
+      dataIndex: 'Lecturers',
+      key: 'Lecturers',
+      sorter: (a: any, b: any) => a.Lecturers.length - b.Lecturers.length,
+    },
+    {
+      title: 'Số tài liệu chờ duyệt',
+      dataIndex: 'numberOfDocuments',
+      key: 'numberOfDocuments',
+    },
+    {
+      title: 'Số tài liệu chờ duyệt',
+      dataIndex: 'StatusOfCourse',
+      key: 'StatusOfCourse',
+      sorter: (a: any, b: any) =>
+        a.StatusOfCourse.length - b.StatusOfCourse.length,
+      render: (text: string, record: any) => (
+        <span
+          key={`span_${record.subjectID}`}
+          className={text === 'Đã phê duyệt' ? 'light status' : 'status'}
+        >
+          {text}
+        </span>
+      ),
+    },
+    {
+      title: 'Ngày gửi phê duyệt',
+      dataIndex: 'dateOfSubmission',
+      key: 'dateOfSubmission',
+      sorter: (a: any, b: any) =>
+        a.dateOfSubmission.length - b.dateOfSubmission.length,
+    },
+    {
+      title: '',
+      key: 'action',
+      render: (text: string, record: any) => (
+        <Link to="listDocument" key={`LinkAction_${record.subjectID}`}>
+          <i
+            className="bx bx-list-ul"
+            style={{
+              color: '#FF7506',
+              cursor: 'pointer',
+              fontSize: '18px',
+              fontWeight: 'bold',
+            }}
+          ></i>
+        </Link>
+      ),
+    },
+  ];
+  useEffect(() => {
+    const getAuths = async () => {
+      const datas = await BookFire.getAllBook();
+      const dataArray = datas.docs.map((data) => {
+        const result = data.data();
+        result.id = data.id;
+        return result;
+      });
 
+      dispatch(bookFetchData(dataArray));
+    };
+    if (listBook.length <= 1) {
+      console.log('rend lan 1 vao redux');
+
+      getAuths();
+    }
+  }, [dispatch, listBook]);
   return (
     <>
       <TitleHeader
@@ -69,6 +163,7 @@ const Book = () => {
             </div>
           </div>
         </div>
+        <TableBook columns={columns} data={listBook}></TableBook>
       </div>
     </>
   );

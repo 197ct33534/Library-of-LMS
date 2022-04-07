@@ -25,7 +25,7 @@ const ModelAvatar = () => {
       zoomImg.style.backgroundSize = rangeVal * 10 + '% 100%';
       // console.log(rangeVal);
     }
-  }, [avatar, rangeVal]);
+  }, [avatar, rangeVal, zoomImg]);
   // const reader = new FileReader();
   // const img = document.getElementById('fileImg');
   // if (img) {
@@ -49,7 +49,7 @@ const ModelAvatar = () => {
   // }
   const handleSave = () => {
     setSuccess(true);
-    const id = setTimeout(() => {
+    setTimeout(() => {
       setSuccess(false);
       dispatch(setModel(false));
     }, 3000);

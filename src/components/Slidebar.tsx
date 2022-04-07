@@ -58,33 +58,44 @@ const Slidebar = () => {
   useEffect(() => {
     let SlidebarRight: HTMLElement | null =
       document.querySelector('.Slidebar-right');
+    const main = document.querySelector('.main');
+    const Slidebar: HTMLElement | null = document.querySelector('.Slidebar');
 
     const arrayItem = document.querySelectorAll('.Slidebar-left_item');
     arrayItem.forEach((item, index) => {
       item.addEventListener('mouseover', () => {
-        if (SlidebarRight) SlidebarRight.style.visibility = 'unset';
+        if (SlidebarRight && Slidebar) {
+          SlidebarRight.style.display = 'block';
+          Slidebar.style.zIndex = '200';
+        }
       });
     });
-    if (SlidebarRight) {
-      SlidebarRight.addEventListener('mouseover', () => {
-        if (SlidebarRight) SlidebarRight.style.visibility = 'unset';
-      });
-      SlidebarRight.addEventListener('mouseout', () => {
-        if (SlidebarRight) SlidebarRight.style.visibility = 'hidden';
+
+    if (main && Slidebar) {
+      main.addEventListener('mouseover', (e: any) => {
+        if (SlidebarRight && e.pageX > 215 && Slidebar) {
+          SlidebarRight.style.display = 'none';
+          Slidebar.style.zIndex = '0';
+        }
       });
     }
+
     return () => {
       arrayItem.forEach((item, index) => {
         item.removeEventListener('mouseover', () => {
-          if (SlidebarRight) SlidebarRight.style.visibility = 'unset';
+          if (SlidebarRight && Slidebar) {
+            SlidebarRight.style.display = 'block';
+            Slidebar.style.zIndex = '200';
+          }
         });
       });
-      if (SlidebarRight) {
-        SlidebarRight.removeEventListener('mouseover', () => {
-          if (SlidebarRight) SlidebarRight.style.visibility = 'unset';
-        });
-        SlidebarRight.removeEventListener('mouseout', () => {
-          if (SlidebarRight) SlidebarRight.style.visibility = 'hidden';
+
+      if (main && Slidebar) {
+        main.removeEventListener('mouseover', (e: any) => {
+          if (SlidebarRight && e.pageX > 215 && Slidebar) {
+            SlidebarRight.style.display = 'none';
+            Slidebar.style.zIndex = '0';
+          }
         });
       }
     };

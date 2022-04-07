@@ -1,0 +1,125 @@
+.overview {
+  background-color: #fff9f4;
+  border: 1px solid $orange-4;
+  border-radius: 16px;
+  padding: 24px 24px 24px 52px;
+  margin-bottom: 48px;
+  > div {
+    gap: 16px 0;
+  }
+  &-row {
+    width: 100%;
+    strong {
+      font-family: 'Source Sans Pro';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 20px;
+    }
+    span {
+      font-family: 'Source Sans Pro';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      opacity: 0.8;
+    }
+  }
+  &-row:nth-child(even) {
+    grid-column: span 3;
+  }
+}
+.overview-title {
+  font-family: 'Mulish';
+  font-size: 28px;
+  line-height: 33px;
+  color: $orange-5;
+}
+.ant-collapse {
+  border: unset;
+}
+.ant-collapse-item {
+  background: $white;
+
+  box-shadow: 4px 4px 25px 4px rgba(154, 202, 245, 0.25);
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+.ant-collapse-item.ant-collapse-item-active {
+  background-image: linear-gradient(270deg, #ff5400 0%, #f17f21 80.56%);
+}
+.ant-collapse-item.ant-collapse-item-active > .ant-collapse-header {
+  color: $white;
+}
+
+.collapseChilren {
+  text-align: center;
+  > a {
+    position: relative;
+    img:first-child {
+      width: 820px;
+      height: 460px;
+      object-fit: contain;
+    }
+    img:last-child {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+    }
+  }
+  &-file {
+    border-top: 1px solid #9fcdee;
+    border-bottom: 1px solid #9fcdee;
+    padding: 24px 0;
+    > p {
+      text-align: left;
+      font-family: 'Source Sans Pro';
+      font-style: italic;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 20px;
+      color: #292b2e;
+
+      opacity: 0.5;
+    }
+    &_item {
+      @include flex(center, flex-start);
+      margin-bottom: 12px;
+      > div {
+        @include flex(center, flex-start);
+        background: #efefef;
+        border-radius: 4px;
+        width: 390px;
+        margin-right: 24px;
+        padding: 5px 10px;
+        > p {
+          margin: unset;
+          padding-left: 16px;
+        }
+        > img {
+          border-right: 1px solid #c9c4c0;
+          padding-right: 12px;
+        }
+      }
+      button {
+        font-weight: bold;
+        > i {
+          font-weight: bold;
+          font-size: 16px;
+          padding-right: 12px;
+        }
+      }
+    }
+  }
+}
+.collapseChilren2 {
+  padding: 24px 40px;
+  &-title {
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 23px;
+    color: $orange-5;
+    border-bottom: 1px solid $orange-6;
+  }
+}

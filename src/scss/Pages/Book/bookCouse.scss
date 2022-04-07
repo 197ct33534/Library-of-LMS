@@ -1,0 +1,223 @@
+.ant-tabs-nav-wrap {
+  justify-content: flex-start !important;
+}
+.ant-tabs-tab {
+  color: #373839;
+  opacity: 0.5;
+  & > div {
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 23px;
+  }
+  &.ant-tabs-tab-active > div {
+    color: $orange-4 !important;
+  }
+}
+.ant-tabs-ink-bar {
+  background: #ff7506;
+}
+.ant-tabs-ink-bar-animated {
+  height: 4px !important;
+}
+.ant-tabs-nav::before {
+  border-bottom: 4px solid #c0e1f9 !important;
+}
+
+.divContent {
+  grid-column: span 7;
+}
+.spanTitle {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.controls {
+  @include flex(center, space-between);
+
+  &-select {
+    @include flex(center, flex-start);
+    .dropdown {
+      margin-right: 24px;
+    }
+  }
+}
+.QA-comments {
+  margin-top: 29px;
+  padding-right: 12px;
+  height: 200px;
+  overflow-y: scroll;
+  > div {
+    gap: 16px;
+  }
+  &_item {
+    background-color: $overlay;
+    border-radius: 8px;
+    padding: 10px;
+    @include flex(flex-start, space-between);
+    &__Info {
+      margin-left: 8px;
+      > h1 {
+        > span {
+          font-family: 'Source Sans Pro', sans-serif;
+          font-weight: 700;
+          font-size: 14px;
+          color: $orange-5;
+        }
+        > strong {
+          font-family: 'Source Sans Pro';
+          font-weight: 600;
+          font-size: 12px;
+          line-height: 15px;
+          color: $gray-4;
+          padding-left: 22px;
+        }
+      }
+      > p {
+        font-family: 'Source Sans Pro';
+        font-size: 14px;
+      }
+      > div {
+        @include flex(center, flex-start);
+        i {
+          color: red;
+        }
+        span {
+          font-family: 'Source Sans Pro', sans-serif;
+          font-size: 14px;
+          opacity: 0.5;
+        }
+        p:nth-child(2) {
+          margin-left: 32px;
+        }
+      }
+    }
+    &__date {
+      font-family: 'Source Sans Pro';
+      font-style: italic;
+      font-size: 12px;
+      color: $gray-4;
+      line-height: 15px;
+    }
+  }
+}
+#NotifySubject::-webkit-scrollbar-track,
+#QA-comments::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 3px $white;
+  border-radius: 15px;
+  background-color: $gray-5;
+}
+#NotifySubject::-webkit-scrollbar,
+#QA-comments::-webkit-scrollbar {
+  width: 8px;
+  background-color: $gray-5;
+}
+#NotifySubject::-webkit-scrollbar-thumb,
+#QA-comments::-webkit-scrollbar-thumb {
+  border-radius: 15px;
+  -webkit-box-shadow: inset 0 0 3px white;
+  background-color: $gray-4;
+  cursor: pointer;
+}
+
+// formQuestion
+.formQuestion {
+  &-item {
+    @include flex(flex-start, flex-start);
+    flex-direction: column;
+    margin-bottom: 24px;
+    > label {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 20px;
+      margin-bottom: 6px;
+    }
+    input,
+    textarea {
+      background-color: $overlay;
+      border-radius: 8px;
+      padding: 6px 12px;
+      outline: none;
+      border: none;
+      width: 100%;
+      border: 1px solid $gray;
+    }
+  }
+  &-btn {
+    @include flex(center, flex-end);
+    margin-bottom: 32px;
+    :first-child {
+      margin-right: 32px;
+    }
+  }
+}
+// NotifySubject
+.NotifySubject {
+  height: 400px;
+  overflow-y: scroll;
+  > div {
+    border: 1px solid $gray-2;
+    border-radius: 8px;
+    background-color: $white;
+    padding: 10px 14px;
+
+    border: 1px solid #c5c5c5;
+    margin-bottom: 16px;
+  }
+  &-head::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 20px;
+
+    background-color: $gray;
+  }
+  &-head {
+    @include flex(flex-start, flex-start);
+    position: relative;
+    &_info {
+      margin-left: 16px;
+      > h1 {
+        font-family: 'Source Sans Pro', sans-serif;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 20px;
+      }
+      > div {
+        > span {
+          font-family: 'Source Sans Pro', sans-serif;
+          font-size: 14px;
+          line-height: 18px;
+        }
+        > i {
+          color: $orange-4;
+          padding: 0 6px;
+          font-size: 14px;
+        }
+        > i:last-child {
+          font-style: italic;
+        }
+      }
+    }
+  }
+  &-body {
+    grid-column: span 2;
+
+    > h1 {
+      color: $orange-4;
+    }
+    &_warp {
+      @include flex(center, flex-start);
+      > :last-child {
+        margin-left: 14px;
+      }
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 interface IProps {
   selected: string;
   setSelected: React.Dispatch<React.SetStateAction<string>>;
@@ -7,6 +7,11 @@ interface IProps {
 const Dropdown = (props: IProps) => {
   const { selected, setSelected, options } = props;
   const [isActive, setIsActive] = useState(false);
+  const iconRef = useRef<HTMLElement>(null);
+
+  const handleMouseLeave = () => {
+    setIsActive(false);
+  };
   return (
     <div className="dropdown">
       <div
@@ -17,10 +22,10 @@ const Dropdown = (props: IProps) => {
       >
         <span>{selected}</span>
 
-        <i className="bx bx-chevron-down dropdown-icon"></i>
+        <i ref={iconRef} className="bx bx-chevron-down dropdown-icon"></i>
       </div>
       {isActive && (
-        <div className="dropdown-content ">
+        <div className="dropdown-content " onMouseLeave={handleMouseLeave}>
           {options.map((option) => (
             <div
               key={option}

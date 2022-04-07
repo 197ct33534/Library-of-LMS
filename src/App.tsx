@@ -9,8 +9,12 @@ import Template from './Pages/Template';
 import Course from './Pages/Home/Course';
 import Tittle from './Common/Tittle';
 import InfoUser from './Pages/Auth/InfoUser';
+import BookTemplate from './Pages/Book/BookTemple';
 
 import Book from './Pages/Book/Book';
+import ListDocument from './Pages/Book/ListDocument';
+import DetailSubject from './Pages/Book/DetailSubject';
+import BookCourse from './Pages/Book/BookCourse';
 function App() {
   return (
     <BrowserRouter>
@@ -37,7 +41,18 @@ function App() {
               </Tittle>
             }
           ></Route>
-          <Route path="book" element={<Book></Book>}></Route>
+          <Route path="book" element={<BookTemplate></BookTemplate>}>
+            <Route
+              path="listDocument"
+              element={<ListDocument></ListDocument>}
+            ></Route>
+            <Route
+              path="detailSubject"
+              element={<DetailSubject></DetailSubject>}
+            ></Route>
+            <Route path="course" element={<BookCourse></BookCourse>}></Route>
+            <Route path="" element={<Book></Book>}></Route>
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>
