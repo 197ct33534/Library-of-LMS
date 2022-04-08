@@ -86,7 +86,7 @@ const Book = () => {
     },
   ];
   useEffect(() => {
-    const getAuths = async () => {
+    const getBooks = async () => {
       const datas = await BookFire.getAllBook();
       const dataArray = datas.docs.map((data) => {
         const result = data.data();
@@ -99,7 +99,7 @@ const Book = () => {
     if (listBook.length <= 1) {
       console.log('rend lan 1 vao redux');
 
-      getAuths();
+      getBooks();
     }
   }, [dispatch, listBook]);
   return (

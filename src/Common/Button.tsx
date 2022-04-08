@@ -14,6 +14,11 @@ const STYLES = [
   'btn--primary--solid',
   'btn--gray--solid',
   'btn--lightPrimary--solid',
+  'btn--disabled--outline',
+  'btn--disabled--solid',
+  'btn--success--outline',
+  'btn--danger--outline',
+  'btn--blue--outline',
 
   'btn--warning--solid',
   'btn--danger--solid',
@@ -21,7 +26,6 @@ const STYLES = [
   'btn--primary--outline',
   'btn--warning--outline',
   'btn--danger--outline',
-  'btn--success--outline',
 ];
 const SIZES = ['btn--medium', 'btn--large', 'btn--small'];
 const Button = (props: PropButton) => {

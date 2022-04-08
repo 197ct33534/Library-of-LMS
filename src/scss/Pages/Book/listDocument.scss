@@ -1,0 +1,41 @@
+.listDocument {
+  @include flex(flex-end, space-between);
+  > h1 {
+    font-size: 28px;
+    line-height: 33px;
+    color: $black-7;
+  }
+  &-control {
+    @include flex(center, space-between);
+    > i {
+      color: $orange-4;
+      font-size: 32px;
+      font-weight: 600;
+      margin-right: 12px;
+    }
+    &_btn {
+      border-left: 1px solid $gray;
+      > button {
+        margin-left: 12px;
+      }
+    }
+  }
+}
+.tablePagiontion {
+  margin-top: 40px;
+  @include flex(center, space-between);
+  > p {
+    font-family: 'Source Sans Pro';
+    font-style: italic;
+    font-size: 16px;
+    > input {
+      width: 50px;
+      border: 1px solid $orange-4;
+      border-radius: 8px;
+      margin: 12px;
+    }
+  }
+  .ant-pagination-options {
+    display: none;
+  }
+}

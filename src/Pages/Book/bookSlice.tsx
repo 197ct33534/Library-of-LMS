@@ -14,10 +14,24 @@ const bookSlice = createSlice({
       },
     ],
     isQuestion: false,
+    listDocument: [
+      {
+        CategoryDocument: '',
+        DocumentApproval: '',
+        DocumentName: '',
+        Lecturers: '',
+        SentDate: '',
+        id: '',
+        status: '',
+      },
+    ],
   },
   reducers: {
     bookFetchData: (state, action) => {
       state.listBook = action.payload;
+    },
+    listDocumentFetchData: (state, action) => {
+      state.listDocument = action.payload;
     },
     setQuestion: (state, action) => {
       state.isQuestion = action.payload;
@@ -25,5 +39,5 @@ const bookSlice = createSlice({
   },
 });
 const { actions, reducer: bookReducer } = bookSlice;
-export const { bookFetchData, setQuestion } = actions;
+export const { bookFetchData, setQuestion, listDocumentFetchData } = actions;
 export default bookReducer;

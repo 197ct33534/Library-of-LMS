@@ -27,6 +27,35 @@ $primary: $orange-4;
     border-radius: 8px;
     color: $primary;
   }
+  &--disabled--solid {
+    background-color: $gray;
+    border-radius: 8px;
+    color: $white;
+  }
+  &--disabled--outline {
+    background-color: transparent;
+    border-radius: 8px;
+    border: 1px solid $gray;
+    color: $gray;
+  }
+  &--success--outline {
+    color: $success;
+    border: 1px solid $success;
+    border-radius: 8px;
+    background-color: transparent;
+  }
+  &--danger--outline {
+    color: $red;
+    border: 1px solid $red;
+    border-radius: 8px;
+    background-color: transparent;
+  }
+  &--blue--outline {
+    color: $blue-4;
+    border: 1px solid $blue-4;
+    border-radius: 8px;
+    background-color: transparent;
+  }
   /* Button Size */
   &--medium {
     padding: 14px 49px;
@@ -39,5 +68,10 @@ $primary: $orange-4;
   &--s {
     width: 100px;
     font-size: 16px;
+  }
+  &--large {
+    width: 160px;
+    height: 52px;
+    font-size: 18px;
   }
 }
