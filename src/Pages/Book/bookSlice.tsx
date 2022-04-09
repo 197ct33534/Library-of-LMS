@@ -25,6 +25,10 @@ const bookSlice = createSlice({
         status: '',
       },
     ],
+    pageSize: 8,
+    modelApproval: false,
+    modelCancelDocument: false,
+    seeAdd: false,
   },
   reducers: {
     bookFetchData: (state, action) => {
@@ -36,8 +40,28 @@ const bookSlice = createSlice({
     setQuestion: (state, action) => {
       state.isQuestion = action.payload;
     },
+    setPageSize: (state, action) => {
+      state.pageSize = action.payload;
+    },
+    setModelApproval: (state, action) => {
+      state.modelApproval = action.payload;
+    },
+    setModelCancelDocument: (state, action) => {
+      state.modelCancelDocument = action.payload;
+    },
+    setSeeAdd: (state, action) => {
+      state.seeAdd = action.payload;
+    },
   },
 });
 const { actions, reducer: bookReducer } = bookSlice;
-export const { bookFetchData, setQuestion, listDocumentFetchData } = actions;
+export const {
+  bookFetchData,
+  setQuestion,
+  listDocumentFetchData,
+  setPageSize,
+  setModelApproval,
+  setModelCancelDocument,
+  setSeeAdd,
+} = actions;
 export default bookReducer;

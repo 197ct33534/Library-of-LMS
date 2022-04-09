@@ -3,10 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import Dropdown from '../../components/Dropdown';
 import TitleHeader from '../../components/TitleHeader';
 import { bookSelector } from './bookSelector';
-import { bookFetchData } from './bookSlice';
+import { bookFetchData, setPageSize } from './bookSlice';
 import TableBook from './Table';
 import BookFire from '../../firebase/Book';
 import { Link } from 'react-router-dom';
+import { MyPagination } from './ListDocument';
 
 const Book = () => {
   const [Year, setYear] = useState('2022-2023');
@@ -102,6 +103,13 @@ const Book = () => {
       getBooks();
     }
   }, [dispatch, listBook]);
+  //pagination
+  const pageSize = data.pageSize;
+
+  const [current, setCurrent] = useState(1);
+  const getData = (current: number, pageSize: number) => {
+    return listBook.slice((current - 1) * pageSize, current * pageSize);
+  };
   return (
     <>
       <TitleHeader
@@ -163,7 +171,29 @@ const Book = () => {
             </div>
           </div>
         </div>
-        <TableBook columns={columns} data={listBook}></TableBook>
+        <TableBook
+          columns={columns}
+          data={getData(current, pageSize)}
+        ></TableBook>
+        <div className="tablePagiontion">
+          <p>
+            Hiển thị
+            <input
+              type="number"
+              value={pageSize}
+              onChange={(e) => {
+                dispatch(setPageSize(+e.target.value));
+              }}
+            />
+            hàng trong mỗi trang
+          </p>
+          <MyPagination
+            total={listBook.length}
+            current={current}
+            onChange={setCurrent}
+            pageSize={pageSize}
+          />
+        </div>
       </div>
     </>
   );

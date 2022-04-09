@@ -107,6 +107,7 @@
     }
   }
 }
+#ModelAvatar-seeAdd::-webkit-scrollbar-track,
 #bookCourse-right::-webkit-scrollbar-track,
 #NotifySubject::-webkit-scrollbar-track,
 #QA-comments::-webkit-scrollbar-track {
@@ -114,12 +115,14 @@
   border-radius: 15px;
   background-color: $gray-5;
 }
+#ModelAvatar-seeAdd::-webkit-scrollbar,
 #bookCourse-right::-webkit-scrollbar,
 #NotifySubject::-webkit-scrollbar,
 #QA-comments::-webkit-scrollbar {
   width: 8px;
   background-color: $gray-5;
 }
+#ModelAvatar-seeAdd::-webkit-scrollbar-thumb,
 #bookCourse-right::-webkit-scrollbar-thumb,
 #NotifySubject::-webkit-scrollbar-thumb,
 #QA-comments::-webkit-scrollbar-thumb {

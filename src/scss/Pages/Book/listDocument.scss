@@ -1,5 +1,6 @@
 .listDocument {
-  @include flex(flex-end, space-between);
+  @include flex(center, space-between);
+  margin-bottom: 24px;
   > h1 {
     font-size: 28px;
     line-height: 33px;
@@ -33,6 +34,7 @@
       border: 1px solid $orange-4;
       border-radius: 8px;
       margin: 12px;
+      text-align: center;
     }
   }
   .ant-pagination-options {

@@ -24,7 +24,7 @@ const Slidebar = () => {
       icon: 'bx bx-book-open',
       children: [
         { pathchil: '', title: 'Danh sách môn học' },
-        { pathchil: '', title: 'Phê duyệt tài liệu môn học' },
+        { pathchil: 'listDocument', title: 'Phê duyệt tài liệu môn học' },
       ],
     },
     {
@@ -138,12 +138,13 @@ const Slidebar = () => {
               </NavLink>
               {item.children &&
                 item.children.map((child) => (
-                  <div
+                  <NavLink
+                    to={`${item.path}/${child.pathchil}`}
                     className="Slidebar-right_itemChil"
                     key={`slidebarChild-${child.title}`}
                   >
                     {child.title}
-                  </div>
+                  </NavLink>
                 ))}
             </li>
           ))}

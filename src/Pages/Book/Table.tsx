@@ -13,7 +13,7 @@ const TableBook = (props: Book) => {
 
   return (
     <div style={{ marginTop: '24px' }}>
-      {<Table columns={columns} dataSource={data} />}
+      {<Table columns={columns} dataSource={data} pagination={false} />}
     </div>
   );
 };

@@ -9,11 +9,11 @@ table th {
   background-color: #f0f3f6;
   color: white;
 }
-tr:nth-child(even) {
+tbody.ant-table-tbody tr:nth-child(even) {
   background-color: #f0f3f6 !important;
 }
 
-thead tr th {
+thead.ant-table-thead tr th {
   background-color: $orange-4 !important;
   color: white !important;
 }

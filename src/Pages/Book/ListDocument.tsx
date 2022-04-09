@@ -6,7 +6,13 @@ import Dropdown from '../../components/Dropdown';
 import TitleHeader from '../../components/TitleHeader';
 import listDocument from '../../firebase/ListDocument';
 import { bookSelector } from './bookSelector';
-import { listDocumentFetchData } from './bookSlice';
+import {
+  listDocumentFetchData,
+  setModelApproval,
+  setModelCancelDocument,
+  setPageSize,
+  setSeeAdd,
+} from './bookSlice';
 import 'antd/dist/antd.css';
 import eye from '../../Assets/images/eye.png';
 import Button from '../../Common/Button';
@@ -16,7 +22,7 @@ interface propPagination {
   current: number;
   pageSize: number;
 }
-const MyPagination = (prop: propPagination) => {
+export const MyPagination = (prop: propPagination) => {
   const { onChange, total, current, pageSize } = prop;
   return (
     <Pagination
@@ -27,6 +33,7 @@ const MyPagination = (prop: propPagination) => {
     />
   );
 };
+
 const ListDocument = () => {
   // useEffect(() => {
   //   for (let i = 1; i <= 100; i++) {
@@ -55,6 +62,7 @@ const ListDocument = () => {
   const data = useSelector(bookSelector);
   const list = data.listDocument;
   const [status, setStatus] = useState('Tất cả tình trạng');
+  //get data
   useEffect(() => {
     const getlistDocuments = async () => {
       const datas = await listDocument.getAllListDocument();
@@ -63,7 +71,6 @@ const ListDocument = () => {
         result.key = data.id;
         return result;
       });
-
       dispatch(listDocumentFetchData(dataArray));
     };
     if (list.length <= 1) {
@@ -72,6 +79,7 @@ const ListDocument = () => {
       getlistDocuments();
     }
   }, [dispatch, list]);
+  //colum table
   const columns = [
     {
       title: 'Tên tài liệu',
@@ -129,7 +137,7 @@ const ListDocument = () => {
             <i
               className="bx bxs-circle"
               style={{ color: '#ED2025', fontSize: '9px' }}
-            ></i>{' '}
+            ></i>
             Đã hủy
           </Button>
         );
@@ -151,10 +159,19 @@ const ListDocument = () => {
                 style={{
                   marginRight: '12px',
                 }}
+                onClick={() => {
+                  dispatch(setModelApproval(true));
+                }}
               >
                 Phê duyệt
               </Button>
-              <Button buttonSize="btn--small" buttonStyle="btn--gray--solid">
+              <Button
+                buttonSize="btn--small"
+                buttonStyle="btn--gray--solid"
+                onClick={() => {
+                  dispatch(setModelCancelDocument(true));
+                }}
+              >
                 Hủy
               </Button>
             </>
@@ -178,14 +195,33 @@ const ListDocument = () => {
       title: '',
       key: 'action',
 
-      render: () => <img src={eye} alt="" style={{ cursor: 'pointer' }} />,
+      render: () => (
+        <img
+          src={eye}
+          alt=""
+          onClick={() => {
+            dispatch(setSeeAdd(true));
+          }}
+          style={{ cursor: 'pointer' }}
+        />
+      ),
     },
   ];
-  const [pageSize, setPageSize] = useState(10);
+  //setup pagination
+  const pageSize = data.pageSize;
 
   const [current, setCurrent] = useState(1);
   const getData = (current: number, pageSize: number) => {
     return list.slice((current - 1) * pageSize, current * pageSize);
+  };
+  //handle checkbox
+
+  const [selectedRowKeys, setselectedRowKeys] = useState<string[] | number[]>(
+    []
+  );
+
+  const onSelectedRowKeysChange = (x: any) => {
+    setselectedRowKeys([...x]);
   };
 
   return (
@@ -202,14 +238,37 @@ const ListDocument = () => {
             <Button
               type="button"
               buttonSize="btn--large"
-              buttonStyle="btn--primary--outline"
+              buttonStyle={
+                selectedRowKeys.length
+                  ? 'btn--primary--outline'
+                  : 'btn--disabled--outline'
+              }
+              onClick={
+                selectedRowKeys.length
+                  ? () => {
+                      dispatch(setModelApproval(true));
+                    }
+                  : () => {}
+              }
             >
               Hủy phê duyệt
             </Button>
             <Button
               type="button"
               buttonSize="btn--large"
-              buttonStyle="btn--primary--solid"
+              buttonStyle={
+                selectedRowKeys.length
+                  ? 'btn--primary--solid'
+                  : 'btn--disabled--solid'
+              }
+              disabled={selectedRowKeys.length ? true : false}
+              onClick={
+                selectedRowKeys.length
+                  ? () => {
+                      dispatch(setModelApproval(true));
+                    }
+                  : () => {}
+              }
             >
               Phê duyệt
             </Button>
@@ -237,9 +296,10 @@ const ListDocument = () => {
             </div>
           </div>
         </div>
+
         <Table
           columns={columns}
-          rowSelection={{}}
+          rowSelection={{ selectedRowKeys, onChange: onSelectedRowKeysChange }}
           dataSource={getData(current, pageSize)}
           pagination={false}
         />
@@ -250,7 +310,7 @@ const ListDocument = () => {
               type="number"
               value={pageSize}
               onChange={(e) => {
-                setPageSize(+e.target.value);
+                dispatch(setPageSize(+e.target.value));
               }}
             />
             hàng trong mỗi trang

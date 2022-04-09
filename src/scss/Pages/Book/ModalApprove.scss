@@ -1,0 +1,74 @@
+.ModelAvatar-seeAdd,
+.ModelAvatar-approve,
+.ModelAvatar-cancel {
+  width: 440px;
+  background-color: $white;
+  border-radius: 8px;
+  padding: 24px 36px;
+  > h1 {
+    color: $black-7;
+    font-size: 28px;
+    line-height: 33px;
+    text-align: center;
+  }
+  > p {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 16px;
+    margin: 16px 0 32px 0;
+  }
+  > .ModelAvatar-notify_btn {
+    @include flex(center, space-between);
+  }
+}
+.ModelAvatar-cancel {
+  width: 760px;
+  .ant-form-item-label > label {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    color: $black-7;
+  }
+  &_btn {
+    margin-left: 32px;
+    span {
+      color: $white;
+    }
+  }
+}
+.ant-picker-panel-container {
+  border: 1px solid #ffa75e;
+  border-radius: 16px;
+}
+.ant-picker-date-panel {
+  width: 418px;
+}
+.ant-picker-cell.ant-picker-cell-selected,
+.ant-picker-cell.ant-picker-cell-today {
+  color: $black-7;
+
+  .ant-picker-cell-inner {
+    background-color: $orange-3;
+
+    border-radius: 50%;
+
+    color: $white;
+  }
+  .ant-picker-cell-inner:before {
+    border: none;
+  }
+}
+.ant-picker-body table {
+  width: 100% !important;
+}
+.ant-picker-content thead tr {
+  th {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    color: $orange-6;
+    text-align: center;
+    background-color: transparent;
+  }
+}
