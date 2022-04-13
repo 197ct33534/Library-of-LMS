@@ -27,7 +27,7 @@ const STYLES = [
   'btn--warning--outline',
   'btn--danger--outline',
 ];
-const SIZES = ['btn--medium', 'btn--large', 'btn--small'];
+const SIZES = ['btn--medium', 'btn--large', 'btn--small', 'btn--s'];
 const Button = (props: PropButton) => {
   const { children, buttonStyle, onClick, buttonSize, style } = props;
   const checkButtonStyle = STYLES.includes(buttonStyle)

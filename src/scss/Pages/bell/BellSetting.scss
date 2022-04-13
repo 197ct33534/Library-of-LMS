@@ -1,0 +1,46 @@
+.BellSetting {
+  svg {
+    transform: rotate(180deg);
+  }
+  hr {
+    color: #e1e1e1;
+    margin: 29px 0;
+  }
+  .ant-collapse {
+    border-radius: 8px 8px 0px 0px;
+    overflow: hidden;
+    background-color: unset;
+  }
+  .ant-collapse-header {
+    border-radius: 8px 8px 0px 0px;
+    background: #ffd8b8;
+  }
+
+  .ant-collapse-content {
+    border-radius: 0px 0px 8px 8px;
+    border: 1px solid #ffd8b8;
+  }
+
+  > h3 {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: $black-7;
+    margin-bottom: 24px;
+  }
+  .ItemBell-switch {
+    @include flex(center, space-between);
+  }
+  .ItemBell-header {
+    padding-left: 8px;
+    > h3 {
+      color: $black-7;
+    }
+  }
+  .ItemBell-tagP {
+    font-family: 'Source Sans Pro', sans-serif;
+    opacity: 0.8;
+    color: $black-7;
+    font-size: 16px;
+  }
+}

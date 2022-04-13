@@ -107,6 +107,7 @@
     }
   }
 }
+.ant-table-body::-webkit-scrollbar-track,
 #ModelAvatar-seeAdd::-webkit-scrollbar-track,
 #bookCourse-right::-webkit-scrollbar-track,
 #NotifySubject::-webkit-scrollbar-track,
@@ -115,6 +116,7 @@
   border-radius: 15px;
   background-color: $gray-5;
 }
+.ant-table-body::-webkit-scrollbar,
 #ModelAvatar-seeAdd::-webkit-scrollbar,
 #bookCourse-right::-webkit-scrollbar,
 #NotifySubject::-webkit-scrollbar,
@@ -122,6 +124,7 @@
   width: 8px;
   background-color: $gray-5;
 }
+.ant-table-body::-webkit-scrollbar-thumb,
 #ModelAvatar-seeAdd::-webkit-scrollbar-thumb,
 #bookCourse-right::-webkit-scrollbar-thumb,
 #NotifySubject::-webkit-scrollbar-thumb,

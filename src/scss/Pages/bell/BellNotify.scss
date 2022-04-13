@@ -1,0 +1,66 @@
+.ant-pagination-options {
+  display: none;
+}
+.bell-item {
+  @include flex(center, flex-start);
+
+  > img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  > p {
+    transform: translateY(50%);
+    margin-left: 40px;
+
+    @include dot(1);
+    strong {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-weight: 700;
+      padding-right: 4px;
+    }
+  }
+  > p.active {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+  }
+  &_time {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 16px;
+    text-align: right;
+  }
+}
+.bell-warp {
+  width: 100%;
+  .ant-table-pagination-right {
+    justify-content: center;
+  }
+  thead.ant-table-thead tr th {
+    background-color: unset !important;
+  }
+  .iconDotvertical {
+    > i {
+      color: $orange-4;
+      font-size: 24px;
+      font-weight: 700;
+      display: block;
+      text-align: right;
+      cursor: pointer;
+    }
+  }
+}
+.iconDotvertical-list {
+  width: 150px;
+  position: absolute;
+  right: 54px;
+  top: 279px;
+  z-index: 102 !important;
+  background: $white;
+
+  box-shadow: 0px 15px 25px rgba(155, 165, 174, 0.25);
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0;
+}

@@ -25,6 +25,9 @@
       }
     }
   }
+  &-changeRight {
+    @include flex(center, flex-end);
+  }
   &-card {
     width: 100%;
     box-shadow: 4px 4px 25px 4px rgba(154, 202, 245, 0.25);

@@ -1,0 +1,45 @@
+.addNotify {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 590px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  overflow: hidden;
+  background-color: $white;
+  &-header {
+    background-color: $black-7;
+
+    @include flex(center, space-between);
+    padding: 18px 32px;
+    margin-bottom: 24px;
+    > h1 {
+      font-size: 22px;
+      line-height: 26px;
+      color: $white;
+    }
+    > i {
+      color: $white;
+      cursor: pointer;
+      font-size: 22px;
+      font-weight: 600;
+    }
+  }
+  &-body {
+    padding: 0px 32px;
+
+    .ant-select-selection-item:first-of-type {
+      background-color: #0b80ec;
+      border-radius: 16px;
+      .ant-select-selection-item-content {
+        color: $white;
+      }
+      path {
+        color: $white;
+      }
+    }
+  }
+}
+.ck-content {
+  height: 260px;
+}

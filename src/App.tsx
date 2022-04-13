@@ -15,6 +15,8 @@ import Book from './Pages/Book/Book';
 import ListDocument from './Pages/Book/ListDocument';
 import DetailSubject from './Pages/Book/DetailSubject';
 import BookCourse from './Pages/Book/BookCourse';
+import BellNotify from './Pages/Bell/BellNotify';
+import BellSetting from './Pages/Bell/BellSetting';
 function App() {
   return (
     <BrowserRouter>
@@ -52,6 +54,17 @@ function App() {
             ></Route>
             <Route path="course" element={<BookCourse></BookCourse>}></Route>
             <Route path="" element={<Book></Book>}></Route>
+          </Route>
+          <Route path="/bell">
+            <Route
+              path=""
+              element={
+                <Tittle title="Thông báo">
+                  <BellNotify />
+                </Tittle>
+              }
+            ></Route>
+            <Route path="setting" element={<BellSetting></BellSetting>}></Route>
           </Route>
         </Route>
       </Routes>
