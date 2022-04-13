@@ -3,10 +3,12 @@ import { useDispatch } from 'react-redux';
 import authReducer from '../Pages/Auth/authSlice';
 import bellReducer from '../Pages/Bell/bellSlice';
 import bookReducer from '../Pages/Book/bookSlice';
+import fileReducer from '../Pages/File/fileSlice';
 const rootReducer = {
   auth: authReducer,
   book: bookReducer,
   bell: bellReducer,
+  file: fileReducer,
 };
 const store = configureStore({
   reducer: rootReducer,

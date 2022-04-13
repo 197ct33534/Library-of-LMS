@@ -17,6 +17,7 @@ import DetailSubject from './Pages/Book/DetailSubject';
 import BookCourse from './Pages/Book/BookCourse';
 import BellNotify from './Pages/Bell/BellNotify';
 import BellSetting from './Pages/Bell/BellSetting';
+import FileTemplate from './Pages/File/FileTemplate';
 function App() {
   return (
     <BrowserRouter>
@@ -65,6 +66,10 @@ function App() {
               }
             ></Route>
             <Route path="setting" element={<BellSetting></BellSetting>}></Route>
+          </Route>
+
+          <Route path="/file">
+            <Route path="" element={<FileTemplate></FileTemplate>}></Route>
           </Route>
         </Route>
       </Routes>

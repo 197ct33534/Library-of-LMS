@@ -1,38 +1,47 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import Button from '../../Common/Button';
-import { setIsNotifyRemove } from './bellSlice';
 
-const ModalNotifyRemove = () => {
+import { useDispatch } from 'react-redux';
+import Button from './Button';
+
+interface propModal {
+  title: string;
+  content: string;
+  funcCancel: {
+    payload: any;
+    type: string;
+  };
+  textCancel: string;
+  textSucces: string;
+}
+const Modal = (props: propModal) => {
+  const { title, content, funcCancel, textCancel, textSucces } = props;
   const dispatch = useDispatch();
+
   return (
     <>
       <div className="ModelAvatar">
         <div className="ModelAvatar-approve">
-          <h1>Xóa</h1>
-          <p>
-            Xác nhận muốn xoá những thông tin đã chọn? Sau khi xoá sẽ không thể
-            hoàn tác.
-          </p>
+          <h1>{title}</h1>
+          <p>{content}</p>
 
           <div className="ModelAvatar-notify_btn">
             <Button
               buttonSize="btn--large"
               buttonStyle="btn--gray--solid"
               onClick={() => {
-                dispatch(setIsNotifyRemove(false));
+                dispatch(funcCancel);
               }}
             >
-              Huỷ
+              {textCancel}
             </Button>
             <Button
               buttonSize="btn--large"
               buttonStyle="btn--primary--solid"
               onClick={() => {
-                dispatch(setIsNotifyRemove(false));
+                dispatch(funcCancel);
               }}
             >
-              Xác nhận
+              {textSucces}
             </Button>
           </div>
         </div>
@@ -41,4 +50,4 @@ const ModalNotifyRemove = () => {
   );
 };
 
-export default ModalNotifyRemove;
+export default Modal;

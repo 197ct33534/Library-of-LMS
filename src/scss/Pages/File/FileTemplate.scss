@@ -1,0 +1,51 @@
+.FileTemplate-control {
+  @include flex(center, flex-end);
+  margin-bottom: 24px;
+  > span {
+    padding-right: 16px;
+    border-right: 1px solid green;
+    > i {
+      color: $orange-4;
+      font-weight: 700;
+      font-size: 32px;
+    }
+  }
+
+  > button {
+    margin-left: 16px;
+  }
+}
+.FileTable-warpImg > img {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+}
+.SelectHidden {
+  border: unset;
+  outline: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  color: $orange-4;
+  font-weight: 700;
+  font-size: 22px;
+  background-color: transparent;
+  width: 200px;
+  padding: 13px 16px;
+  transform: translateX(100%);
+  > option:first-child {
+    display: none;
+  }
+
+  > option {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 16px;
+    color: $black-7;
+    padding-bottom: 6px;
+    border-bottom: 1px solid $orange-5;
+  }
+  > option:last-child {
+    border-bottom: unset;
+  }
+}

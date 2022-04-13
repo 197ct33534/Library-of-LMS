@@ -73,7 +73,7 @@ const Slidebar = () => {
 
     if (main && Slidebar) {
       main.addEventListener('mouseover', (e: any) => {
-        if (SlidebarRight && e.pageX > 215 && Slidebar) {
+        if (SlidebarRight && e.pageX > 190 && Slidebar) {
           SlidebarRight.style.display = 'none';
           Slidebar.style.zIndex = '0';
         }
