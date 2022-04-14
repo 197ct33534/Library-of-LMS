@@ -20,6 +20,7 @@ import BellSetting from './Pages/Bell/BellSetting';
 import FileTemplate from './Pages/File/FileTemplate';
 import BagTemplate from './Pages/Bag/BagTemplate';
 import BagDetail from './Pages/Bag/BagDetail';
+import SettingTemplate from './Pages/Setting/SettingTemplate';
 function App() {
   return (
     <BrowserRouter>
@@ -76,6 +77,12 @@ function App() {
           <Route path="bag">
             <Route path="" element={<BagTemplate></BagTemplate>}></Route>
             <Route path="detail" element={<BagDetail></BagDetail>}></Route>
+          </Route>
+          <Route path="setting">
+            <Route
+              path=""
+              element={<SettingTemplate></SettingTemplate>}
+            ></Route>
           </Route>
         </Route>
       </Routes>

@@ -1,0 +1,32 @@
+.SettingTemplate {
+  gap: 56px;
+  &-card {
+    width: 582px;
+    height: 204px;
+    box-shadow: 4px 4px 25px 4px rgba(154, 202, 245, 0.25);
+    border-radius: 16px;
+    padding: 43px 50px 45px 50px;
+    background: linear-gradient(
+      98.89deg,
+      rgba(46, 172, 238, 0.7) 4.77%,
+      rgba(0, 22, 218, 0.7) 96.59%
+    );
+    cursor: pointer;
+    > h1 {
+      font-size: 36px;
+      line-height: 42px;
+      color: $white;
+    }
+    > p {
+      font-size: 22px;
+      line-height: 26px;
+      color: $white;
+    }
+  }
+  &-card:first-child {
+    background: linear-gradient(270deg, #ff5400 0%, #f17f21 80.56%);
+  }
+  &-card:last-child {
+    background: linear-gradient(98.45deg, #fdc830 0%, #f37335 80.32%);
+  }
+}
