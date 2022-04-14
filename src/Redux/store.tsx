@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
 import authReducer from '../Pages/Auth/authSlice';
+import bagReducer from '../Pages/Bag/bagSlice';
 import bellReducer from '../Pages/Bell/bellSlice';
 import bookReducer from '../Pages/Book/bookSlice';
 import fileReducer from '../Pages/File/fileSlice';
@@ -9,6 +10,7 @@ const rootReducer = {
   book: bookReducer,
   bell: bellReducer,
   file: fileReducer,
+  bag: bagReducer,
 };
 const store = configureStore({
   reducer: rootReducer,

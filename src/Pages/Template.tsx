@@ -17,6 +17,7 @@ import ModalCancel from './Book/ModalCancel';
 import ModalSeeAdd from './Book/ModalSeeAdd';
 import { fileSelector } from './File/fileSelector';
 import { setIsFileRemove } from './File/fileSlice';
+import ModalDowload from './File/ModalDowload';
 import ModalRenameFile from './File/ModalRenameFile';
 const Template = () => {
   console.log('template didmouted');
@@ -34,6 +35,7 @@ const Template = () => {
   const file = useSelector(fileSelector);
   const isFileRemove = file.isFileRemove;
   const isFileRename = file.isFileRename;
+  const isFileDowload = file.isFileDowload;
 
   const navigation = useNavigate();
   useEffect(() => {
@@ -81,6 +83,7 @@ const Template = () => {
         />
       )}
       {isFileRename && <ModalRenameFile />}
+      {isFileDowload && <ModalDowload />}
       <Slidebar />
       <div className="grid main">
         <div className="row">

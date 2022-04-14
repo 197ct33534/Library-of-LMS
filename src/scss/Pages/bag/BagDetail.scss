@@ -1,0 +1,12 @@
+.BagDetail {
+  @include flex(center, space-between);
+
+  &-controlBtn {
+    button:first-child {
+      margin-right: 16px;
+    }
+    button:last-child {
+      margin-left: 16px;
+    }
+  }
+}

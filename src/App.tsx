@@ -18,6 +18,8 @@ import BookCourse from './Pages/Book/BookCourse';
 import BellNotify from './Pages/Bell/BellNotify';
 import BellSetting from './Pages/Bell/BellSetting';
 import FileTemplate from './Pages/File/FileTemplate';
+import BagTemplate from './Pages/Bag/BagTemplate';
+import BagDetail from './Pages/Bag/BagDetail';
 function App() {
   return (
     <BrowserRouter>
@@ -56,7 +58,7 @@ function App() {
             <Route path="course" element={<BookCourse></BookCourse>}></Route>
             <Route path="" element={<Book></Book>}></Route>
           </Route>
-          <Route path="/bell">
+          <Route path="bell">
             <Route
               path=""
               element={
@@ -68,8 +70,12 @@ function App() {
             <Route path="setting" element={<BellSetting></BellSetting>}></Route>
           </Route>
 
-          <Route path="/file">
+          <Route path="file">
             <Route path="" element={<FileTemplate></FileTemplate>}></Route>
+          </Route>
+          <Route path="bag">
+            <Route path="" element={<BagTemplate></BagTemplate>}></Route>
+            <Route path="detail" element={<BagDetail></BagDetail>}></Route>
           </Route>
         </Route>
       </Routes>

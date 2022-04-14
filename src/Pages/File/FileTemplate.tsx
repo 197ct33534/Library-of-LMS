@@ -11,6 +11,7 @@ import { MyPagination } from '../Book/ListDocument';
 import { fileSelector } from './fileSelector';
 import {
   setFetDataFile,
+  setIsFileDownload,
   setIsFileRemove,
   setIsFileRename,
   setPageSize,
@@ -80,6 +81,14 @@ const FileTemplate = () => {
       dataIndex: 'nameFile',
       key: 'nameFile',
       sorter: (a: any, b: any) => a.nameFile.length - b.nameFile.length,
+      render: (text: string, record: any) => {
+        return (
+          <>
+            <span>{text}.</span>
+            <span>{record.typeFile}</span>
+          </>
+        );
+      },
     },
     {
       title: 'Người chỉnh sửa',
@@ -148,7 +157,11 @@ const FileTemplate = () => {
           <i className="bx bx-download"></i>
         </span>
 
-        <Button buttonSize="btn--large" buttonStyle="btn--primary--solid">
+        <Button
+          buttonSize="btn--large"
+          buttonStyle="btn--primary--solid"
+          onClick={() => dispatch(setIsFileDownload(true))}
+        >
           Đăng tải
         </Button>
       </div>

@@ -13,8 +13,10 @@
   position: absolute;
   top: 0;
   left: $width-slidebarLeft;
-  padding-right: 24px;
-  padding-left: 85px;
+  // padding-right: 24px;
+  // padding-left: 85px;
+  padding-right: 5px;
+  padding-left: 65px;
   padding-bottom: 24px;
   z-index: 2;
 }

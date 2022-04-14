@@ -7,6 +7,7 @@ const fileSlice = createSlice({
     pageSize: 8,
     isFileRemove: false,
     isFileRename: false,
+    isFileDowload: false,
   },
   reducers: {
     setFetDataFile: (state, action) => {
@@ -21,9 +22,17 @@ const fileSlice = createSlice({
     setIsFileRename: (state, action) => {
       state.isFileRename = action.payload;
     },
+    setIsFileDownload: (state, action) => {
+      state.isFileDowload = action.payload;
+    },
   },
 });
 const { actions, reducer: fileReducer } = fileSlice;
-export const { setFetDataFile, setPageSize, setIsFileRemove, setIsFileRename } =
-  actions;
+export const {
+  setFetDataFile,
+  setPageSize,
+  setIsFileRemove,
+  setIsFileRename,
+  setIsFileDownload,
+} = actions;
 export default fileReducer;

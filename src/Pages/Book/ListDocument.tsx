@@ -222,6 +222,7 @@ const ListDocument = () => {
 
   const onSelectedRowKeysChange = (x: any) => {
     setselectedRowKeys([...x]);
+    console.log('check table ', x);
   };
 
   return (

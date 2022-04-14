@@ -1,0 +1,76 @@
+.ant-steps-item-icon,
+.ant-steps-item-title,
+.ant-steps-item-tail::after {
+  display: none;
+}
+.ant-steps-item-active {
+  background-color: $orange-3;
+}
+.ant-steps-item-content {
+  min-height: 32px !important;
+}
+.ant-steps-item-description {
+  text-align: center;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: $black-7;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.FormExam {
+  margin-top: 36px;
+
+  > form {
+    @include flex(flex-start, flex-start);
+  }
+
+  &-left {
+    background-color: $overlay;
+    width: 350px;
+    height: 630px;
+    overflow-y: scroll;
+    padding: 32px 16px 32px 32px;
+    font-family: 'Source Sans Pro', sans-serif;
+    color: $black-7;
+
+    > h3 {
+      font-weight: 700;
+      font-size: 16px;
+    }
+  }
+  &-right {
+    padding: 32px;
+
+    height: 630px;
+
+    position: relative;
+    h2 {
+      color: $black-7;
+    }
+    .ant-radio-wrapper {
+      display: block;
+      margin-bottom: 26px;
+      > span:last-child {
+        font-family: 'Source Sans Pro', sans-serif;
+        font-size: 16px;
+        color: $black-7;
+      }
+    }
+    .ant-radio-wrapper-checked.ant-radio-wrapper > span:last-child {
+      color: #0b80ec;
+    }
+    &-btn {
+      @include flex(center, center);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      transform: translateX(50%);
+      button:first-child {
+        margin-right: 16px;
+      }
+      button:last-child {
+        margin-left: 16px;
+      }
+    }
+  }
+}
