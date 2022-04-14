@@ -46,22 +46,28 @@
     }
 
     &-avatar {
-      position: relative;
       cursor: pointer;
       z-index: 100;
-      > img:first-child {
+      > span {
+        position: relative;
+        // background-color: green;
+        display: inline-block;
         width: 232px;
         height: 232px;
-        object-fit: center;
-      }
-      > img:last-child {
-        width: 56px;
-        height: 56px;
-        object-fit: center;
-        position: absolute;
-        bottom: 28px;
-        left: 56px;
-        transform: translate(50%, -50%);
+        > img:first-child {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+        > img:last-child {
+          width: 56px;
+          height: 56px;
+          object-fit: center;
+          position: absolute;
+          bottom: -23px;
+          left: 116px;
+          transform: translateX(-23px);
+        }
       }
     }
     form {

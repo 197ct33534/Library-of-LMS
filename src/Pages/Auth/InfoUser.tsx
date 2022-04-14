@@ -53,8 +53,10 @@ const InfoUser = () => {
               className="info-card-avatar"
               onClick={() => dispatch(setModel(true))}
             >
-              <img src={Avatar} alt="" />
-              <img src={camera} alt="" />
+              <span>
+                <img src={Avatar} alt="" />
+                <img src={camera} alt="" />
+              </span>
             </div>
             <FormInfo setting={setting} />
           </div>
