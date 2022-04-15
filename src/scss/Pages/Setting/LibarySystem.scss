@@ -1,0 +1,67 @@
+.RoleManagement-control,
+.LibarySystem-control {
+  @include flex(center, flex-end);
+  margin-bottom: 24px;
+  i {
+    color: $white;
+    font-size: 18px;
+    padding-right: 8px;
+  }
+}
+.RoleManagement-control {
+  > h1 {
+    font-size: 22px;
+    line-height: 26px;
+    color: $black-7;
+    flex: 1;
+  }
+}
+.FormLibary {
+  grid-column: span 3;
+  width: 100%;
+  > div {
+    gap: 0px 70px;
+  }
+  &-warpInput {
+    &_input {
+      // @include flex(center, space-between);
+      margin-bottom: 24px;
+    }
+    &_input > select,
+    &_input > input {
+      grid-column: span 2;
+      border-radius: 8px;
+      height: 40px;
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 16px;
+      opacity: 0.6;
+      color: $black-7;
+    }
+    &_input > label {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 20px;
+      opacity: 0.8;
+      color: $black-7;
+    }
+  }
+  hr {
+    border: 1.5px solid #ffd8b8;
+    margin: 36px 0 60px 0;
+  }
+}
+.RoleManagement-action {
+  i {
+    color: $orange-4;
+    font-size: 24px;
+
+    cursor: pointer;
+  }
+  i:first-child {
+    padding-right: 6px;
+  }
+  i:last-child {
+    padding-left: 6px;
+  }
+}

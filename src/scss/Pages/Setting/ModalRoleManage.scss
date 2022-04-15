@@ -1,0 +1,44 @@
+.ModelAvatar-RoleManage {
+  background-color: $white;
+  width: 880px;
+  border-radius: 16px;
+  padding: 24px 30px 24px 30px;
+
+  > h1 {
+    font-size: 28px;
+    line-height: 33px;
+    color: $black-7;
+    text-align: center;
+  }
+  &_item {
+    margin-bottom: 16px;
+    > label {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      color: $black-7;
+    }
+    &-input {
+      grid-column: span 4;
+    }
+    &-checkbox {
+      grid-column: span 4;
+      > div {
+        grid-template-columns: repeat(4, 1fr);
+        display: grid;
+      }
+      .ant-checkbox-wrapper + .ant-checkbox-wrapper {
+        margin-left: 0px;
+      }
+    }
+  }
+  hr {
+    background-color: #c9c4c0;
+    margin-bottom: 16px;
+  }
+  span {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 16px;
+    color: $black-7;
+  }
+}

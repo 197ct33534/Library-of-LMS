@@ -21,6 +21,8 @@ import FileTemplate from './Pages/File/FileTemplate';
 import BagTemplate from './Pages/Bag/BagTemplate';
 import BagDetail from './Pages/Bag/BagDetail';
 import SettingTemplate from './Pages/Setting/SettingTemplate';
+import LibarySystem from './Pages/Setting/LibarySystem';
+import RoleManagement from './Pages/Setting/RoleManagement';
 function App() {
   return (
     <BrowserRouter>
@@ -82,6 +84,14 @@ function App() {
             <Route
               path=""
               element={<SettingTemplate></SettingTemplate>}
+            ></Route>
+            <Route
+              path="libarySystem"
+              element={<LibarySystem></LibarySystem>}
+            ></Route>
+            <Route
+              path="roleManage"
+              element={<RoleManagement></RoleManagement>}
             ></Route>
           </Route>
         </Route>

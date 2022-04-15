@@ -5,12 +5,14 @@ import bagReducer from '../Pages/Bag/bagSlice';
 import bellReducer from '../Pages/Bell/bellSlice';
 import bookReducer from '../Pages/Book/bookSlice';
 import fileReducer from '../Pages/File/fileSlice';
+import settingReducer from '../Pages/Setting/settingSlice';
 const rootReducer = {
   auth: authReducer,
   book: bookReducer,
   bell: bellReducer,
   file: fileReducer,
   bag: bagReducer,
+  setting: settingReducer,
 };
 const store = configureStore({
   reducer: rootReducer,

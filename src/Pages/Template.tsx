@@ -19,6 +19,9 @@ import { fileSelector } from './File/fileSelector';
 import { setIsFileRemove } from './File/fileSlice';
 import ModalDowload from './File/ModalDowload';
 import ModalRenameFile from './File/ModalRenameFile';
+import ModalSetupRole from './Setting/ModalSetupRole';
+import { settingSelector } from './Setting/settingSelector';
+import { setModalRemove } from './Setting/settingSlice';
 const Template = () => {
   console.log('template didmouted');
   const listData = useSelector(authSelector);
@@ -37,7 +40,12 @@ const Template = () => {
   const isFileRename = file.isFileRename;
   const isFileDowload = file.isFileDowload;
 
+  const setting = useSelector(settingSelector);
+  const modalRole = setting.modalRole;
+  const modalRemove = setting.modalRemove;
+
   const navigation = useNavigate();
+
   useEffect(() => {
     if (!listData.idlogin.id) {
       console.log('chua co id');
@@ -84,6 +92,17 @@ const Template = () => {
       )}
       {isFileRename && <ModalRenameFile />}
       {isFileDowload && <ModalDowload />}
+
+      {modalRole && <ModalSetupRole />}
+      {modalRemove && (
+        <Modal
+          title="Xóa vai trò"
+          content="Xác nhận muốn xoá vai trò này và toàn bộ thông tin bên trong? Sau khi xoá sẽ không thể hoàn tác."
+          textSucces="Xác nhận"
+          textCancel="Huỷ"
+          funcCancel={setModalRemove(false)}
+        />
+      )}
       <Slidebar />
       <div className="grid main">
         <div className="row">
