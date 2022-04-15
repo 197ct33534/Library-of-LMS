@@ -1,0 +1,70 @@
+.Comment {
+  width: 976px;
+  > h1 {
+    margin-bottom: 9px;
+  }
+  > h3 {
+    opacity: 0.5;
+    color: $black-7;
+  }
+  > h6 {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-style: italic;
+    font-size: 12px;
+    opacity: 0.5;
+    color: #ed2025;
+  }
+  > form {
+    > input {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-style: italic;
+      font-size: 16px;
+      color: $black-7;
+      padding: 9px 16px;
+      border-radius: 8px;
+      margin-bottom: 16px;
+    }
+    > button {
+      display: block;
+      margin: 60px auto;
+    }
+  }
+}
+.Comment-warp {
+  position: relative;
+}
+.Comment-rectangle {
+  background-color: #cc5c00;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 129px;
+}
+.Comment-info {
+  position: absolute;
+  top: 129px;
+  right: 0;
+  z-index: 200;
+  width: 400px;
+  background: #fef3ef;
+  border-radius: 16px 0px 0px 16px;
+  padding: 100px 14px 0 14px;
+  > div {
+    gap: 25px 0;
+  }
+  > h1 {
+    font-size: 28px;
+    line-height: 33px;
+    color: $black-7;
+  }
+  i {
+    color: #823b00;
+    font-size: 32px;
+  }
+  &-item {
+    grid-column: span 5;
+    border-left: 1px solid #373839;
+    padding-left: 20px;
+  }
+}

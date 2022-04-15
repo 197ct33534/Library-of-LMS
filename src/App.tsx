@@ -23,6 +23,8 @@ import BagDetail from './Pages/Bag/BagDetail';
 import SettingTemplate from './Pages/Setting/SettingTemplate';
 import LibarySystem from './Pages/Setting/LibarySystem';
 import RoleManagement from './Pages/Setting/RoleManagement';
+import UserManagement from './Pages/Setting/UserManagement';
+import Comment from './Pages/Comment.js';
 function App() {
   return (
     <BrowserRouter>
@@ -93,7 +95,12 @@ function App() {
               path="roleManage"
               element={<RoleManagement></RoleManagement>}
             ></Route>
+            <Route
+              path="userManage"
+              element={<UserManagement></UserManagement>}
+            ></Route>
           </Route>
+          <Route path="comment" element={<Comment />}></Route>
         </Route>
       </Routes>
     </BrowserRouter>

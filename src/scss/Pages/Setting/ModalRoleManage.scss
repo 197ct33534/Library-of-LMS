@@ -1,3 +1,4 @@
+.ModalNewExam,
 .ModelAvatar-RoleManage {
   background-color: $white;
   width: 880px;
@@ -40,5 +41,33 @@
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 16px;
     color: $black-7;
+  }
+}
+// ModalNewExam
+
+.ModalNewExam {
+  > form > div {
+    gap: 16px 0;
+    > label {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      color: $black-7;
+    }
+  }
+  &-item {
+    grid-column: span 4;
+    > input,
+    > select {
+      border-radius: 8px;
+      font-family: 'Source Sans Pro', sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      color: $black-7;
+      padding: 9px 16px;
+    }
+    > select {
+      border: 1px solid $gray;
+    }
   }
 }

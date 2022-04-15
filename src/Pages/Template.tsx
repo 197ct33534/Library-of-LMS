@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Outlet, useNavigate } from 'react-router-dom';
 import Modal from '../Common/Modal';
+import Success from '../Common/Success';
 import Slidebar from '../components/Slidebar';
 import User from '../components/User';
 import { authSelector } from './Auth/authSelector';
@@ -19,6 +20,7 @@ import { fileSelector } from './File/fileSelector';
 import { setIsFileRemove } from './File/fileSlice';
 import ModalDowload from './File/ModalDowload';
 import ModalRenameFile from './File/ModalRenameFile';
+import ModalNewExam from './Setting/ModalNewExam';
 import ModalSetupRole from './Setting/ModalSetupRole';
 import { settingSelector } from './Setting/settingSelector';
 import { setModalRemove } from './Setting/settingSlice';
@@ -43,6 +45,8 @@ const Template = () => {
   const setting = useSelector(settingSelector);
   const modalRole = setting.modalRole;
   const modalRemove = setting.modalRemove;
+  const modalNewExam = setting.modalNewExam;
+  const modalComment = setting.modalComment;
 
   const navigation = useNavigate();
 
@@ -56,7 +60,7 @@ const Template = () => {
   return (
     <>
       {model && <ModelAvatar />}
-
+      {modalComment && <Success text="Chúng tôi sẽ phản hồi sớm nhất!" />}
       {modelApproval && (
         <Modal
           title="Phê duyệt"
@@ -103,6 +107,8 @@ const Template = () => {
           funcCancel={setModalRemove(false)}
         />
       )}
+      {modalNewExam.type && <ModalNewExam data={modalNewExam.record} />}
+
       <Slidebar />
       <div className="grid main">
         <div className="row">

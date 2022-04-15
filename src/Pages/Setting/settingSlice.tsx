@@ -8,6 +8,8 @@ const settingSlice = createSlice({
     pageSize: 8,
     modalRole: false,
     modalRemove: false,
+    modalNewExam: { type: false, record: [] },
+    modalComment: false,
   },
   reducers: {
     setHasUpdate: (state, action) => {
@@ -25,6 +27,13 @@ const settingSlice = createSlice({
     setModalRemove: (state, action) => {
       state.modalRemove = action.payload;
     },
+    setModalNewExam: (state, action) => {
+      state.modalNewExam.type = action.payload.type;
+      state.modalNewExam.record = action.payload.record;
+    },
+    setModalComment: (state, action) => {
+      state.modalComment = action.payload;
+    },
   },
 });
 const { actions, reducer: settingReducer } = settingSlice;
@@ -34,5 +43,7 @@ export const {
   setPageSize,
   setModalRole,
   setModalRemove,
+  setModalNewExam,
+  setModalComment,
 } = actions;
 export default settingReducer;
