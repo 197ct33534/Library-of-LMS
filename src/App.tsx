@@ -30,6 +30,9 @@ import { authSelector } from './Pages/Auth/authSelector';
 import HomeStudent from './Permission/Student/HomeStudent';
 import BookStudent from './Permission/Student/BookStudent';
 import BellSettingStudent from './Permission/Student/BellSettingStudent';
+
+import FooterCourse from './Pages/Home/FooterCourse';
+import FooterHomeTeacher from './Permission/Teacher/Home/FooterHomeTeacher';
 function App() {
   const auth = useSelector(authSelector);
   const permission = +auth.idlogin.permission;
@@ -58,7 +61,15 @@ function App() {
               element={
                 permission === 3 ? (
                   <Tittle title="Trang chủ">
-                    <Course />
+                    <Course>
+                      <FooterCourse />
+                    </Course>
+                  </Tittle>
+                ) : permission === 2 ? (
+                  <Tittle title="Trang chủ">
+                    <Course>
+                      <FooterHomeTeacher />
+                    </Course>
                   </Tittle>
                 ) : (
                   <HomeStudent />

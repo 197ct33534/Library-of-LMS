@@ -10,7 +10,7 @@ const FormInfo = (props: { setting: boolean }) => {
   const listData = useSelector(authSelector);
   const data = listData.idlogin;
   const dispatch = useDispatch();
-
+  const settingAuth = listData.settingAuth;
   return (
     <>
       <Formik
@@ -101,17 +101,25 @@ const FormInfo = (props: { setting: boolean }) => {
                 />
               </div>
             </div>
-            <div className="form-info-control">
-              <button type="reset" className="btn btn--gray--solid btn--medium">
-                Hủy
-              </button>
-              <button
-                type="submit"
-                className="btn btn--primary--solid btn--medium"
-              >
-                Lưu
-              </button>
-            </div>
+            {settingAuth && (
+              <>
+                <div className="form-info-control">
+                  <button
+                    type="reset"
+                    className="btn btn--gray--solid btn--medium"
+                    onClick={() => dispatch(setSettingAuth(false))}
+                  >
+                    Hủy
+                  </button>
+                  <button
+                    type="submit"
+                    className="btn btn--primary--solid btn--medium"
+                  >
+                    Lưu
+                  </button>
+                </div>
+              </>
+            )}
           </Form>
         )}
       </Formik>

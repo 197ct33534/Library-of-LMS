@@ -27,7 +27,7 @@ const Slidebar = () => {
       imgIcon: book,
       content: 'Quản lý môn học',
       icon: 'bx bx-book-open',
-      children: [
+      children: [3].includes(per) && [
         { pathchil: '', title: 'Danh sách môn học' },
         { pathchil: 'listDocument', title: 'Phê duyệt tài liệu môn học' },
       ],
@@ -36,15 +36,23 @@ const Slidebar = () => {
     {
       path: 'file',
       imgIcon: file,
-      content: 'Tệp riêng tư',
+      content: per === 3 ? 'Tệp riêng tư' : 'Bài giảng, tài nguyên',
       icon: 'bx bxs-file-archive',
+      children: [2].includes(per) && [
+        { pathchil: '', title: 'Tất cả bài giảng' },
+        { pathchil: 'listDocument', title: 'Tất cả tài nguyên' },
+      ],
       permiss: [2, 3],
     },
     {
       path: 'bag',
       imgIcon: bag,
-      content: 'Ngân hàng đề thi',
+      content: per === 3 ? 'Ngân hàng đề thi' : 'Đề thi, kiểm tra',
       icon: 'bx bxs-shopping-bag',
+      children: [2].includes(per) && [
+        { pathchil: '', title: 'Danh sách đề thi & kiểm tra' },
+        { pathchil: 'Nganhang', title: 'Ngân hàng câu hỏi' },
+      ],
       permiss: [2, 3],
     },
     {
@@ -59,7 +67,7 @@ const Slidebar = () => {
       imgIcon: setting,
       content: 'Cài đặt hệ thống',
       icon: 'bx bxs-virus',
-      permiss: [2, 3],
+      permiss: [3],
     },
     {
       path: 'comment',
@@ -144,7 +152,7 @@ const Slidebar = () => {
           })}
         </ul>
       </div>
-      {per === 3 && (
+      {per >= 2 && (
         <div className="Slidebar-right">
           <ul className="Slidebar-right_list">
             {slidebar.map((item) => (

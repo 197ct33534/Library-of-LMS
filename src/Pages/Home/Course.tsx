@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import Dropdown from '../../components/Dropdown';
 import MultipleRows from '../../components/MultipleRowsSlick';
-import MultipleItems from './MultipleItems';
 
-import Statistical from './Statistical';
-
-const Course = () => {
+interface props {
+  children: React.ReactNode;
+}
+const Course = (props: props) => {
+  const { children } = props;
   const [Year, setYear] = useState('2022-2023');
   const dataCard = [
     { num: '12', content: 'Môn học' },
@@ -37,15 +38,7 @@ const Course = () => {
         ))}
       </div>
       <MultipleRows />
-      <div className="course-footer">
-        <Statistical />
-        <div className="MultipleItems">
-          <MultipleItems />
-          <div className="MultipleItems-note">
-            Hiển thị 10 tệp tài liệu đã xem gần đây nhất
-          </div>
-        </div>
-      </div>
+      <div className="course-footer">{children}</div>
     </>
   );
 };

@@ -1,0 +1,30 @@
+.StatisticalTeachcer {
+  .Statistical-main {
+    padding-left: 0px;
+    &_time {
+      grid-column: span 2;
+      font-size: 14px;
+      font-family: 'Source Sans Pro', sans-serif;
+      opacity: 0.5;
+      color: $black-7;
+      @include flex(center, flex-start);
+    }
+    &_content {
+      @include flex(center, flex-start);
+      grid-column: span 5;
+    }
+    &-item {
+      padding-left: 32px;
+      align-content: center;
+    }
+    &-item:nth-of-type(even) {
+      background: #f0f3f6;
+    }
+  }
+
+  img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+  }
+}
