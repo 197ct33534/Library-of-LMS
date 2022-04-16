@@ -6,7 +6,7 @@ interface header {
   title: string;
   content: string;
 }
-const Header = (props: header) => {
+export const Header = (props: header) => {
   const { title, content } = props;
   return (
     <div className="ItemBell-header">
@@ -19,7 +19,7 @@ interface ItemBell {
   children: React.ReactNode;
   defaultChecked?: boolean;
 }
-const ItemBell = (props: ItemBell) => {
+export const ItemBell = (props: ItemBell) => {
   const { children, defaultChecked } = props;
   return (
     <>

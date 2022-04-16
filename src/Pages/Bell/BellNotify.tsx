@@ -15,6 +15,7 @@ import Bell from '../../firebase/Bell';
 import { Table } from 'antd';
 import AddNotify from './AddNotify.js';
 import { Link } from 'react-router-dom';
+import { authSelector } from '../Auth/authSelector';
 const BellNotify = () => {
   const dispatch = useDispatch();
   const listData = useSelector(bellSelector);
@@ -219,6 +220,7 @@ const BellNotify = () => {
       },
     },
   ];
+  const permission = +useSelector(authSelector).idlogin.permission;
   return (
     <>
       <div className="info-button">
@@ -244,14 +246,15 @@ const BellNotify = () => {
               style={{ paddingRight: '16px', borderRight: '1px solid #C9C4C0' }}
             />
           </Link>
-
-          <button
-            className="btn btn--primary--solid btn--medium"
-            style={{ marginLeft: '16px' }}
-            onClick={() => dispatch(setAddNotify(true))}
-          >
-            Thêm thông báo
-          </button>
+          {permission !== 1 && (
+            <button
+              className="btn btn--primary--solid btn--medium"
+              style={{ marginLeft: '16px' }}
+              onClick={() => dispatch(setAddNotify(true))}
+            >
+              Thêm thông báo
+            </button>
+          )}
         </div>
       </div>
       {state ? (

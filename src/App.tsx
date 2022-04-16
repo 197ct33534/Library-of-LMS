@@ -29,6 +29,7 @@ import { useSelector } from 'react-redux';
 import { authSelector } from './Pages/Auth/authSelector';
 import HomeStudent from './Permission/Student/HomeStudent';
 import BookStudent from './Permission/Student/BookStudent';
+import BellSettingStudent from './Permission/Student/BellSettingStudent';
 function App() {
   const auth = useSelector(authSelector);
   const permission = +auth.idlogin.permission;
@@ -102,7 +103,13 @@ function App() {
               ></Route>
               <Route
                 path="setting"
-                element={<BellSetting></BellSetting>}
+                element={
+                  permission === 3 ? (
+                    <BellSetting></BellSetting>
+                  ) : (
+                    <BellSettingStudent />
+                  )
+                }
               ></Route>
             </Route>
             <Route path="file">
