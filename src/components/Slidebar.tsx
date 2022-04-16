@@ -8,14 +8,19 @@ import bell from '../Assets/images/iconbell.png';
 import setting from '../Assets/images/iconsettings.png';
 import comment from '../Assets/images/iconcommentquestion.png';
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { authSelector } from '../Pages/Auth/authSelector';
 
 const Slidebar = () => {
+  const auth = useSelector(authSelector);
+  const per = +auth.idlogin.permission;
   const slidebar = [
     {
       path: 'dashboard',
       imgIcon: home,
       content: 'Trang chủ',
       icon: 'bx bx-home-alt',
+      permiss: [1, 2, 3],
     },
     {
       path: 'book',
@@ -26,31 +31,42 @@ const Slidebar = () => {
         { pathchil: '', title: 'Danh sách môn học' },
         { pathchil: 'listDocument', title: 'Phê duyệt tài liệu môn học' },
       ],
+      permiss: [1, 2, 3],
     },
     {
       path: 'file',
       imgIcon: file,
       content: 'Tệp riêng tư',
       icon: 'bx bxs-file-archive',
+      permiss: [2, 3],
     },
     {
       path: 'bag',
       imgIcon: bag,
       content: 'Ngân hàng đề thi',
       icon: 'bx bxs-shopping-bag',
+      permiss: [2, 3],
     },
-    { path: 'bell', imgIcon: bell, content: 'Thông báo', icon: 'bx bx-bell' },
+    {
+      path: 'bell',
+      imgIcon: bell,
+      content: 'Thông báo',
+      icon: 'bx bx-bell',
+      permiss: [1, 2, 3],
+    },
     {
       path: 'setting',
       imgIcon: setting,
       content: 'Cài đặt hệ thống',
       icon: 'bx bxs-virus',
+      permiss: [2, 3],
     },
     {
       path: 'comment',
       imgIcon: comment,
       content: 'Trợ giúp',
       icon: 'bx bx-reset',
+      permiss: [1, 2, 3],
     },
   ];
   console.log('slidebar didmount');
@@ -101,55 +117,64 @@ const Slidebar = () => {
     };
   }, []);
   return (
-    <div className="Slidebar">
+    <div className="Slidebar" style={per !== 3 ? { width: '112px' } : {}}>
       <div className="Slidebar-left">
         <div className="Slidebar-logo">
           <img src={logo} alt="" />
         </div>
         <ul className="Slidebar-left_list">
-          {slidebar.map((item) => (
-            <li key={`slidebar-${item.path}`}>
-              <NavLink
-                to={`/${item.path}`}
-                className={({ isActive }) =>
-                  isActive ? 'active Slidebar-left_item' : 'Slidebar-left_item'
-                }
-              >
-                <img src={item.imgIcon} alt="" />
-              </NavLink>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className="Slidebar-right">
-        <ul className="Slidebar-right_list">
-          {slidebar.map((item) => (
-            <li key={`slidebar-right-${item.path}`}>
-              <NavLink
-                to={`/${item.path}`}
-                className={({ isActive }) =>
-                  isActive
-                    ? 'active Slidebar-right_item'
-                    : 'Slidebar-right_item'
-                }
-              >
-                <i className={`${item.icon} Slidebar-right_icon`}></i>
-                <span className="Slidebar-right_content">{item.content}</span>
-              </NavLink>
-              {item.children &&
-                item.children.map((child) => (
+          {slidebar.map((item) => {
+            if (item.permiss.includes(per)) {
+              return (
+                <li key={`slidebar-${item.path}`}>
                   <NavLink
-                    to={`${item.path}/${child.pathchil}`}
-                    className="Slidebar-right_itemChil"
-                    key={`slidebarChild-${child.title}`}
+                    to={`/${item.path}`}
+                    className={({ isActive }) =>
+                      isActive
+                        ? 'active Slidebar-left_item'
+                        : 'Slidebar-left_item'
+                    }
                   >
-                    {child.title}
+                    <img src={item.imgIcon} alt="" />
                   </NavLink>
-                ))}
-            </li>
-          ))}
+                </li>
+              );
+            }
+            return null;
+          })}
         </ul>
       </div>
+      {per === 3 && (
+        <div className="Slidebar-right">
+          <ul className="Slidebar-right_list">
+            {slidebar.map((item) => (
+              <li key={`slidebar-right-${item.path}`}>
+                <NavLink
+                  to={`/${item.path}`}
+                  className={({ isActive }) =>
+                    isActive
+                      ? 'active Slidebar-right_item'
+                      : 'Slidebar-right_item'
+                  }
+                >
+                  <i className={`${item.icon} Slidebar-right_icon`}></i>
+                  <span className="Slidebar-right_content">{item.content}</span>
+                </NavLink>
+                {item.children &&
+                  item.children.map((child) => (
+                    <NavLink
+                      to={`${item.path}/${child.pathchil}`}
+                      className="Slidebar-right_itemChil"
+                      key={`slidebarChild-${child.title}`}
+                    >
+                      {child.title}
+                    </NavLink>
+                  ))}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 };

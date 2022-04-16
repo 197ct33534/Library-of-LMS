@@ -1,0 +1,112 @@
+.HomeStudent-left {
+  > h3 {
+    text-align: center;
+    font-size: 22px;
+    line-height: 26px;
+    color: $black-7;
+  }
+  > i:first-child {
+    margin-right: 55px;
+  }
+  > i:last-child {
+    margin-left: 55px;
+  }
+  > i {
+    font-size: 22px;
+    color: $orange-4;
+  }
+  > h5 {
+    margin-top: 42px;
+    color: $orange-5;
+    font-size: 28px;
+    line-height: 33px;
+    text-align: center;
+    span {
+      color: $black-7;
+      margin-right: 15px;
+    }
+  }
+}
+.titleMini {
+  font-size: 18px;
+  line-height: 21px;
+  color: $orange-5;
+}
+
+.HomeStudent-right {
+  > div.grid-col-2 {
+    gap: 24px 30px;
+  }
+  &_item {
+    border: 1px solid #f2f2f2;
+    border-radius: 8px;
+    background-color: $white;
+    padding: 15px;
+    > img {
+      width: 58px;
+      height: 58px;
+    }
+    &__info {
+      grid-column: span 5;
+
+      > p {
+        @include flex(center, space-between);
+        margin-bottom: 0;
+        > strong {
+          font-family: 'Source Sans Pro', sans-serif;
+          font-weight: 700;
+          font-size: 16px;
+          color: $black-7;
+        }
+        > span {
+          font-style: italic;
+          font-family: 'Source Sans Pro', sans-serif;
+          font-size: 14px;
+          line-height: 18px;
+          color: $black-7;
+          opacity: 0.5;
+        }
+      }
+      > input.HomeStudent-right_item__info-input {
+        margin: 0 !important;
+      }
+    }
+  }
+}
+.tableIconStart {
+  color: #ffc107;
+  font-size: 24px;
+}
+
+.BookStudent-item {
+  background: $white;
+  border: 2px solid #f0f3f6;
+  box-shadow: 4px 4px 25px 4px rgba(154, 202, 245, 0.25);
+  border-radius: 8px;
+  position: relative;
+  // @include flex(center, center);
+  padding: 14px 24px;
+  .tableIconStart {
+    text-align: center;
+    transform: translateY(24px);
+  }
+  &_info {
+    grid-column: span 5;
+    width: 100%;
+    h1 {
+      color: $black-7;
+      margin-bottom: 4px;
+    }
+    h3 {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 16px;
+      color: #0b80ec;
+    }
+  }
+  .SelectHidden {
+    padding: 0;
+    position: absolute;
+    top: 0;
+    right: 20px;
+  }
+}

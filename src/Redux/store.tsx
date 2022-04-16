@@ -6,6 +6,7 @@ import bellReducer from '../Pages/Bell/bellSlice';
 import bookReducer from '../Pages/Book/bookSlice';
 import fileReducer from '../Pages/File/fileSlice';
 import settingReducer from '../Pages/Setting/settingSlice';
+import studentReducer from '../Permission/Student/studentSlice';
 const rootReducer = {
   auth: authReducer,
   book: bookReducer,
@@ -13,6 +14,7 @@ const rootReducer = {
   file: fileReducer,
   bag: bagReducer,
   setting: settingReducer,
+  student: studentReducer,
 };
 const store = configureStore({
   reducer: rootReducer,

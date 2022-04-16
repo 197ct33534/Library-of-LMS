@@ -13,6 +13,7 @@ const authSlice = createSlice({
         role: '',
         sex: 'Nam',
         email: '',
+        permission: '',
       },
     ],
     idlogin: {
@@ -24,6 +25,7 @@ const authSlice = createSlice({
       role: '',
       sex: 'Nam',
       email: '',
+      permission: '',
     },
     infoAuth: true,
     settingAuth: false,
@@ -45,6 +47,7 @@ const authSlice = createSlice({
         phone: '',
         role: '',
         sex: 'Nam',
+        permission: '',
         email: '',
       };
     },

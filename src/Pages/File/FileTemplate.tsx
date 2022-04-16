@@ -1,7 +1,7 @@
 import { Table } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { text } from 'stream/consumers';
+
 import Button from '../../Common/Button';
 import Dropdown from '../../components/Dropdown';
 import TitleHeader from '../../components/TitleHeader';

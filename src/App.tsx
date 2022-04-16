@@ -25,85 +25,116 @@ import LibarySystem from './Pages/Setting/LibarySystem';
 import RoleManagement from './Pages/Setting/RoleManagement';
 import UserManagement from './Pages/Setting/UserManagement';
 import Comment from './Pages/Comment.js';
+import { useSelector } from 'react-redux';
+import { authSelector } from './Pages/Auth/authSelector';
+import HomeStudent from './Permission/Student/HomeStudent';
+import BookStudent from './Permission/Student/BookStudent';
 function App() {
+  const auth = useSelector(authSelector);
+  const permission = +auth.idlogin.permission;
+
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/auth" element={<TemplateAuth></TemplateAuth>}>
-          <Route path="restpass" element={<RestPass />}></Route>
-          <Route path="" element={<Login />}></Route>
-        </Route>
-        {/* <Route path="" element={<Navigate to="/auth" replace />} /> */}
-        <Route path="" element={<Template></Template>}>
-          <Route
-            path="info"
-            element={
-              <Tittle title="Thông tin người dùng">
-                <InfoUser />
-              </Tittle>
-            }
-          ></Route>
-          <Route
-            path="dashboard"
-            element={
-              <Tittle title="Trang chủ">
-                <Course />
-              </Tittle>
-            }
-          ></Route>
-          <Route path="book" element={<BookTemplate></BookTemplate>}>
-            <Route
-              path="listDocument"
-              element={<ListDocument></ListDocument>}
-            ></Route>
-            <Route
-              path="detailSubject"
-              element={<DetailSubject></DetailSubject>}
-            ></Route>
-            <Route path="course" element={<BookCourse></BookCourse>}></Route>
-            <Route path="" element={<Book></Book>}></Route>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/auth" element={<TemplateAuth></TemplateAuth>}>
+            <Route path="restpass" element={<RestPass />}></Route>
+            <Route path="" element={<Login />}></Route>
           </Route>
-          <Route path="bell">
+
+          <Route path="" element={<Template></Template>}>
             <Route
-              path=""
+              path="info"
               element={
-                <Tittle title="Thông báo">
-                  <BellNotify />
+                <Tittle title="Thông tin người dùng">
+                  <InfoUser />
                 </Tittle>
               }
             ></Route>
-            <Route path="setting" element={<BellSetting></BellSetting>}></Route>
-          </Route>
 
-          <Route path="file">
-            <Route path="" element={<FileTemplate></FileTemplate>}></Route>
+            <Route
+              path="dashboard"
+              element={
+                permission === 3 ? (
+                  <Tittle title="Trang chủ">
+                    <Course />
+                  </Tittle>
+                ) : (
+                  <HomeStudent />
+                )
+              }
+            ></Route>
+            {permission === 3 && (
+              <Route path="book" element={<BookTemplate></BookTemplate>}>
+                <Route
+                  path="listDocument"
+                  element={<ListDocument></ListDocument>}
+                ></Route>
+                <Route
+                  path="detailSubject"
+                  element={<DetailSubject></DetailSubject>}
+                ></Route>
+                <Route
+                  path="course"
+                  element={<BookCourse></BookCourse>}
+                ></Route>
+                <Route path="" element={<Book></Book>}></Route>
+              </Route>
+            )}
+            {permission === 1 && (
+              <Route path="book">
+                <Route
+                  path="course"
+                  element={<BookCourse></BookCourse>}
+                ></Route>
+                <Route path="" element={<BookStudent></BookStudent>}></Route>
+              </Route>
+            )}
+
+            <Route path="bell">
+              <Route
+                path=""
+                element={
+                  <Tittle title="Thông báo">
+                    <BellNotify />
+                  </Tittle>
+                }
+              ></Route>
+              <Route
+                path="setting"
+                element={<BellSetting></BellSetting>}
+              ></Route>
+            </Route>
+            <Route path="file">
+              <Route path="" element={<FileTemplate></FileTemplate>}></Route>
+            </Route>
+            <Route path="bag">
+              <Route path="" element={<BagTemplate></BagTemplate>}></Route>
+              <Route path="detail" element={<BagDetail></BagDetail>}></Route>
+            </Route>
+            <Route path="setting">
+              <Route
+                path=""
+                element={<SettingTemplate></SettingTemplate>}
+              ></Route>
+              <Route
+                path="libarySystem"
+                element={<LibarySystem></LibarySystem>}
+              ></Route>
+              <Route
+                path="roleManage"
+                element={<RoleManagement></RoleManagement>}
+              ></Route>
+              <Route
+                path="userManage"
+                element={<UserManagement></UserManagement>}
+              ></Route>
+            </Route>
+            <Route path="comment" element={<Comment />}></Route>
           </Route>
-          <Route path="bag">
-            <Route path="" element={<BagTemplate></BagTemplate>}></Route>
-            <Route path="detail" element={<BagDetail></BagDetail>}></Route>
-          </Route>
-          <Route path="setting">
-            <Route
-              path=""
-              element={<SettingTemplate></SettingTemplate>}
-            ></Route>
-            <Route
-              path="libarySystem"
-              element={<LibarySystem></LibarySystem>}
-            ></Route>
-            <Route
-              path="roleManage"
-              element={<RoleManagement></RoleManagement>}
-            ></Route>
-            <Route
-              path="userManage"
-              element={<UserManagement></UserManagement>}
-            ></Route>
-          </Route>
-          <Route path="comment" element={<Comment />}></Route>
-        </Route>
-      </Routes>
-    </BrowserRouter>
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 
