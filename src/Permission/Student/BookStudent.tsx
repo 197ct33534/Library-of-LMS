@@ -10,18 +10,18 @@ import { Table } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { studentSelector } from './studentSelector';
 import Student from '../../firebase/student';
-import {
-  setPageSize,
-  setStudentData,
-  setTableForm,
-  StudentProps,
-} from './studentSlice';
+import { setStudentData, setTableForm, StudentProps } from './studentSlice';
 import { useNavigate } from 'react-router-dom';
+import Search from '../../components/Search';
+import { commonSelector } from '../../Redux/comonSelector';
+import { setPageSize } from '../../Redux/commonSlice';
 const BookStudent = () => {
   const [subject, setSubjects] = useState('Tên môn học');
   const dispatch = useDispatch();
   const student = useSelector(studentSelector);
-  const pageSize = student.pageSize;
+  const common = useSelector(commonSelector);
+
+  const pageSize = common.pageSize;
   const list: StudentProps[] = student.studentData;
   const tableForm = student.tableForm;
   //    //get data
@@ -130,13 +130,7 @@ const BookStudent = () => {
             </div>
           </div>
           <div className="book-control-right">
-            <div className="book-control-right_search">
-              <i className="bx bx-search"></i>
-              <input
-                type="text"
-                placeholder="Tìm kết quả theo tên, lớp, môn học,..."
-              />
-            </div>
+            <Search />
           </div>
         </div>
 

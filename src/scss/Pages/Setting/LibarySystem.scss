@@ -52,6 +52,7 @@
   }
 }
 .RoleManagement-action {
+  @include flex(center, center);
   i {
     color: $orange-4;
     font-size: 24px;

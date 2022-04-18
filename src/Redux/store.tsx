@@ -7,6 +7,8 @@ import bookReducer from '../Pages/Book/bookSlice';
 import fileReducer from '../Pages/File/fileSlice';
 import settingReducer from '../Pages/Setting/settingSlice';
 import studentReducer from '../Permission/Student/studentSlice';
+import teacherReducer from '../Permission/Teacher/teacherSlice';
+import commonReducer from './commonSlice';
 const rootReducer = {
   auth: authReducer,
   book: bookReducer,
@@ -15,6 +17,8 @@ const rootReducer = {
   bag: bagReducer,
   setting: settingReducer,
   student: studentReducer,
+  common: commonReducer,
+  teacher: teacherReducer,
 };
 const store = configureStore({
   reducer: rootReducer,

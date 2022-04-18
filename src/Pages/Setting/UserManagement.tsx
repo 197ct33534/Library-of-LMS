@@ -8,11 +8,11 @@ import {
   setDataSetting,
   setModalNewExam,
   setModalRemove,
-  setPageSize,
 } from './settingSlice';
-import { MyPagination } from '../Book/ListDocument';
-import { Table } from 'antd';
+
 import Dropdown from '../../components/Dropdown';
+import Search from '../../components/Search';
+import TablePagination from '../../components/TablePagination';
 
 const UserManagement = () => {
   const dispatch = useDispatch();
@@ -77,13 +77,7 @@ const UserManagement = () => {
       },
     },
   ];
-  //setup pagination
-  const pageSize = Set.pageSize;
 
-  const [current, setCurrent] = useState(1);
-  const getData = (current: number, pageSize: number) => {
-    return list.slice((current - 1) * pageSize, current * pageSize);
-  };
   const [status, setStatus] = useState('Chọn vai trò');
   return (
     <>
@@ -113,39 +107,10 @@ const UserManagement = () => {
             </div>
           </div>
           <div className="book-control-right">
-            <div className="book-control-right_search">
-              <i className="bx bx-search"></i>
-              <input
-                type="text"
-                placeholder="Tìm kết quả theo tên, lớp, môn học,..."
-              />
-            </div>
+            <Search />
           </div>
         </div>
-        <Table
-          columns={columns}
-          dataSource={getData(current, pageSize)}
-          pagination={false}
-        />
-        <div className="tablePagiontion">
-          <p>
-            Hiển thị
-            <input
-              type="number"
-              value={pageSize}
-              onChange={(e) => {
-                dispatch(setPageSize(+e.target.value));
-              }}
-            />
-            hàng trong mỗi trang
-          </p>
-          <MyPagination
-            total={list.length}
-            current={current}
-            onChange={setCurrent}
-            pageSize={pageSize}
-          />
-        </div>
+        <TablePagination columns={columns} data={list} />
       </div>
     </>
   );

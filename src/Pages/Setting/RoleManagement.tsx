@@ -1,17 +1,13 @@
-import { Table } from 'antd';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from '../../Common/Button';
+import Search from '../../components/Search';
+import TablePagination from '../../components/TablePagination';
 import TitleHeader from '../../components/TitleHeader';
 import Setting from '../../firebase/Setting';
-import { MyPagination } from '../Book/ListDocument';
+
 import { settingSelector } from './settingSelector';
-import {
-  setDataSetting,
-  setModalRemove,
-  setModalRole,
-  setPageSize,
-} from './settingSlice';
+import { setDataSetting, setModalRemove, setModalRole } from './settingSlice';
 
 const RoleManagement = () => {
   const dispatch = useDispatch();
@@ -46,6 +42,9 @@ const RoleManagement = () => {
       title: 'Mô tả',
       dataIndex: 'description',
       key: 'description',
+      render: (text: string) => {
+        return <span className="TableDescript">{text}</span>;
+      },
     },
     {
       title: 'Lần cập nhật cuối',
@@ -70,23 +69,7 @@ const RoleManagement = () => {
       },
     },
   ];
-  //setup pagination
-  const pageSize = Set.pageSize;
 
-  const [current, setCurrent] = useState(1);
-  const getData = (current: number, pageSize: number) => {
-    return list.slice((current - 1) * pageSize, current * pageSize);
-  };
-  //handle checkbox
-
-  const [selectedRowKeys, setselectedRowKeys] = useState<string[] | number[]>(
-    []
-  );
-
-  const onSelectedRowKeysChange = (x: any) => {
-    setselectedRowKeys([...x]);
-    console.log('check table ', x);
-  };
   return (
     <>
       <TitleHeader titlePrimary="Quản lý vai trò" title={['Cài đặt đề thi']} />
@@ -106,40 +89,10 @@ const RoleManagement = () => {
           style={{ marginBottom: '24px', justifyContent: 'flex-end' }}
         >
           <div className="book-control-right">
-            <div className="book-control-right_search">
-              <i className="bx bx-search"></i>
-              <input
-                type="text"
-                placeholder="Tìm kết quả theo tên, lớp, môn học,..."
-              />
-            </div>
+            <Search />
           </div>
         </div>
-        <Table
-          columns={columns}
-          rowSelection={{ selectedRowKeys, onChange: onSelectedRowKeysChange }}
-          dataSource={getData(current, pageSize)}
-          pagination={false}
-        />
-        <div className="tablePagiontion">
-          <p>
-            Hiển thị
-            <input
-              type="number"
-              value={pageSize}
-              onChange={(e) => {
-                dispatch(setPageSize(+e.target.value));
-              }}
-            />
-            hàng trong mỗi trang
-          </p>
-          <MyPagination
-            total={list.length}
-            current={current}
-            onChange={setCurrent}
-            pageSize={pageSize}
-          />
-        </div>
+        <TablePagination columns={columns} data={list} checkbox />
       </div>
     </>
   );

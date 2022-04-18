@@ -9,11 +9,14 @@ import TitleHeader from '../../components/TitleHeader';
 // import Xlsx from '../../Assets/images/ex.png';
 import Bag from '../../firebase/Bag';
 import { setModelApproval, setModelCancelDocument } from '../Book/bookSlice';
-import { MyPagination } from '../Book/ListDocument';
+
 import { bagSelector } from './bagSelector';
-import { setDetailExam, setFakeDataBag, setPageSize } from './bagSlice';
+import { setDetailExam, setFakeDataBag } from './bagSlice';
 import eye from '../../Assets/images/eye.png';
 import { useNavigate } from 'react-router-dom';
+import TablePagination from '../../components/TablePagination';
+import { commonSelector } from '../../Redux/comonSelector';
+import Search from '../../components/Search';
 const BagTemplate = () => {
   const dispatch = useDispatch();
   const navigation = useNavigate();
@@ -37,49 +40,6 @@ const BagTemplate = () => {
     dispatch(setDetailExam(record));
     navigation('detail');
   };
-  //   useEffect(() => {
-  //     for (let i = 1; i <= 100; i++) {
-  //       const random = Math.random();
-  //       const data = {
-  //         id: `${i}`,
-  //         imgSrc: [Doc, Pptx, Xlsx][Math.floor(random * 3)],
-  //         typeFile: ['.doc', '.ppt', '.xlsx'][Math.floor(random * 3)],
-  //         ExamName: `Kiểm tra chủ đề ${i}`,
-  //         subjectsName: nameSubject[Math.floor(random * nameSubject.length)],
-  //         Lecturers: nameLecture[Math.floor(random * nameLecture.length)],
-  //         ExamForms: i % 2 === 0 ? 'Trắc nghiệm' : 'Tự luận',
-  //         ExamTime: [15, 90, 45, 120, 60][Math.floor(random * 5)],
-  //         status: [
-  //           'Đã tiến hành',
-  //           'Chờ phê duyệt',
-  //           'Chưa bắt đầu',
-  //           'Đang diễn ra',
-  //         ][Math.floor(random * 4)],
-  //         DocumentApproval: ['Đã duyệt', 'All', 'Đã hủy', 'Chưa phê duyệt'][
-  //           Math.floor(random * 4)
-  //         ],
-  //       };
-  //       Bag.addBag(data);
-  //     }
-  //   }, []);
-
-  // //setup pagination
-  // const pageSize = data.pageSize;
-
-  // const [current, setCurrent] = useState(1);
-  // const getData = (current: number, pageSize: number) => {
-  //   return list.slice((current - 1) * pageSize, current * pageSize);
-  // };
-  // //handle checkbox
-
-  // const [selectedRowKeys, setselectedRowKeys] = useState<string[] | number[]>(
-  //   []
-  // );
-
-  // const onSelectedRowKeysChange = (x: any) => {
-  //   setselectedRowKeys([...x]);
-  //   console.log('check table ', x);
-  // };
 
   //get data
   useEffect(() => {
@@ -248,23 +208,8 @@ const BagTemplate = () => {
       ),
     },
   ];
-  //setup pagination
-  const pageSize = bag.pageSize;
-
-  const [current, setCurrent] = useState(1);
-  const getData = (current: number, pageSize: number) => {
-    return list.slice((current - 1) * pageSize, current * pageSize);
-  };
-  //handle checkbox
-
-  const [selectedRowKeys, setselectedRowKeys] = useState<string[] | number[]>(
-    []
-  );
-
-  const onSelectedRowKeysChange = (x: any) => {
-    setselectedRowKeys([...x]);
-    console.log('check table ', x);
-  };
+  const common = useSelector(commonSelector);
+  const checkboxTable = common.checkboxTable;
   return (
     <>
       <TitleHeader titlePrimary="Tất cả các tệp"></TitleHeader>
@@ -276,14 +221,18 @@ const BagTemplate = () => {
             <Button
               type="button"
               buttonSize="btn--large"
-              buttonStyle={'btn--disabled--outline'}
-              //   onClick={
-              //     selectedRowKeys.length
-              //       ? () => {
-              //           dispatch(setModelApproval(true));
-              //         }
-              //       : () => {}
-              //   }
+              buttonStyle={
+                checkboxTable.length
+                  ? 'btn--primary--outline'
+                  : 'btn--disabled--outline'
+              }
+              onClick={
+                checkboxTable.length
+                  ? () => {
+                      dispatch(setModelCancelDocument(true));
+                    }
+                  : () => {}
+              }
             >
               Hủy phê duyệt
             </Button>
@@ -291,19 +240,18 @@ const BagTemplate = () => {
               type="button"
               buttonSize="btn--large"
               buttonStyle={
-                // selectedRowKeys.length
-                //   ? 'btn--primary--solid'
-                //:
-                'btn--disabled--solid'
+                checkboxTable.length
+                  ? 'btn--primary--solid'
+                  : 'btn--disabled--solid'
               }
-              //   disabled={selectedRowKeys.length ? true : false}
-              //   onClick={
-              //     selectedRowKeys.length
-              //       ? () => {
-              //           dispatch(setModelApproval(true));
-              //         }
-              //       : () => {}
-              // }
+              disabled={checkboxTable.length ? true : false}
+              onClick={
+                checkboxTable.length
+                  ? () => {
+                      dispatch(setModelApproval(true));
+                    }
+                  : () => {}
+              }
             >
               Phê duyệt
             </Button>
@@ -343,41 +291,10 @@ const BagTemplate = () => {
             </div>
           </div>
           <div className="book-control-right">
-            <div className="book-control-right_search">
-              <i className="bx bx-search"></i>
-              <input
-                type="text"
-                placeholder="Tìm kết quả theo tên, lớp, môn học,..."
-              />
-            </div>
+            <Search />
           </div>
         </div>
-
-        <Table
-          columns={columns}
-          rowSelection={{ selectedRowKeys, onChange: onSelectedRowKeysChange }}
-          dataSource={getData(current, pageSize)}
-          pagination={false}
-        />
-        <div className="tablePagiontion">
-          <p>
-            Hiển thị
-            <input
-              type="number"
-              value={pageSize}
-              onChange={(e) => {
-                dispatch(setPageSize(+e.target.value));
-              }}
-            />
-            hàng trong mỗi trang
-          </p>
-          <MyPagination
-            total={list.length}
-            current={current}
-            onChange={setCurrent}
-            pageSize={pageSize}
-          />
-        </div>
+        <TablePagination columns={columns} data={list} checkbox />
       </div>
     </>
   );

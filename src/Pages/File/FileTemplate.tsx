@@ -1,9 +1,12 @@
 import { Table } from 'antd';
+
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Button from '../../Common/Button';
 import Dropdown from '../../components/Dropdown';
+import Search from '../../components/Search';
+import TablePagination from '../../components/TablePagination';
 import TitleHeader from '../../components/TitleHeader';
 import FileDocument from '../../firebase/File';
 import { setSeeAdd } from '../Book/bookSlice';
@@ -177,41 +180,10 @@ const FileTemplate = () => {
             </div>
           </div>
           <div className="book-control-right">
-            <div className="book-control-right_search">
-              <i className="bx bx-search"></i>
-              <input
-                type="text"
-                placeholder="Tìm kết quả theo tên, lớp, môn học,..."
-              />
-            </div>
+            <Search />
           </div>
         </div>
-
-        <Table
-          columns={columns}
-          rowSelection={{ selectedRowKeys, onChange: onSelectedRowKeysChange }}
-          dataSource={getData(current, pageSize)}
-          pagination={false}
-        />
-        <div className="tablePagiontion">
-          <p>
-            Hiển thị
-            <input
-              type="number"
-              value={pageSize}
-              onChange={(e) => {
-                dispatch(setPageSize(+e.target.value));
-              }}
-            />
-            hàng trong mỗi trang
-          </p>
-          <MyPagination
-            total={list.length}
-            current={current}
-            onChange={setCurrent}
-            pageSize={pageSize}
-          />
-        </div>
+        <TablePagination columns={columns} data={list} checkbox />
       </div>
     </>
   );

@@ -1,7 +1,7 @@
-import { Table } from 'antd';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from '../../Common/Button';
+import TablePagination from '../../components/TablePagination';
 import { fileSelector } from './fileSelector';
 import { setIsFileDownload } from './fileSlice';
 
@@ -67,28 +67,19 @@ const ModalDowload = () => {
       },
     },
   ];
-  const [selectedRowKeys, setselectedRowKeys] = useState<string[] | number[]>(
-    []
-  );
 
-  const onSelectedRowKeysChange = (x: any) => {
-    setselectedRowKeys([...x]);
-    console.log('bạn check ', x);
-  };
   return (
     <>
       <div className="ModelAvatar">
         <div className="ModalDowload">
           <h1>Thêm tệp</h1>
-          <Table
+          <TablePagination
             columns={columns}
-            rowSelection={{
-              selectedRowKeys,
-              onChange: onSelectedRowKeysChange,
-            }}
-            dataSource={data}
-            pagination={false}
+            data={data}
+            checkbox
+            hasPagitation={false}
           />
+
           <div className="ModalDowload-btn">
             <Button
               buttonSize="btn--medium"

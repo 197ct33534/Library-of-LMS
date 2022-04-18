@@ -33,6 +33,10 @@ import BellSettingStudent from './Permission/Student/BellSettingStudent';
 
 import FooterCourse from './Pages/Home/FooterCourse';
 import FooterHomeTeacher from './Permission/Teacher/Home/FooterHomeTeacher';
+import BookTeacher from './Permission/Teacher/Book/BookTeacher';
+import BookTeacherDetailSubject from './Permission/Teacher/Book/BookTeacherDetailSubject';
+import ListSubject from './Permission/Teacher/Book/ListSubject';
+import ListDocumentTeacher from './Permission/Teacher/Book/ListDocumentTeacher';
 function App() {
   const auth = useSelector(authSelector);
   const permission = +auth.idlogin.permission;
@@ -100,6 +104,26 @@ function App() {
                   element={<BookCourse></BookCourse>}
                 ></Route>
                 <Route path="" element={<BookStudent></BookStudent>}></Route>
+              </Route>
+            )}
+            {permission === 2 && (
+              <Route path="book">
+                {/* <Route
+                  path="course"
+                  element={<BookCourse></BookCourse>}
+                ></Route> */}
+                <Route
+                  path="detailSubject"
+                  element={
+                    <BookTeacherDetailSubject></BookTeacherDetailSubject>
+                  }
+                ></Route>
+                <Route
+                  path="listDocument"
+                  element={<ListDocumentTeacher></ListDocumentTeacher>}
+                ></Route>
+
+                <Route path="" element={<BookTeacher></BookTeacher>}></Route>
               </Route>
             )}
 

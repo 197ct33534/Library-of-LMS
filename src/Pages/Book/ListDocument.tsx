@@ -16,6 +16,9 @@ import {
 import 'antd/dist/antd.css';
 import eye from '../../Assets/images/eye.png';
 import Button from '../../Common/Button';
+import TablePagination from '../../components/TablePagination';
+import { commonSelector } from '../../Redux/comonSelector';
+import Search from '../../components/Search';
 interface propPagination {
   total: number;
   onChange: React.Dispatch<React.SetStateAction<number>>;
@@ -207,24 +210,7 @@ const ListDocument = () => {
       ),
     },
   ];
-  //setup pagination
-  const pageSize = data.pageSize;
-
-  const [current, setCurrent] = useState(1);
-  const getData = (current: number, pageSize: number) => {
-    return list.slice((current - 1) * pageSize, current * pageSize);
-  };
-  //handle checkbox
-
-  const [selectedRowKeys, setselectedRowKeys] = useState<string[] | number[]>(
-    []
-  );
-
-  const onSelectedRowKeysChange = (x: any) => {
-    setselectedRowKeys([...x]);
-    console.log('check table ', x);
-  };
-
+  const checkboxTable = useSelector(commonSelector).checkboxTable;
   return (
     <>
       <TitleHeader
@@ -240,12 +226,12 @@ const ListDocument = () => {
               type="button"
               buttonSize="btn--large"
               buttonStyle={
-                selectedRowKeys.length
+                checkboxTable.length
                   ? 'btn--primary--outline'
                   : 'btn--disabled--outline'
               }
               onClick={
-                selectedRowKeys.length
+                checkboxTable.length
                   ? () => {
                       dispatch(setModelApproval(true));
                     }
@@ -258,13 +244,13 @@ const ListDocument = () => {
               type="button"
               buttonSize="btn--large"
               buttonStyle={
-                selectedRowKeys.length
+                checkboxTable.length
                   ? 'btn--primary--solid'
                   : 'btn--disabled--solid'
               }
-              disabled={selectedRowKeys.length ? true : false}
+              disabled={checkboxTable.length ? true : false}
               onClick={
-                selectedRowKeys.length
+                checkboxTable.length
                   ? () => {
                       dispatch(setModelApproval(true));
                     }
@@ -288,41 +274,10 @@ const ListDocument = () => {
             </div>
           </div>
           <div className="book-control-right">
-            <div className="book-control-right_search">
-              <i className="bx bx-search"></i>
-              <input
-                type="text"
-                placeholder="Tìm kết quả theo tên, lớp, môn học,..."
-              />
-            </div>
+            <Search />
           </div>
         </div>
-
-        <Table
-          columns={columns}
-          rowSelection={{ selectedRowKeys, onChange: onSelectedRowKeysChange }}
-          dataSource={getData(current, pageSize)}
-          pagination={false}
-        />
-        <div className="tablePagiontion">
-          <p>
-            Hiển thị
-            <input
-              type="number"
-              value={pageSize}
-              onChange={(e) => {
-                dispatch(setPageSize(+e.target.value));
-              }}
-            />
-            hàng trong mỗi trang
-          </p>
-          <MyPagination
-            total={list.length}
-            current={current}
-            onChange={setCurrent}
-            pageSize={pageSize}
-          />
-        </div>
+        <TablePagination columns={columns} data={list} checkbox />
       </div>
     </>
   );

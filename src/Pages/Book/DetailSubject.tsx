@@ -5,6 +5,7 @@ import tep from '../../Assets/images/tep.png';
 import Button from '../../Common/Button';
 import { Link } from 'react-router-dom';
 import play from '../../Assets/images/play_Circle.png';
+import Overview from './Overview';
 const { Panel } = Collapse;
 
 const DetailSubject = () => {
@@ -14,31 +15,7 @@ const DetailSubject = () => {
         titlePrimary="Thương mại điện tử"
         title={['Danh sách môn học']}
       />
-      <div className="overview">
-        <h2 className="overview-title">Tổng quan</h2>
-        <div className="grid-col-4">
-          <div className="overview-row">
-            <strong>Mã môn học:</strong>
-            <span>2020-6A1</span>
-          </div>
-          <div className="overview-row">
-            <strong>Giảng viên:</strong>
-            <span>Lớp học căn bản</span>
-          </div>
-          <div className="overview-row">
-            <strong>Môn học:</strong>
-            <span>Thương mại điện tử</span>
-          </div>
-          <div className="overview-row">
-            <strong>Mô tả:</strong>
-            <span>
-              Thương mại điện tử, hay còn gọi là e-commerce, e-comm hay EC, là
-              sự mua bán sản phẩm hay dịch vụ trên các hệ thống điện tử như
-              Internet và các mạng máy tính.
-            </span>
-          </div>
-        </div>
-      </div>
+      <Overview />
       <h2 className="overview-title">Danh sách chủ đề</h2>
       <Collapse accordion>
         <Panel header="Giới thiệu chung về Thương mại Điện tử" key="1">

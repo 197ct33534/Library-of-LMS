@@ -9,7 +9,6 @@ import {
   setIsRead,
 } from './bellSlice';
 import setting from '../../Assets/images/fi_settings.png';
-// import { nameList, imgList } from './fakedata.js';
 
 import Bell from '../../firebase/Bell';
 import { Table } from 'antd';
@@ -41,63 +40,10 @@ const BellNotify = () => {
     }
   }, [dispatch, list]);
   useEffect(() => {
-    // for (let i = 0; i < 100; i++) {
-    //   const ran = Math.random();
-    //   const data = {
-    //     key: i,
-    //     nameFriend: nameList[Math.floor(ran * nameList.length)],
-    //     imgAvatarFriend: imgList[Math.floor(ran * imgList.length)],
-    //     time: new Date(
-    //       +new Date() - Math.floor(ran * 10000000000)
-    //     ).toLocaleDateString('VN-VI'),
-    //   };
-    //   Bell.addBell(data);
-    // }
-
     return () => {
       dispatch(setIsNotifySystem(true));
     };
   }, [dispatch]);
-  //handle checkbox
-  useEffect(() => {
-    const list: HTMLElement | null = document.querySelector(
-      '.iconDotvertical-list'
-    );
-    const main = document.querySelector('.main');
-
-    if (list && main) {
-      main.addEventListener('mouseover', (e: any) => {
-        if (
-          e.pageX < 1640 &&
-          e.pageX > 1600 &&
-          e.pageY > 260 &&
-          e.pageY < 320
-        ) {
-          list.style.opacity = '1';
-        } else {
-          list.style.opacity = '0';
-        }
-      });
-    }
-    return () => {
-      if (list && main) {
-        main.removeEventListener('mouseover', (e: any) => {
-          console.log(e.pageX, e.pageY);
-
-          if (
-            e.pageX < 1640 &&
-            e.pageX > 1600 &&
-            e.pageY > 260 &&
-            e.pageY < 320
-          ) {
-            list.style.opacity = '1';
-          } else {
-            list.style.opacity = '0';
-          }
-        });
-      }
-    };
-  }, []);
 
   const [selectedRowKeys, setselectedRowKeys] = useState<string[] | number[]>(
     []
@@ -108,7 +54,20 @@ const BellNotify = () => {
   };
   let data;
   data = list.filter((item) => item.nameFriend.toLowerCase().includes(search));
+  const handleChangeSelections = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const text = e.target.value;
+    switch (text) {
+      case 'Đánh dấu đã đọc':
+        dispatch(setIsRead(true));
+        return;
+      case 'Xóa':
+        dispatch(setIsNotifyRemove(true));
+        return;
 
+      default:
+        break;
+    }
+  };
   const columns = [
     {
       title: () => {
@@ -145,8 +104,23 @@ const BellNotify = () => {
     {
       title: () => {
         return (
-          <div className="iconDotvertical">
-            <i className="bx bx-dots-vertical-rounded"></i>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'flex-end',
+              alignContent: 'flex-end',
+            }}
+          >
+            <select
+              onChange={(e) => handleChangeSelections(e)}
+              className="SelectHidden"
+              value="&#8942;"
+            >
+              <option value="&#8942;">&#8942;</option>
+
+              <option value="Đánh dấu đã đọc">Đánh dấu đã đọc</option>
+              <option value="Xóa">Xóa</option>
+            </select>
           </div>
         );
       },
@@ -208,8 +182,23 @@ const BellNotify = () => {
     {
       title: () => {
         return (
-          <div className="iconDotvertical">
-            <i className="bx bx-dots-vertical-rounded"></i>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'flex-end',
+              alignContent: 'flex-end',
+            }}
+          >
+            <select
+              onChange={(e) => handleChangeSelections(e)}
+              className="SelectHidden"
+              value="&#8942;"
+            >
+              <option value="&#8942;">&#8942;</option>
+
+              <option value="Đánh dấu đã đọc">Đánh dấu đã đọc</option>
+              <option value="Xóa">Xóa</option>
+            </select>
           </div>
         );
       },
@@ -282,10 +271,7 @@ const BellNotify = () => {
           />
         </div>
       )}
-      <ul className="iconDotvertical-list">
-        <li onClick={() => dispatch(setIsRead(true))}>Đánh dấu đã đọc</li>
-        <li onClick={() => dispatch(setIsNotifyRemove(true))}>xóa</li>
-      </ul>
+
       {addNotify && <AddNotify />}
     </>
   );

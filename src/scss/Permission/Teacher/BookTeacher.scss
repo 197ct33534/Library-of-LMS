@@ -1,0 +1,44 @@
+.TableChildren {
+  .ant-table-thead .ant-table-cell {
+    background-color: $black-7 !important;
+  }
+}
+.TableDescript {
+  @include dot(2);
+}
+.Table-status {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: italic;
+  font-size: 16px;
+}
+.Table-status.green {
+  color: #49c510;
+}
+.Table-status.blue {
+  color: #2eacee;
+}
+.Table-status.red {
+  color: #ed2025;
+}
+//ControllerDetail
+
+.ControllerDetail {
+  @include flex(center, space-between);
+  margin-bottom: 30px;
+  &-left {
+    > a {
+      color: $black-7;
+      padding: 8px 48px;
+      opacity: 0.5;
+      border-radius: 24px;
+      background-color: $gray-5;
+      margin-right: 16px;
+      display: inline-block;
+    }
+    > a.active {
+      color: $white;
+      background-color: $black-7;
+      opacity: 1;
+    }
+  }
+}
