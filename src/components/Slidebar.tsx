@@ -159,24 +159,25 @@ const Slidebar = () => {
               <li key={`slidebar-right-${item.path}`}>
                 <NavLink
                   to={`/${item.path}`}
-                  className={({ isActive }) =>
-                    isActive
+                  className={({ isActive }) => {
+                    return isActive
                       ? 'active Slidebar-right_item'
-                      : 'Slidebar-right_item'
-                  }
+                      : '  Slidebar-right_item';
+                  }}
                 >
                   <i className={`${item.icon} Slidebar-right_icon`}></i>
                   <span className="Slidebar-right_content">{item.content}</span>
                 </NavLink>
                 {item.children &&
                   item.children.map((child) => (
-                    <NavLink
-                      to={`${item.path}/${child.pathchil}`}
-                      className="Slidebar-right_itemChil"
-                      key={`slidebarChild-${child.title}`}
-                    >
-                      {child.title}
-                    </NavLink>
+                    <span key={`slidebarChild-${child.title}`}>
+                      <NavLink
+                        to={`${item.path}/${child.pathchil}`}
+                        className="Slidebar-right_itemChil"
+                      >
+                        {child.title}
+                      </NavLink>
+                    </span>
                   ))}
               </li>
             ))}

@@ -73,12 +73,22 @@ $linear-color: linear-gradient(359.43deg, #ff5400 2.1%, #f17f21 98.52%);
       transform: translate(50%, -50%);
       transition: all 0.25s ease;
     }
-    &_item.acitve,
+    &_item.active {
+      > span {
+        color: $orange-4;
+      }
+      > i {
+        color: $orange-4;
+      }
+    }
     &_item:hover > i,
     &_item:hover > span {
       color: $orange-4;
     }
     &_item:hover::after {
+      display: block;
+    }
+    &_item.active::after {
       display: block;
     }
     &_content {
@@ -94,6 +104,8 @@ $linear-color: linear-gradient(359.43deg, #ff5400 2.1%, #f17f21 98.52%);
       line-height: 130%;
       padding: 14px 0px 14px 32px;
       cursor: pointer;
+      color: $black-7;
+      opacity: 0.7;
     }
     &_itemChil:hover {
       background-color: #f0f3f6;
