@@ -10,8 +10,9 @@ import { MyPagination } from '../../../Pages/Book/ListDocument';
 import { useNavigate } from 'react-router-dom';
 import TeacherListDocument from '../../../firebase/TeacherListDocument';
 import { teacherSelector } from '../teacherSelector';
-import { setFakedataList } from '../teacherSlice';
+import { setAssignment, setFakedataList } from '../teacherSlice';
 import Search from '../../../components/Search';
+import ModalAssigment from './ModalAssigment';
 const NestedTable = () => {
   const expandedRowRender = () => {
     const columns = [
@@ -51,6 +52,7 @@ const NestedTable = () => {
     );
   };
   const navigation = useNavigate();
+  const dispatch = useDispatch();
   const handleChangeSelections = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const text = e.target.value;
     switch (text) {
@@ -61,13 +63,17 @@ const NestedTable = () => {
         navigation('listDocument');
         return;
 
+      case 'Phân công tài liệu':
+        dispatch(setAssignment(true));
+        return;
       default:
         break;
     }
   };
-  const dispatch = useDispatch();
+
   const teacher = useSelector(teacherSelector);
   const list = teacher.fakedataList;
+
   useEffect(() => {
     const getlistDocuments = async () => {
       const datas = await TeacherListDocument.getAllTeacherList();
@@ -184,7 +190,8 @@ const NestedTable = () => {
 };
 const BookTeacher = () => {
   const [subject, setSubjects] = useState('Xếp theo tên môn học');
-
+  const teacher = useSelector(teacherSelector);
+  const assignment = teacher.assignment;
   return (
     <>
       <TitleHeader titlePrimary="Danh sách môn giảng dạy" />
@@ -205,6 +212,7 @@ const BookTeacher = () => {
         </div>
         <NestedTable />
       </div>
+      {assignment && <ModalAssigment />}
     </>
   );
 };
