@@ -5,10 +5,11 @@
 }
 .leaderShip {
   @include flex(center, space-between);
-  width: 182px;
+
   height: 40px;
   > a {
     @include flex(center, space-between);
+    margin-right: 12px;
   }
   &-name {
     font-family: 'Source Sans Pro';
@@ -22,6 +23,7 @@
     line-height: 130%;
     text-decoration: underline;
     cursor: pointer;
+    margin-left: 12px;
   }
   &-dividingLine {
     height: 36px;

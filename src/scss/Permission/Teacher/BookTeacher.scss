@@ -20,11 +20,26 @@
 .Table-status.red {
   color: #ed2025;
 }
+.accordionPlus {
+  color: $orange-5;
+  font-size: 22px !important;
+  font-weight: 700;
+}
+
+.NoColor {
+  > div.ant-collapse-item.ant-collapse-item-active {
+    background-image: unset;
+    > .ant-collapse-header {
+      color: #0b80ec;
+    }
+  }
+}
 //ControllerDetail
 
 .ControllerDetail {
   @include flex(center, space-between);
   margin-bottom: 30px;
+  margin-top: 38px;
   &-left {
     > a {
       color: $black-7;

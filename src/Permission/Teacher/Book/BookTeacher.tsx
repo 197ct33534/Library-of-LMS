@@ -57,7 +57,7 @@ const NestedTable = () => {
     const text = e.target.value;
     switch (text) {
       case 'Chi tiết môn học':
-        navigation('detailSubject');
+        navigation('Subject/detailSubject');
         return;
       case 'Danh sách tài liệu':
         navigation('listDocument');

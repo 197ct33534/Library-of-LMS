@@ -25,7 +25,7 @@ const bookSlice = createSlice({
         status: '',
       },
     ],
-    pageSize: 8,
+
     modelApproval: false,
     modelCancelDocument: false,
     seeAdd: false,
@@ -40,9 +40,7 @@ const bookSlice = createSlice({
     setQuestion: (state, action) => {
       state.isQuestion = action.payload;
     },
-    setPageSize: (state, action) => {
-      state.pageSize = action.payload;
-    },
+
     setModelApproval: (state, action) => {
       state.modelApproval = action.payload;
     },
@@ -59,7 +57,7 @@ export const {
   bookFetchData,
   setQuestion,
   listDocumentFetchData,
-  setPageSize,
+
   setModelApproval,
   setModelCancelDocument,
   setSeeAdd,

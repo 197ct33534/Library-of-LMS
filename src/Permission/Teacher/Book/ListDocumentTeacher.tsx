@@ -5,6 +5,7 @@ import Dropdown from '../../../components/Dropdown';
 import TitleHeader from '../../../components/TitleHeader';
 import { teacherSelector } from '../teacherSelector';
 import TablePagination from '../../../components/TablePagination';
+import Search from 'antd/lib/transfer/search';
 
 const ListDocumentTeacher = () => {
   const [status, setStatus] = useState('Tất cả tình trạng');
@@ -127,13 +128,7 @@ const ListDocumentTeacher = () => {
             </div>
           </div>
           <div className="book-control-right">
-            <div className="book-control-right_search">
-              <i className="bx bx-search"></i>
-              <input
-                type="text"
-                placeholder="Tìm kết quả theo tên, lớp, môn học,..."
-              />
-            </div>
+            <Search />
           </div>
         </div>
         <TablePagination data={list} columns={columns} checkbox />

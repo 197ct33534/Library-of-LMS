@@ -5,11 +5,12 @@ import Modal from '../Common/Modal';
 import Success from '../Common/Success';
 import Slidebar from '../components/Slidebar';
 import User from '../components/User';
+import { setIsNotifyRemove } from '../Redux/commonSlice';
+import { commonSelector } from '../Redux/comonSelector';
 import { authSelector } from './Auth/authSelector';
 import ModelAvatar from './Auth/ModelAvatar';
 
 import { bellSelector } from './Bell/bellSelector';
-import { setIsNotifyRemove } from './Bell/bellSlice';
 
 import { bookSelector } from './Book/bookSelector';
 import { setModelApproval } from './Book/bookSlice';
@@ -35,7 +36,6 @@ const Template = () => {
   const seeAdd = book.seeAdd;
 
   const bell = useSelector(bellSelector);
-  const isNotifyRemove = bell.isNotifyRemove;
 
   const file = useSelector(fileSelector);
   const isFileRemove = file.isFileRemove;
@@ -47,6 +47,9 @@ const Template = () => {
   const modalRemove = setting.modalRemove;
   const modalNewExam = setting.modalNewExam;
   const modalComment = setting.modalComment;
+
+  const common = useSelector(commonSelector);
+  const isNotifyRemove = common.isNotifyRemove;
 
   const navigation = useNavigate();
 

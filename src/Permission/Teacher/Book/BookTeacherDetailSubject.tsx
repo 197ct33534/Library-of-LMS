@@ -1,6 +1,7 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
 import TitleHeader from '../../../components/TitleHeader';
-import Overview from '../../../Pages/Book/Overview';
+
 import ControllerDetail from './ControllerDetail';
 
 const BookTeacherDetailSubject = () => {
@@ -11,9 +12,7 @@ const BookTeacherDetailSubject = () => {
         title={['Danh sách môn giảng dạy']}
       />
       <ControllerDetail />
-      <div className="book">
-        <Overview />
-      </div>
+      <Outlet />
     </>
   );
 };

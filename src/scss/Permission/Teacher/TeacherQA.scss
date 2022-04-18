@@ -1,0 +1,83 @@
+.TeacherQA {
+  > .book {
+    padding: 16px 40px;
+    margin-top: 8px;
+    margin-bottom: 14px;
+  }
+  .book-control {
+    margin-bottom: unset;
+  }
+  &-control {
+    @include flex(center, flex-start);
+    margin-bottom: 24px;
+    > div {
+      margin-right: 32px;
+    }
+  }
+  &-comment {
+    @include flex(flex-start, flex-start);
+
+    .TeacherQA-comment {
+      border-left: 1px solid #999796;
+      padding-left: 16px;
+      margin-top: 8px;
+      margin-bottom: 14px;
+    }
+
+    &_avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+
+      > img {
+        object-fit: cover;
+      }
+    }
+    &_info {
+      margin-left: 16px;
+      > h1 {
+        color: $orange-5;
+      }
+      > h6 {
+        font-family: 'Source Sans Pro', sans-serif;
+        font-size: 16px;
+        color: $black-7;
+        opacity: 0.5;
+      }
+      > h2 {
+        font-weight: 700;
+      }
+      > span {
+        cursor: pointer;
+        color: #0b80ec;
+        padding-bottom: 8px;
+      }
+    }
+    &_warp {
+      @include flex(flex-start, space-between);
+      flex-direction: row-reverse;
+    }
+    &_btn {
+      @include flex(center, space-between);
+      flex-direction: column;
+
+      > select {
+        width: unset;
+        margin-bottom: 60px;
+        margin-left: 22px;
+      }
+      > i {
+        font-size: 24px;
+        cursor: pointer;
+      }
+      > i.bxs-heart {
+        color: #ed2025;
+      }
+    }
+  }
+}
+.content {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 16px;
+  color: $black-7;
+}

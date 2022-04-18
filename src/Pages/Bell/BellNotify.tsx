@@ -4,7 +4,6 @@ import { bellSelector } from './bellSelector';
 import {
   setAddNotify,
   setFakeData,
-  setIsNotifyRemove,
   setIsNotifySystem,
   setIsRead,
 } from './bellSlice';
@@ -15,6 +14,7 @@ import { Table } from 'antd';
 import AddNotify from './AddNotify.js';
 import { Link } from 'react-router-dom';
 import { authSelector } from '../Auth/authSelector';
+import { setIsNotifyRemove } from '../../Redux/commonSlice';
 const BellNotify = () => {
   const dispatch = useDispatch();
   const listData = useSelector(bellSelector);

@@ -6,7 +6,7 @@ const bellSlice = createSlice({
     isNotifySystem: true,
     isRead: false,
     addNotify: false,
-    isNotifyRemove: false,
+
     fakeData: [{ key: 0, nameFriend: '', imgAvatarFriend: '', time: '' }],
   },
   reducers: {
@@ -22,17 +22,9 @@ const bellSlice = createSlice({
     setAddNotify: (state, action) => {
       state.addNotify = action.payload;
     },
-    setIsNotifyRemove: (state, action) => {
-      state.isNotifyRemove = action.payload;
-    },
   },
 });
 const { actions, reducer: bellReducer } = bellSlice;
-export const {
-  setIsNotifySystem,
-  setFakeData,
-  setIsRead,
-  setAddNotify,
-  setIsNotifyRemove,
-} = actions;
+export const { setIsNotifySystem, setFakeData, setIsRead, setAddNotify } =
+  actions;
 export default bellReducer;

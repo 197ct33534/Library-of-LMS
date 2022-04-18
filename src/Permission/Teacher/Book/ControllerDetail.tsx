@@ -6,19 +6,19 @@ const ControllerDetail = () => {
   const links = [
     {
       content: 'Tổng quan môn học',
-      path: '/book/detailSubject',
+      path: '/book/Subject/detailSubject',
     },
     {
       content: 'Danh sách chủ đề',
-      path: '/book/listSubject',
+      path: '/book/Subject/listSubject',
     },
     {
       content: 'Hỏi & đáp',
-      path: '/book/Q&A',
+      path: '/book/Subject/Q&A',
     },
     {
       content: 'Thông báo môn học',
-      path: '/book/announce',
+      path: '/book/Subject/announce',
     },
   ];
   return (
@@ -36,10 +36,6 @@ const ControllerDetail = () => {
               {link.content}
             </NavLink>
           ))}
-          {/* <span className="active">Tổng quan môn học</span>
-          <span>Danh sách chủ đề</span>
-          <span>Hỏi & đáp</span>
-          <span>Thông báo môn học</span> */}
         </div>
         <div className="ControllerDetail-right">
           <Button buttonStyle="btn--primary--solid" buttonSize="btn--large">

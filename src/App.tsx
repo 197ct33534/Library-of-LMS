@@ -37,6 +37,8 @@ import BookTeacher from './Permission/Teacher/Book/BookTeacher';
 import BookTeacherDetailSubject from './Permission/Teacher/Book/BookTeacherDetailSubject';
 import ListSubject from './Permission/Teacher/Book/ListSubject';
 import ListDocumentTeacher from './Permission/Teacher/Book/ListDocumentTeacher';
+import Overview from './Pages/Book/Overview';
+import TeacherQA from './Permission/Teacher/Book/TeacherQA';
 function App() {
   const auth = useSelector(authSelector);
   const permission = +auth.idlogin.permission;
@@ -99,31 +101,28 @@ function App() {
             )}
             {permission === 1 && (
               <Route path="book">
-                <Route
-                  path="course"
-                  element={<BookCourse></BookCourse>}
-                ></Route>
-                <Route path="" element={<BookStudent></BookStudent>}></Route>
+                <Route path="course" element={<BookCourse />} />
+                <Route path="" element={<BookStudent />} />
               </Route>
             )}
             {permission === 2 && (
               <Route path="book">
-                {/* <Route
-                  path="course"
-                  element={<BookCourse></BookCourse>}
-                ></Route> */}
-                <Route
-                  path="detailSubject"
-                  element={
-                    <BookTeacherDetailSubject></BookTeacherDetailSubject>
-                  }
-                ></Route>
-                <Route
-                  path="listDocument"
-                  element={<ListDocumentTeacher></ListDocumentTeacher>}
-                ></Route>
-
-                <Route path="" element={<BookTeacher></BookTeacher>}></Route>
+                <Route path="Subject" element={<BookTeacherDetailSubject />}>
+                  <Route
+                    path="detailSubject"
+                    element={
+                      <div className="book">
+                        <Overview />
+                      </div>
+                    }
+                  />
+                  <Route path="listSubject" element={<ListSubject />} />
+                  <Route path="Q&A" element={<TeacherQA />} />
+                </Route>
+                ListDocumentTeacher
+                <Route path="course" element={<BookCourse />} />
+                <Route path="listDocument" element={<ListDocumentTeacher />} />
+                <Route path="" element={<BookTeacher />} />
               </Route>
             )}
 

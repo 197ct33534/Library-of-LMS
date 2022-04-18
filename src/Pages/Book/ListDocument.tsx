@@ -1,4 +1,4 @@
-import { Table, Pagination } from 'antd';
+import { Pagination } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -10,7 +10,6 @@ import {
   listDocumentFetchData,
   setModelApproval,
   setModelCancelDocument,
-  setPageSize,
   setSeeAdd,
 } from './bookSlice';
 import 'antd/dist/antd.css';
