@@ -7,7 +7,7 @@ import { commonSelector } from '../../../Redux/comonSelector';
 import { useDispatch, useSelector } from 'react-redux';
 import { setPageSize } from '../../../Redux/commonSlice';
 import { MyPagination } from '../../../Pages/Book/ListDocument';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import TeacherListDocument from '../../../firebase/TeacherListDocument';
 import { teacherSelector } from '../teacherSelector';
 import { setAssignment, setFakedataList } from '../teacherSlice';
@@ -22,9 +22,9 @@ const NestedTable = () => {
         title: 'Xem chi tiết',
 
         render: () => (
-          <span>
+          <Link to="Subject/detailSubject">
             <img src={eye} alt="" />
-          </span>
+          </Link>
         ),
       },
     ];

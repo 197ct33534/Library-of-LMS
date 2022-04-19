@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import Button from '../../../Common/Button';
 
 const ControllerDetail = () => {
@@ -38,9 +38,11 @@ const ControllerDetail = () => {
           ))}
         </div>
         <div className="ControllerDetail-right">
-          <Button buttonStyle="btn--primary--solid" buttonSize="btn--large">
-            Chỉnh sửa
-          </Button>
+          <Link to="/book/update">
+            <Button buttonStyle="btn--primary--solid" buttonSize="btn--large">
+              Chỉnh sửa
+            </Button>
+          </Link>
         </div>
       </div>
     </>

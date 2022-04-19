@@ -3,8 +3,11 @@ import Button from '../../../Common/Button';
 import Dropdown from '../../../components/Dropdown';
 import Search from '../../../components/Search';
 import avatar from '../../../Assets/images/Ellipse2.png';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setIsNotifyRemove } from '../../../Redux/commonSlice';
+import { setModalAddQuestion } from '../teacherSlice';
+import { teacherSelector } from '../teacherSelector';
+import ModalAddQuestion from './ModalAddQuestion';
 interface PropsComment {
   children?: React.ReactNode;
 }
@@ -97,9 +100,11 @@ const TeacherQA = () => {
   const [slide, setSlide] = useState('Tất cả bài giảng');
   const [question, setQuestion] = useState('Câu hỏi gần nhất');
   const [fliter, setFilter] = useState('Lọc câu hỏi');
-
+  const dispatch = useDispatch();
+  const modalAddQuestion = useSelector(teacherSelector).modalAddQuestion;
   return (
     <>
+      {modalAddQuestion && <ModalAddQuestion />}
       <div className="TeacherQA">
         <div className="TeacherQA-control">
           <Dropdown
@@ -140,6 +145,7 @@ const TeacherQA = () => {
               <Button
                 buttonStyle="btn--lightPrimary--solid"
                 buttonSize="btn--small"
+                onClick={() => dispatch(setModalAddQuestion(true))}
               >
                 Thêm câu hỏi mới
               </Button>

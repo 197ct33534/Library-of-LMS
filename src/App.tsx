@@ -39,6 +39,8 @@ import ListSubject from './Permission/Teacher/Book/ListSubject';
 import ListDocumentTeacher from './Permission/Teacher/Book/ListDocumentTeacher';
 import Overview from './Pages/Book/Overview';
 import TeacherQA from './Permission/Teacher/Book/TeacherQA';
+import AnnounceBook from './Permission/Teacher/Book/AnnounceBook';
+import UpdateBook from './Permission/Teacher/Book/UpdateBook';
 function App() {
   const auth = useSelector(authSelector);
   const permission = +auth.idlogin.permission;
@@ -118,8 +120,9 @@ function App() {
                   />
                   <Route path="listSubject" element={<ListSubject />} />
                   <Route path="Q&A" element={<TeacherQA />} />
+                  <Route path="announce" element={<AnnounceBook />} />
                 </Route>
-                ListDocumentTeacher
+                <Route path="update" element={<UpdateBook />} />
                 <Route path="course" element={<BookCourse />} />
                 <Route path="listDocument" element={<ListDocumentTeacher />} />
                 <Route path="" element={<BookTeacher />} />

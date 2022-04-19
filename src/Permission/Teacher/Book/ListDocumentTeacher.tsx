@@ -75,40 +75,14 @@ const ListDocumentTeacher = () => {
             <Button
               type="button"
               buttonSize="btn--large"
-              //   buttonStyle={
-              //     selectedRowKeys.length
-              //       ? 'btn--primary--outline'
-              //       : 'btn--disabled--outline'
-              //   }
               buttonStyle="btn--primary--outline"
-
-              //   onClick={
-              //     selectedRowKeys.length
-              //       ? () => {
-              //           dispatch(setModelApproval(true));
-              //         }
-              //       : () => {}
-              //   }
             >
               Tải xuống
             </Button>
             <Button
               type="button"
               buttonSize="btn--large"
-              //   buttonStyle={
-              //     selectedRowKeys.length
-              //       ? 'btn--primary--solid'
-              //       : 'btn--disabled--solid'
-              //   }
               buttonStyle="btn--primary--solid"
-              //   disabled={selectedRowKeys.length ? true : false}
-              //   onClick={
-              //     selectedRowKeys.length
-              //       ? () => {
-              //           dispatch(setModelApproval(true));
-              //         }
-              //       : () => {}
-              //   }
             >
               <i className="bx bx-plus" style={{ color: '#fff' }}></i>Thêm mới
             </Button>

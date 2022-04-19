@@ -1,0 +1,54 @@
+.UpdateBook-item {
+  margin-bottom: 16px;
+  &_right {
+    grid-column: span 6;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 16px;
+    color: $black-7;
+    opacity: 0.8;
+  }
+  textarea {
+    border: 1px solid rgba(55, 56, 57, 0.5);
+    border-radius: 8px;
+  }
+}
+.UpdateBook-btn {
+  button:first-child {
+    margin-right: 16px;
+  }
+  button:last-child {
+    margin-left: 16px;
+    padding: 14px 24px;
+  }
+}
+.UpdateBook-addField {
+  border: 1px dashed $orange-6;
+  border-radius: 16px;
+  background: $orange-1;
+  padding: 16px 52px;
+  margin-bottom: 16px;
+  display: none;
+  &_filed {
+    @include flex(center, space-between);
+
+    > textarea {
+      height: 80px;
+      border: 1px solid rgba(55, 56, 57, 0.5);
+      border-radius: 8px;
+    }
+    > textarea:first-child {
+      width: 330px;
+    }
+    > textarea:last-child {
+      margin-left: 24px;
+    }
+  }
+  &_btn {
+    @include flex(center, flex-end);
+    margin-top: 16px;
+    > span {
+      margin-right: 34px;
+      cursor: pointer;
+    }
+  }
+}
