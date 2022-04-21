@@ -41,6 +41,7 @@ import Overview from './Pages/Book/Overview';
 import TeacherQA from './Permission/Teacher/Book/TeacherQA';
 import AnnounceBook from './Permission/Teacher/Book/AnnounceBook';
 import UpdateBook from './Permission/Teacher/Book/UpdateBook';
+import FormAddDocument from './Permission/Teacher/Book/FormAddDocument.js';
 function App() {
   const auth = useSelector(authSelector);
   const permission = +auth.idlogin.permission;
@@ -122,6 +123,8 @@ function App() {
                   <Route path="Q&A" element={<TeacherQA />} />
                   <Route path="announce" element={<AnnounceBook />} />
                 </Route>
+                <Route path="form" element={<FormAddDocument />} />
+
                 <Route path="update" element={<UpdateBook />} />
                 <Route path="course" element={<BookCourse />} />
                 <Route path="listDocument" element={<ListDocumentTeacher />} />

@@ -8,6 +8,8 @@ const teacehrSlice = createSlice({
     modalAddQuestion: false,
     updatebook: false,
     modalSucess: false,
+    TopicList: [],
+    modalUpFile: false,
   },
   reducers: {
     setFakedataList: (state, action) => {
@@ -25,6 +27,12 @@ const teacehrSlice = createSlice({
     setModalSucess: (state, action) => {
       state.modalSucess = action.payload;
     },
+    setTopicList: (state, action) => {
+      (state.TopicList as string[]).push(action.payload);
+    },
+    setModalUpFile: (state, action) => {
+      state.modalUpFile = action.payload;
+    },
   },
 });
 const { actions, reducer: teacherReducer } = teacehrSlice;
@@ -35,5 +43,7 @@ export const {
   setModalAddQuestion,
   setUpdatebook,
   setModalSucess,
+  setTopicList,
+  setModalUpFile,
 } = actions;
 export default teacherReducer;

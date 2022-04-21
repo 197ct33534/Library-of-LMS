@@ -52,3 +52,40 @@
     }
   }
 }
+
+// TopicList
+.TopicList {
+  margin-top: 100px;
+  margin-bottom: 200px;
+  @include flex(center, center);
+  flex-direction: column;
+  > h1 {
+    font-size: 28px;
+    line-height: 33px;
+    color: $black-7;
+  }
+  > p {
+    color: #c9c4c0;
+  }
+}
+.SelectHidden2 {
+  border: unset;
+  outline: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background-color: transparent;
+  appearance: none;
+  color: $black-7;
+  font-size: 32px;
+  font-weight: bold;
+  // text-align: right;
+  cursor: pointer;
+  transform: unset !important;
+
+  > option:first-child {
+    display: none;
+  }
+  > option {
+    text-align: left;
+  }
+}

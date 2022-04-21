@@ -6,7 +6,7 @@ import tep from '../../../Assets/images/tep.png';
 
 import play from '../../../Assets/images/play_Circle.png';
 import { Link } from 'react-router-dom';
-const CollapseChilren = () => {
+export const CollapseChilren = () => {
   return (
     <>
       <div className="collapseChilren">

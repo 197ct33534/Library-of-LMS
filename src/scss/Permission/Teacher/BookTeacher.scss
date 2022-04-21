@@ -34,6 +34,14 @@
     }
   }
 }
+.NoColor.primary {
+  > div.ant-collapse-item.ant-collapse-item-active {
+    background-image: unset;
+    > .ant-collapse-header {
+      color: #cc5c00;
+    }
+  }
+}
 //ControllerDetail
 
 .ControllerDetail {
