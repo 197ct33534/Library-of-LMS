@@ -1,5 +1,3 @@
-import { Table } from 'antd';
-
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -10,21 +8,25 @@ import TablePagination from '../../components/TablePagination';
 import TitleHeader from '../../components/TitleHeader';
 import FileDocument from '../../firebase/File';
 import { setSeeAdd } from '../Book/bookSlice';
-import { MyPagination } from '../Book/ListDocument';
+
 import { fileSelector } from './fileSelector';
 import {
   setFetDataFile,
   setIsFileDownload,
   setIsFileRemove,
   setIsFileRename,
-  setPageSize,
 } from './fileSlice';
+// import word from '../../Assets/images/word.png';
+// import pp from '../../Assets/images/pp.png';
+// import mp3 from '../../Assets/images/mp3.png';
+// import ex from '../../Assets/images/ex.png';
 
 const FileTemplate = () => {
   const [choseFile, setChoseFile] = useState('Thể loại');
   const dispatch = useDispatch();
   const file = useSelector(fileSelector);
   const list = file.fetDataFile;
+
   //get data
   useEffect(() => {
     const getFileDocuments = async () => {
@@ -42,11 +44,9 @@ const FileTemplate = () => {
       getFileDocuments();
     }
   }, [dispatch, list]);
-  //
+
   const handleChangeSelections = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const text = e.target.value;
-    console.log(text);
-
     switch (text) {
       case 'Đổi tên':
         dispatch(setIsFileRename(true));
@@ -122,6 +122,7 @@ const FileTemplate = () => {
               onChange={(e) => handleChangeSelections(e)}
               className="SelectHidden"
               value="&#8942;"
+              style={{ textAlign: 'center', transform: 'unset' }}
             >
               <option value="&#8942;">&#8942;</option>
 
@@ -135,20 +136,7 @@ const FileTemplate = () => {
       },
     },
   ];
-  //setup pagination
-  const pageSize = file.pageSize;
 
-  const [current, setCurrent] = useState(1);
-  const getData = (current: number, pageSize: number) => {
-    return list.slice((current - 1) * pageSize, current * pageSize);
-  };
-  const [selectedRowKeys, setselectedRowKeys] = useState<string[] | number[]>(
-    []
-  );
-
-  const onSelectedRowKeysChange = (x: any) => {
-    setselectedRowKeys([...x]);
-  };
   return (
     <>
       <TitleHeader

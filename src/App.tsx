@@ -42,6 +42,8 @@ import TeacherQA from './Permission/Teacher/Book/TeacherQA';
 import AnnounceBook from './Permission/Teacher/Book/AnnounceBook';
 import UpdateBook from './Permission/Teacher/Book/UpdateBook';
 import FormAddDocument from './Permission/Teacher/Book/FormAddDocument.js';
+import FileTemplateTeacher from './Permission/Teacher/File/FileTemplateTeacher';
+import BagTemplateTeacher from './Permission/Teacher/Bag/BagTemplateTeacher';
 function App() {
   const auth = useSelector(authSelector);
   const permission = +auth.idlogin.permission;
@@ -152,13 +154,27 @@ function App() {
                 }
               ></Route>
             </Route>
-            <Route path="file">
-              <Route path="" element={<FileTemplate></FileTemplate>}></Route>
-            </Route>
-            <Route path="bag">
-              <Route path="" element={<BagTemplate></BagTemplate>}></Route>
-              <Route path="detail" element={<BagDetail></BagDetail>}></Route>
-            </Route>
+            {permission === 3 && (
+              <Route path="file">
+                <Route path="" element={<FileTemplate />}></Route>
+              </Route>
+            )}
+            {permission === 2 && (
+              <Route path="file">
+                <Route path="" element={<FileTemplateTeacher />}></Route>
+              </Route>
+            )}
+            {permission === 3 && (
+              <Route path="bag">
+                <Route path="" element={<BagTemplate></BagTemplate>}></Route>
+                <Route path="detail" element={<BagDetail></BagDetail>}></Route>
+              </Route>
+            )}
+            {permission === 2 && (
+              <Route path="bag">
+                <Route path="" element={<BagTemplateTeacher />}></Route>
+              </Route>
+            )}
             <Route path="setting">
               <Route
                 path=""

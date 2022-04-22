@@ -5,7 +5,7 @@ import Dropdown from '../../../components/Dropdown';
 import TitleHeader from '../../../components/TitleHeader';
 import { teacherSelector } from '../teacherSelector';
 import TablePagination from '../../../components/TablePagination';
-import Search from 'antd/lib/transfer/search';
+import Search from '../../../components/Search';
 
 const ListDocumentTeacher = () => {
   const [status, setStatus] = useState('Tất cả tình trạng');

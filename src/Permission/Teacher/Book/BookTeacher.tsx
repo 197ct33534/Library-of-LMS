@@ -139,7 +139,7 @@ const NestedTable = () => {
           onChange={(e) => handleChangeSelections(e)}
           className="SelectHidden"
           value="&#8942;"
-          style={{ padding: '0', transform: 'translateX(50%)' }}
+          style={{ textAlign: 'center', transform: 'unset' }}
         >
           <option value="&#8942;">&#8942;</option>
 
