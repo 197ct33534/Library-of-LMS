@@ -44,6 +44,7 @@ import UpdateBook from './Permission/Teacher/Book/UpdateBook';
 import FormAddDocument from './Permission/Teacher/Book/FormAddDocument.js';
 import FileTemplateTeacher from './Permission/Teacher/File/FileTemplateTeacher';
 import BagTemplateTeacher from './Permission/Teacher/Bag/BagTemplateTeacher';
+import CreateExam from './Permission/Teacher/Bag/CreateExam';
 function App() {
   const auth = useSelector(authSelector);
   const permission = +auth.idlogin.permission;
@@ -172,7 +173,10 @@ function App() {
             )}
             {permission === 2 && (
               <Route path="bag">
-                <Route path="" element={<BagTemplateTeacher />}></Route>
+                <Route path="createExam" element={<CreateExam />} />
+                <Route path="detail" element={<BagDetail />} />
+
+                <Route path="" element={<BagTemplateTeacher />} />
               </Route>
             )}
             <Route path="setting">

@@ -14,6 +14,12 @@ const teacehrSlice = createSlice({
     addLesson: false,
     modalRemoveFile: false,
     modalAddLeactures: false,
+    UpFile: false,
+    modalCreateExam: false,
+    Exam: {
+      infoExam: {},
+      listQuestion: [],
+    },
   },
   reducers: {
     setFakedataList: (state, action) => {
@@ -49,6 +55,18 @@ const teacehrSlice = createSlice({
     setModalAddLeactures: (state, action) => {
       state.modalAddLeactures = action.payload;
     },
+    setUpFile: (state, action) => {
+      state.UpFile = action.payload;
+    },
+    setModalCreateExam: (state, action) => {
+      state.modalCreateExam = action.payload;
+    },
+    addQuestionInExam: (state, action) => {
+      (state.Exam.listQuestion as {}[]).push(action.payload);
+    },
+    setInfoExam: (state, action) => {
+      state.Exam.infoExam = action.payload;
+    },
   },
 });
 const { actions, reducer: teacherReducer } = teacehrSlice;
@@ -65,5 +83,9 @@ export const {
   setAddLesson,
   setModalRemoveFile,
   setModalAddLeactures,
+  setUpFile,
+  setModalCreateExam,
+  addQuestionInExam,
+  setInfoExam,
 } = actions;
 export default teacherReducer;

@@ -1,4 +1,3 @@
-import { Table } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from '../../Common/Button';
@@ -112,6 +111,9 @@ const BagTemplate = () => {
       title: 'Thời lượng',
       dataIndex: 'ExamTime',
       key: 'ExamTime',
+      render: (text: string) => {
+        return <span>{text} phút</span>;
+      },
     },
     {
       title: 'Tình trạng',

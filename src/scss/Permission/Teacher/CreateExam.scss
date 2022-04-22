@@ -1,0 +1,122 @@
+.CreateExam {
+  .book > h1 {
+    color: $black-7;
+  }
+  .book > div.grid-col-2 {
+    gap: 19px 190px;
+  }
+  &-infoExam.all {
+    grid-column: span 2;
+  }
+  &-infoExam {
+    @include flex(center, flex-start);
+    > div.grid-col-6 {
+      width: 100%;
+      > label {
+        font-weight: 700;
+        font-family: 'Source Sans Pro', sans-serif;
+        font-size: 16px;
+        line-height: 20px;
+        color: $black-7;
+      }
+    }
+    &_input {
+      @include flex(center, space-between);
+      grid-column: span 5;
+
+      &__Select {
+        > span {
+          margin-left: 16px;
+        }
+      }
+    }
+  }
+  .ant-select {
+    width: 100%;
+  }
+  .ant-input {
+    border-radius: 8px;
+  }
+  &-btn {
+    @include flex(center, center);
+    margin-top: 40px;
+    > button:first-child {
+      margin-right: 16px;
+    }
+    > button:last-child {
+      margin-left: 16px;
+    }
+  }
+}
+.CreateExam-body {
+  margin-top: 24px;
+  &_questionItem {
+    margin-bottom: 26px;
+  }
+  &_question {
+    background-color: $white;
+    padding: 40px;
+    div.grid-col-8 {
+      > label {
+        font-weight: 700;
+        font-family: 'Source Sans Pro', sans-serif;
+        font-size: 16px;
+        line-height: 20px;
+        color: $black-7;
+      }
+      i {
+        cursor: pointer;
+        margin-left: 25px;
+        font-size: 22px;
+        color: $orange-5;
+      }
+    }
+    &-Input {
+      grid-column: span 6;
+      .ck-content {
+        height: 70px;
+      }
+    }
+    &-Inputmini {
+      @include flex(center, flex-start);
+    }
+  }
+  &_numberquestion {
+    > button {
+      margin-left: 75px;
+    }
+    .ant-tabs-nav-list {
+      height: 520px;
+      overflow-y: scroll;
+    }
+    .ant-tabs-nav-list::-webkit-scrollbar-thumb {
+      border-radius: 15px;
+      -webkit-box-shadow: inset 0 0 3px white;
+      background-color: $gray-4;
+      cursor: pointer;
+    }
+    .ant-tabs-nav-list::-webkit-scrollbar {
+      width: 8px;
+      background-color: $gray-5;
+    }
+    .ant-tabs-nav-list::-webkit-scrollbar-track {
+      width: 8px;
+      background-color: $gray-5;
+      -webkit-box-shadow: inset 0 0 3px $white;
+      border-radius: 15px;
+      background-color: $gray-5;
+    }
+  }
+  .ant-tabs-nav {
+    width: 300px;
+    background: #f0f3f6;
+  }
+  .ant-tabs-tab > div {
+    width: 100%;
+    color: $black-7;
+  }
+  .ant-tabs-tab-active.ant-tabs-tab > div {
+    background: #ffd8b8;
+    color: $black-7 !important;
+  }
+}

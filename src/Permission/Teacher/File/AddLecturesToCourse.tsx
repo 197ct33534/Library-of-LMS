@@ -1,9 +1,9 @@
 import { Checkbox, Input, Select } from 'antd';
 import { useFormik } from 'formik';
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import Button from '../../../Common/Button';
-import Dropdown from '../../../components/Dropdown';
+
 import { setModalAddLeactures } from '../teacherSlice';
 
 import TableFile from './TableFile';
@@ -12,16 +12,7 @@ const AddLecturesToCourse = () => {
   const dispatch = useDispatch();
 
   const { Option } = Select;
-  function handleChange(value: string) {
-    console.log(`selected ${value}`);
-  }
-  const [state, setState] = useState({
-    nameSubject: '',
-    ClassChecked: false,
-    chooseNameClass: '',
-    chooseNameSubject: '',
-    title: '',
-  });
+
   const formik = useFormik({
     initialValues: {
       nameSubject: '',
