@@ -20,6 +20,7 @@ const teacehrSlice = createSlice({
       infoExam: {},
       listQuestion: [],
     },
+    fakedataExam: [],
   },
   reducers: {
     setFakedataList: (state, action) => {
@@ -67,6 +68,9 @@ const teacehrSlice = createSlice({
     setInfoExam: (state, action) => {
       state.Exam.infoExam = action.payload;
     },
+    setFakeDataExam: (state, action) => {
+      state.fakedataExam = action.payload;
+    },
   },
 });
 const { actions, reducer: teacherReducer } = teacehrSlice;
@@ -87,5 +91,6 @@ export const {
   setModalCreateExam,
   addQuestionInExam,
   setInfoExam,
+  setFakeDataExam,
 } = actions;
 export default teacherReducer;

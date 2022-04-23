@@ -1,5 +1,5 @@
 import React, { memo, useEffect, useState } from 'react';
-import { Checkbox, Input, Select, Form } from 'antd';
+import { Checkbox, Input, Select } from 'antd';
 import Editor from './Editor.js';
 
 import { useDispatch } from 'react-redux';

@@ -2,7 +2,12 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const comonSlice = createSlice({
   name: 'common',
-  initialState: { pageSize: 8, checkboxTable: [], isNotifyRemove: false },
+  initialState: {
+    pageSize: 8,
+    checkboxTable: [],
+    isNotifyRemove: false,
+    isModalSucces: false,
+  },
   reducers: {
     setPageSize: (state, action) => {
       state.pageSize = action.payload;
@@ -16,6 +21,9 @@ const comonSlice = createSlice({
     setIsNotifyRemove: (state, action) => {
       state.isNotifyRemove = action.payload;
     },
+    setModalSucces: (state, action) => {
+      state.isModalSucces = action.payload;
+    },
   },
 });
 const { actions, reducer: commonReducer } = comonSlice;
@@ -24,5 +32,6 @@ export const {
   setCheckboxTable,
   resetCheckboxTable,
   setIsNotifyRemove,
+  setModalSucces,
 } = actions;
 export default commonReducer;

@@ -1,10 +1,14 @@
 import { Checkbox, Input, Radio, Select, Tabs } from 'antd';
 import { useFormik } from 'formik';
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import Button from '../../../Common/Button';
+import Success from '../../../Common/Success';
 import TitleHeader from '../../../components/TitleHeader';
 import Editor from '../../../Pages/Bell/Editor';
+import { setModalSucces } from '../../../Redux/commonSlice';
+import { commonSelector } from '../../../Redux/comonSelector';
 import { addQuestionInExam, setInfoExam } from '../teacherSlice';
 const Question = ({ num, multipleChoice }) => {
   const [question, setQuestion] = useState('');
@@ -247,7 +251,7 @@ const Question = ({ num, multipleChoice }) => {
     </div>
   );
 };
-const CreateExam = () => {
+const CreateExam = ({ addQuestion }) => {
   const { Option } = Select;
   const { TabPane } = Tabs;
   const dispath = useDispatch();
@@ -259,10 +263,20 @@ const CreateExam = () => {
       typeExam: 'Tự Luận',
       groupSubjectName: 'Công nghệ thông tin',
       subjectName: 'Kinh tế căng bản',
+      radioLV: 'Dễ',
     },
   });
+  const success = useSelector(commonSelector).isModalSucces;
+  const navigation = useNavigate();
   const handleSubmit = () => {
     dispath(setInfoExam(formik.values));
+
+    dispath(setModalSucces(true));
+
+    setTimeout(() => {
+      dispath(setModalSucces(false));
+      navigation('/bag');
+    }, 3000);
   };
   const [panes, setPanes] = useState([
     {
@@ -298,121 +312,199 @@ const CreateExam = () => {
 
   return (
     <>
-      <TitleHeader titlePrimary="Tạo đề thi mới" title={['Ngân hàng đề thi']} />
-      <div className="CreateExam">
-        <div className="book">
-          <h1>Phần thông tin:</h1>
-          <div className="grid-col-2">
-            <div className="CreateExam-infoExam">
-              <div className="grid-col-6">
-                <label htmlFor="">Tên:</label>
-                <div className="CreateExam-infoExam_input">
-                  <Input
-                    name="nameExam"
-                    value={formik.values.nameExam}
-                    onChange={formik.handleChange}
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="CreateExam-infoExam">
-              <div className="grid-col-6">
-                <label htmlFor="">Thời lượng:</label>
-                <div className="CreateExam-infoExam_input">
-                  <div className="CreateExam-infoExam_input__Select">
-                    <Select
-                      defaultValue={formik.values.house}
-                      style={{ width: '120px' }}
-                      onChange={(value) => {
-                        formik.setFieldValue('house', value);
-                      }}
-                    >
-                      <Option value="1">1</Option>
-                      <Option value="2">2</Option>
+      {success && <Success text="Gửi thành công và chờ phê duyệt" />}
+      {addQuestion ? (
+        <TitleHeader titlePrimary="Thêm câu hỏi" title={['Ngân hàng đề thi']} />
+      ) : (
+        <TitleHeader
+          titlePrimary="Tạo đề thi mới"
+          title={['Ngân hàng đề thi']}
+        />
+      )}
 
-                      <Option value="3">3</Option>
-                    </Select>
-                    <span>Giờ</span>
-                  </div>
-                  <div className="CreateExam-infoExam_input__Select">
+      <div className="CreateExam">
+        {addQuestion ? (
+          <div className="book">
+            <h1>Phần câu hỏi và đáp án:</h1>
+            <div className="grid-col-2">
+              <div className="CreateExam-infoExam">
+                <div className="grid-col-6">
+                  <label htmlFor="">Tổ bộ môn:</label>
+                  <div className="CreateExam-infoExam_input">
                     <Select
-                      style={{ width: '120px' }}
-                      defaultValue={formik.values.minute}
+                      defaultValue={formik.values.groupSubjectName}
                       onChange={(value) => {
-                        formik.setFieldValue('minute', value);
+                        formik.setFieldValue('groupSubjectName', value);
                       }}
                     >
-                      <Option value="15">15</Option>
-                      <Option value="30">30</Option>
-                      <Option value="45">45</Option>
+                      {[
+                        'Quan hệ quốc tế',
+                        'Kinh tế đối ngoại',
+                        'Công nghệ thông tin',
+                      ].map((item) => (
+                        <Option value={item} key={item}>
+                          {item}
+                        </Option>
+                      ))}
                     </Select>
-                    <span>Phút</span>
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="CreateExam-infoExam all">
-              <div className="grid-col-6">
-                <label htmlFor="">Hình thức:</label>
-                <div className="CreateExam-infoExam_input ">
-                  <Radio.Group
-                    options={['Trắc nghiệm', 'Tự Luận']}
-                    onChange={(e) => {
-                      formik.setFieldValue('typeExam', e.target.value);
-                    }}
-                    value={formik.values.typeExam}
-                  />
+              <div className="CreateExam-infoExam">
+                <div className="grid-col-6">
+                  <label htmlFor="">Môn học</label>
+                  <div className="CreateExam-infoExam_input">
+                    <Select
+                      defaultValue={formik.values.subjectName}
+                      onChange={(value) => {
+                        formik.setFieldValue('subjectName', value);
+                      }}
+                    >
+                      {[
+                        'Chủ nghĩa Mác- Lênin',
+                        'Kinh tế căng bản',
+                        'Hóa học nâng cao',
+                      ].map((item) => (
+                        <Option value={item} key={item}>
+                          {item}
+                        </Option>
+                      ))}
+                    </Select>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="CreateExam-infoExam">
-              <div className="grid-col-6">
-                <label htmlFor="">Tổ bộ môn:</label>
-                <div className="CreateExam-infoExam_input">
-                  <Select
-                    defaultValue={formik.values.groupSubjectName}
-                    onChange={(value) => {
-                      formik.setFieldValue('groupSubjectName', value);
-                    }}
-                  >
-                    {[
-                      'Quan hệ quốc tế',
-                      'Kinh tế đối ngoại',
-                      'Công nghệ thông tin',
-                    ].map((item) => (
-                      <Option value={item} key={item}>
-                        {item}
-                      </Option>
-                    ))}
-                  </Select>
-                </div>
-              </div>
-            </div>
-            <div className="CreateExam-infoExam">
-              <div className="grid-col-6">
-                <label htmlFor="">Tổ bộ môn:</label>
-                <div className="CreateExam-infoExam_input">
-                  <Select
-                    defaultValue={formik.values.subjectName}
-                    onChange={(value) => {
-                      formik.setFieldValue('subjectName', value);
-                    }}
-                  >
-                    {[
-                      'Chủ nghĩa Mác- Lênin',
-                      'Kinh tế căng bản',
-                      'Hóa học nâng cao',
-                    ].map((item) => (
-                      <Option value={item} key={item}>
-                        {item}
-                      </Option>
-                    ))}
-                  </Select>
+              <div className="CreateExam-infoExam all">
+                <div className="grid-col-6">
+                  <label htmlFor="">Độ khó:</label>
+                  <div className="CreateExam-infoExam_input ">
+                    <Radio.Group
+                      options={['Dễ', 'Trung bình', 'Khó']}
+                      onChange={(e) => {
+                        formik.setFieldValue('radioLV', e.target.value);
+                      }}
+                      value={formik.values.radioLV}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        ) : (
+          <div className="book">
+            <h1>Phần thông tin:</h1>
+            <div className="grid-col-2">
+              <div className="CreateExam-infoExam">
+                <div className="grid-col-6">
+                  <label htmlFor="">Tên:</label>
+                  <div className="CreateExam-infoExam_input">
+                    <Input
+                      name="nameExam"
+                      value={formik.values.nameExam}
+                      onChange={formik.handleChange}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="CreateExam-infoExam">
+                <div className="grid-col-6">
+                  <label htmlFor="">Thời lượng:</label>
+                  <div className="CreateExam-infoExam_input">
+                    <div className="CreateExam-infoExam_input__Select">
+                      <Select
+                        defaultValue={formik.values.house}
+                        style={{ width: '120px' }}
+                        onChange={(value) => {
+                          formik.setFieldValue('house', value);
+                        }}
+                      >
+                        <Option value="1">1</Option>
+                        <Option value="2">2</Option>
+
+                        <Option value="3">3</Option>
+                      </Select>
+                      <span>Giờ</span>
+                    </div>
+                    <div className="CreateExam-infoExam_input__Select">
+                      <Select
+                        style={{ width: '120px' }}
+                        defaultValue={formik.values.minute}
+                        onChange={(value) => {
+                          formik.setFieldValue('minute', value);
+                        }}
+                      >
+                        <Option value="15">15</Option>
+                        <Option value="30">30</Option>
+                        <Option value="45">45</Option>
+                      </Select>
+                      <span>Phút</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="CreateExam-infoExam all">
+                <div className="grid-col-6">
+                  <label htmlFor="">Hình thức:</label>
+                  <div className="CreateExam-infoExam_input ">
+                    <Radio.Group
+                      options={['Trắc nghiệm', 'Tự Luận']}
+                      onChange={(e) => {
+                        formik.setFieldValue('typeExam', e.target.value);
+                      }}
+                      value={formik.values.typeExam}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="CreateExam-infoExam">
+                <div className="grid-col-6">
+                  <label htmlFor="">Tổ bộ môn:</label>
+                  <div className="CreateExam-infoExam_input">
+                    <Select
+                      defaultValue={formik.values.groupSubjectName}
+                      onChange={(value) => {
+                        formik.setFieldValue('groupSubjectName', value);
+                      }}
+                    >
+                      {[
+                        'Quan hệ quốc tế',
+                        'Kinh tế đối ngoại',
+                        'Công nghệ thông tin',
+                      ].map((item) => (
+                        <Option value={item} key={item}>
+                          {item}
+                        </Option>
+                      ))}
+                    </Select>
+                  </div>
+                </div>
+              </div>
+              <div className="CreateExam-infoExam">
+                <div className="grid-col-6">
+                  <label htmlFor="">Môn học</label>
+                  <div className="CreateExam-infoExam_input">
+                    <Select
+                      defaultValue={formik.values.subjectName}
+                      onChange={(value) => {
+                        formik.setFieldValue('subjectName', value);
+                      }}
+                    >
+                      {[
+                        'Chủ nghĩa Mác- Lênin',
+                        'Kinh tế căng bản',
+                        'Hóa học nâng cao',
+                      ].map((item) => (
+                        <Option value={item} key={item}>
+                          {item}
+                        </Option>
+                      ))}
+                    </Select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
         <div className="CreateExam-body">
           <div className="CreateExam-body_numberquestion">
             <Tabs

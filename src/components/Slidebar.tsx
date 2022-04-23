@@ -40,7 +40,7 @@ const Slidebar = () => {
       icon: 'bx bxs-file-archive',
       children: [2].includes(per) && [
         { pathchil: '', title: 'Tất cả bài giảng' },
-        { pathchil: 'listDocument', title: 'Tất cả tài nguyên' },
+        { pathchil: '', title: 'Tất cả tài nguyên' },
       ],
       permiss: [2, 3],
     },
@@ -51,7 +51,7 @@ const Slidebar = () => {
       icon: 'bx bxs-shopping-bag',
       children: [2].includes(per) && [
         { pathchil: '', title: 'Danh sách đề thi & kiểm tra' },
-        { pathchil: 'Nganhang', title: 'Ngân hàng câu hỏi' },
+        { pathchil: 'bank', title: 'Ngân hàng câu hỏi' },
       ],
       permiss: [2, 3],
     },
@@ -155,32 +155,38 @@ const Slidebar = () => {
       {per >= 2 && (
         <div className="Slidebar-right">
           <ul className="Slidebar-right_list">
-            {slidebar.map((item) => (
-              <li key={`slidebar-right-${item.path}`}>
-                <NavLink
-                  to={`/${item.path}`}
-                  className={({ isActive }) => {
-                    return isActive
-                      ? 'active Slidebar-right_item'
-                      : '  Slidebar-right_item';
-                  }}
-                >
-                  <i className={`${item.icon} Slidebar-right_icon`}></i>
-                  <span className="Slidebar-right_content">{item.content}</span>
-                </NavLink>
-                {item.children &&
-                  item.children.map((child) => (
-                    <span key={`slidebarChild-${child.title}`}>
-                      <NavLink
-                        to={`${item.path}/${child.pathchil}`}
-                        className="Slidebar-right_itemChil"
-                      >
-                        {child.title}
-                      </NavLink>
-                    </span>
-                  ))}
-              </li>
-            ))}
+            {slidebar.map((item) => {
+              if (item.permiss.includes(per)) {
+                return (
+                  <li key={`slidebar-right-${item.path}`}>
+                    <NavLink
+                      to={`/${item.path}`}
+                      className={({ isActive }) => {
+                        return isActive
+                          ? 'active Slidebar-right_item'
+                          : '  Slidebar-right_item';
+                      }}
+                    >
+                      <i className={`${item.icon} Slidebar-right_icon`}></i>
+                      <span className="Slidebar-right_content">
+                        {item.content}
+                      </span>
+                    </NavLink>
+                    {item.children &&
+                      item.children.map((child) => (
+                        <span key={`slidebarChild-${child.title}`}>
+                          <NavLink
+                            to={`${item.path}/${child.pathchil}`}
+                            className="Slidebar-right_itemChil"
+                          >
+                            {child.title}
+                          </NavLink>
+                        </span>
+                      ))}
+                  </li>
+                );
+              }
+            })}
           </ul>
         </div>
       )}
