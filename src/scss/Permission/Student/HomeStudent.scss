@@ -86,7 +86,7 @@
   position: relative;
   // @include flex(center, center);
   padding: 14px 24px;
-  .tableIconStart {
+  .bx {
     text-align: center;
     transform: translateY(24px);
   }
@@ -108,5 +108,6 @@
     position: absolute;
     top: 0;
     right: 20px;
+    text-align: right;
   }
 }

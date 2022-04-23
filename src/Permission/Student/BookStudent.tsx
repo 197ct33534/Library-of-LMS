@@ -20,7 +20,19 @@ const BookStudent = () => {
   const dispatch = useDispatch();
   const student = useSelector(studentSelector);
   const common = useSelector(commonSelector);
+  const navigation = useNavigate();
+  const handleChangeSelections = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const text = e.target.value;
 
+    switch (text) {
+      case 'Chi tiết':
+        navigation('course');
+        return;
+
+      default:
+        break;
+    }
+  };
   const pageSize = common.pageSize;
   const list: StudentProps[] = student.studentData;
   const tableForm = student.tableForm;
@@ -74,14 +86,15 @@ const BookStudent = () => {
         return (
           <>
             <select
-              //   onChange={(e) => handleChangeSelections(e)}
+              onChange={(e) => handleChangeSelections(e)}
               className="SelectHidden"
               value="&#8942;"
+              style={{ textAlign: 'center', transform: 'unset' }}
             >
               <option value="&#8942;">&#8942;</option>
 
-              <option value="Xem trước">Chi tiết</option>
-              <option value="Đổi tên">Tải xuống tài nguyên</option>
+              <option value="Chi tiết">Chi tiết</option>
+              <option value="Tải xuống tài nguyên">Tải xuống tài nguyên</option>
             </select>
           </>
         );
@@ -92,18 +105,7 @@ const BookStudent = () => {
   const getData = (current: number, pageSize: number) => {
     return list.slice((current - 1) * pageSize, current * pageSize);
   };
-  const navigation = useNavigate();
-  const handleChangeSelections = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const text = e.target.value;
-    switch (text) {
-      case 'Chi tiết':
-        navigation('course');
-        return;
 
-      default:
-        break;
-    }
-  };
   return (
     <>
       <TitleHeader titlePrimary="Môn học của tôi" />
@@ -160,19 +162,20 @@ const BookStudent = () => {
                       <h1>{item.nameSubject}</h1>
                       <h3>{item.teacherSubject}</h3>
                     </div>
-                  </div>
-                  <select
-                    onChange={(e) => handleChangeSelections(e)}
-                    className="SelectHidden"
-                    value="&#8942;"
-                  >
-                    <option value="&#8942;">&#8942;</option>
+                    <select
+                      onChange={(e) => handleChangeSelections(e)}
+                      className="SelectHidden"
+                      value="&#8942;"
+                      style={{ textAlign: 'right', transform: 'unset' }}
+                    >
+                      <option value="&#8942;">&#8942;</option>
 
-                    <option value="Chi tiết">Chi tiết</option>
-                    <option value="Tải xuống tài nguyên">
-                      Tải xuống tài nguyên
-                    </option>
-                  </select>
+                      <option value="Chi tiết">Chi tiết</option>
+                      <option value="Tải xuống tài nguyên">
+                        Tải xuống tài nguyên
+                      </option>
+                    </select>
+                  </div>
                 </div>
               );
             })}
